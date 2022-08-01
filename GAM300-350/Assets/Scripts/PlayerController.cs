@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    #region Movement Variables
-    public float moveSpeed;
-    public float dashSpeed;
-    float gravity = 48f;
-    float dashCoolDown = 0.5f;
-    bool isDashing;
+    CharacterController charaController;
 
+    #region Movement Variables
+
+    // GENERAL MOVEMENT VARIABLES
+    public float moveSpeed;
+    Vector3 velocity;
+    Vector3 direction;
+
+    // DASH VARIABLES
+    bool dashOnCoolDown;
+    public float dashSpeed;
+    public float dashTime = 0.2f; // how long in dash animation.
+    public float dashCoolDownTime = 0.1f;
+
+    float gravity = 4f;
 
     //ROTATION VECTORS
     Vector3 forwardVector;
@@ -18,17 +27,14 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Ground Check
+    bool cannotMove;
     public bool isGrounded;
-    Transform groundCheck;
-    float checkRadius = 0.4f;
-    public LayerMask groundMask;
     #endregion
 
 
     void Start()
     {
-
-        groundCheck = GameObject.Find("Ground Check").GetComponent<Transform>();
+        charaController = GetComponent<CharacterController>();
 
         #region Initializating Iso Rotation
         forwardVector = Camera.main.transform.forward; // setting the player's forward to be the same as camera.
@@ -40,56 +46,56 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, checkRadius, groundMask);
+        direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        direction.Normalize();
 
-        // FUTURE: FIX THE RIGID ROTATION. ROTATION IS NOW IN STEPS OF 90 DEGS.
-        PlayerMove(); // if can use rigidbody to move, even better.
+        isGrounded = charaController.isGrounded;
+
+        PlayerMove();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Dash();
+            StartCoroutine(Dash());
         }
     }
 
-    void PlayerMove() // somehow the player is moving by itself without input lmao - val.
+    void PlayerMove()
     {
-        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-
-        if (!isGrounded)
-        {
-            Vector3 currentHeight = new Vector3(0, transform.position.y, 0);
-            currentHeight.y -= gravity * Time.deltaTime;
-            print("going down!");
-
-        }
 
         if (direction.magnitude >= 0.1f)
         {
+            // rotate logic
             Vector3 heading = direction.normalized;
-
             transform.forward = heading;
-            transform.position += heading * moveSpeed * Time.deltaTime;
+
+            charaController.Move(direction.normalized * Time.deltaTime * moveSpeed);
         }
 
+        velocity.y -= gravity * Time.deltaTime; // ensure that the player is grounded at all times.
+        charaController.Move(velocity * Time.deltaTime);
     }
 
     #region Dash Functions
 
-    void Dash() // activated when Space is pressed.
+    IEnumerator Dash() // activated when Space is pressed.
     {
-        //TODO: MAKE PLAYER DASH IN THE DIR ITS FACING
-        isDashing = true;
+        float startTime = Time.time;
 
-        print("Dashed!");
-        StartCoroutine(ResetDash());
+        if (!dashOnCoolDown)
+        {
+            while (Time.time < startTime + dashTime)
+            {
+                dashOnCoolDown = true;
+                charaController.Move(transform.forward * Time.deltaTime * dashSpeed); // dash in the direction that the player is facing.
+                yield return null;
+            }
+        }
+        else // Dash CD
+        {
+            yield return new WaitForSeconds(dashCoolDownTime);
+            dashOnCoolDown = false;
+            print("dash reset");
+        }
     }
-
-    IEnumerator ResetDash()
-    {
-        yield return new WaitForSeconds(dashCoolDown);
-        isDashing = false;
-        print("Dash resetted!");
-    }
-
     #endregion
 }
