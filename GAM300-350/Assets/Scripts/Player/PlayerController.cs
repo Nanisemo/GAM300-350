@@ -31,10 +31,14 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     #endregion
 
+    public int currentHealth;
+    int maxHealth = 5;
 
     void Start()
     {
         charaController = GetComponent<CharacterController>();
+
+        currentHealth = maxHealth;
 
         #region Initializating Iso Rotation
         forwardVector = Camera.main.transform.forward; // setting the player's forward to be the same as camera.
@@ -51,13 +55,22 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = charaController.isGrounded;
 
+        CheckHealth();
+
+        if (GlobalBool.isGameOver || GlobalBool.isPaused) return; // player unable to move if either bool is true.
+
         PlayerMove();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(Dash());
         }
+
+        // TODO: make player face the mouse cursor when clicked.
+        // TODO: make a basic combat system that uses LMB.
     }
+
+    #region Movement Functions
 
     void PlayerMove()
     {
@@ -74,8 +87,6 @@ public class PlayerController : MonoBehaviour
         velocity.y -= gravity * Time.deltaTime; // ensure that the player is grounded at all times.
         charaController.Move(velocity * Time.deltaTime);
     }
-
-    #region Dash Functions
 
     IEnumerator Dash() // activated when Space is pressed.
     {
@@ -96,6 +107,28 @@ public class PlayerController : MonoBehaviour
             dashOnCoolDown = false;
             print("dash reset");
         }
+
+
+    }
+
+    #endregion
+
+    #region Health Functions
+    void CheckHealth()
+    {
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
+
+        if (currentHealth <= 0) currentHealth = 0;
+
+        if (Input.GetKeyDown(KeyCode.F) && currentHealth != 0)
+        {
+            currentHealth--;
+
+        }
+        if (Input.GetKeyDown(KeyCode.R) && currentHealth != 5) currentHealth++;
+
+        print(currentHealth);
     }
     #endregion
+
 }
