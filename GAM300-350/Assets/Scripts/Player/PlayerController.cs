@@ -5,13 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     CharacterController charaController;
+    Camera mainCam;
 
     #region Movement Variables
 
     // GENERAL MOVEMENT VARIABLES
     public float moveSpeed;
+    public float attackMoveSpeed;
     Vector3 velocity;
     Vector3 direction;
+    Vector3 heading;
 
     // DASH VARIABLES
     bool dashOnCoolDown;
@@ -31,12 +34,16 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     #endregion
 
+    [SerializeField] LayerMask groundMask;
+    bool isAttacking;
+
     public int currentHealth;
     int maxHealth = 5;
 
     void Start()
     {
         charaController = GetComponent<CharacterController>();
+        mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         currentHealth = maxHealth;
 
@@ -61,12 +68,19 @@ public class PlayerController : MonoBehaviour
 
         PlayerMove();
 
+        if (Input.GetMouseButtonDown(0)) // rotates the player when clicked.
+        {
+            Aim();
+            print("LMB Clicked");
+        }
+        else isAttacking = false;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(Dash());
         }
 
-        // TODO: make player face the mouse cursor when clicked.
+        // TODO: make player face the mouse cursor when clicked. [DONE, left bugfix. angle offset is not in sets of 90 degs]
         // TODO: make a basic combat system that uses LMB.
     }
 
@@ -78,10 +92,11 @@ public class PlayerController : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             // rotate logic
-            Vector3 heading = direction.normalized;
+            heading = direction.normalized;
             transform.forward = heading;
 
-            charaController.Move(direction.normalized * Time.deltaTime * moveSpeed);
+            if (!isAttacking)
+                charaController.Move(direction.normalized * Time.deltaTime * moveSpeed); // player cannot move when attacking.
         }
 
         velocity.y -= gravity * Time.deltaTime; // ensure that the player is grounded at all times.
@@ -135,4 +150,48 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    private (bool success, Vector3 position) GetMousePosition()
+    {
+        var ray = mainCam.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
+        {
+            // The Raycast hit something, return with the position.
+            return (success: true, position: hitInfo.point);
+        }
+        else
+        {
+            // The Raycast did not hit anything.
+            return (success: false, position: Vector3.zero);
+        }
+    }
+
+    void Aim()
+    {
+        var (success, position) = GetMousePosition();
+        if (success)
+        {
+            isAttacking = true;
+
+            // Calculate the direction
+            var direction = position - transform.position;
+
+            // Ignore the height difference.
+            direction.y = 0;
+
+            // Make the transform look in the direction.
+            var padding = direction + heading;
+
+            transform.forward = padding;
+
+            charaController.Move(direction.normalized * Time.deltaTime * attackMoveSpeed);
+            StartCoroutine(CanAttackAgain());
+        }
+    }
+
+    IEnumerator CanAttackAgain()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        isAttacking = false;
+    }
 }
