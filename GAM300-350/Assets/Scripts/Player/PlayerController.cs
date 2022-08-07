@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         }
         else isAttacking = false;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             StartCoroutine(Dash());
         }
