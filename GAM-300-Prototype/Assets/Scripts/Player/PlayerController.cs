@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     // DASH VARIABLES
     bool dashOnCoolDown;
+
     public float dashSpeed;
     public float dashTime = 0.2f; // how long in dash animation.
     public float dashCoolDownTime = 0.1f;
@@ -34,6 +35,18 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     #endregion
 
+    #region Animation
+
+    Animator playerAnim;
+
+    #endregion
+
+    #region MISC
+
+    MeshTrailRenderer meshTrailRenderer;
+
+    #endregion
+
     [SerializeField] LayerMask groundMask;
     bool isAttacking;
 
@@ -44,6 +57,8 @@ public class PlayerController : MonoBehaviour
     {
         charaController = GetComponent<CharacterController>();
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        playerAnim = GameObject.Find("Player").GetComponent<Animator>();
+        meshTrailRenderer = GetComponent<MeshTrailRenderer>();
 
         currentHealth = maxHealth;
 
@@ -94,10 +109,12 @@ public class PlayerController : MonoBehaviour
             // rotate logic
             heading = direction.normalized;
             transform.forward = heading;
+            playerAnim.SetBool("isRunning", true);
 
             if (!isAttacking)
                 charaController.Move(direction.normalized * Time.deltaTime * moveSpeed); // player cannot move when attacking.
         }
+        else playerAnim.SetBool("isRunning", false);
 
         velocity.y -= gravity * Time.deltaTime; // ensure that the player is grounded at all times.
         charaController.Move(velocity * Time.deltaTime);
@@ -112,16 +129,22 @@ public class PlayerController : MonoBehaviour
             while (Time.time < startTime + dashTime)
             {
                 dashOnCoolDown = true;
+
+                playerAnim.SetTrigger("Dash");
                 charaController.Move(transform.forward * Time.deltaTime * dashSpeed); // dash in the direction that the player is facing.
+                if (!meshTrailRenderer.isTrailActive) StartCoroutine(meshTrailRenderer.RenderMeshTrail(dashTime));
                 yield return null;
             }
         }
         else // Dash CD
         {
+
             yield return new WaitForSeconds(dashCoolDownTime);
             dashOnCoolDown = false;
             print("dash reset");
         }
+
+
 
 
     }
