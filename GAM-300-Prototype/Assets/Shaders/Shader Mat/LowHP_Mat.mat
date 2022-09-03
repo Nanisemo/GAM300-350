@@ -53,11 +53,11 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _CastShadows: 1
-    - _Cull: 0
+    - _Cull: 2
     - _DstBlend: 10
     - _EtcVoronoi: 1
     - _Float: 0
-    - _Intensity: 1000
+    - _Intensity: 15952787
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5

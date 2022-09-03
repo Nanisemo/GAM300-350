@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    Animator gameOverCanvas;
+    //Animator gameOverCanvas;
+    public GameObject gameOver;
 
     void Start()
     {
-        gameOverCanvas = GameObject.Find("Game Over Canvas").GetComponent<Animator>();
+        gameOver.SetActive(false);
     }
 
     void Update()
     {
-        DisplayGameOverUI();
+        if (GlobalBool.isGameOver) DisplayGameOverUI();
     }
 
     void DisplayGameOverUI()
     {
-        if (GlobalBool.isGameOver) gameOverCanvas.SetTrigger("GameOver");
+        gameOver.SetActive(true);
+        LowHPShaderController matController = GetComponent<LowHPShaderController>();
+        StartCoroutine(matController.DisableMaterial());
+
     }
 }

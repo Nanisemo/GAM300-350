@@ -97,4 +97,10 @@ public class LowHPShaderController : MonoBehaviour
 
         LowHPMat.SetFloat("_Intensity", currentFadeValue);
     }
+
+    public IEnumerator DisableMaterial()
+    {
+        yield return new WaitForSecondsRealtime(4f);
+        currentFadeValue += Time.unscaledDeltaTime * duration * fadeInStep;
+    }
 }

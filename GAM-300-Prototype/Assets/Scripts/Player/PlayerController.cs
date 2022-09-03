@@ -144,9 +144,6 @@ public class PlayerController : MonoBehaviour
             print("dash reset");
         }
 
-
-
-
     }
 
     #endregion
@@ -156,13 +153,15 @@ public class PlayerController : MonoBehaviour
     {
         if (currentHealth > maxHealth) currentHealth = maxHealth;
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !GlobalBool.isGameOver)
         {
             currentHealth = 0;
             GlobalBool.isGameOver = true;
+            playerAnim.SetTrigger("isDead");
+
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && currentHealth != 0)
+        if (Input.GetKeyDown(KeyCode.F) && currentHealth != 0) // to remove  for build
         {
             currentHealth--;
 

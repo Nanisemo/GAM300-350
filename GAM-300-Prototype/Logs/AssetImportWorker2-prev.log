@@ -1,0 +1,625 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.8f1 (b30333d56e81) revision 11731763'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19043) 64bit Core' Language: 'en' Physical Memory: 12243 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\Game Engine\Unity\Project Dump\2021.3.8f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+D:/Game Engine/SCHOOL PROJECTS/GAM300-350/GAM-300-Prototype
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+63062
+Successfully changed project path to: D:/Game Engine/SCHOOL PROJECTS/GAM300-350/GAM-300-Prototype
+D:/Game Engine/SCHOOL PROJECTS/GAM300-350/GAM-300-Prototype
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 77.73 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.8f1 (b30333d56e81)
+[Subsystems] Discovering subsystems at path D:/Game Engine/Unity/Project Dump/2021.3.8f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Game Engine/SCHOOL PROJECTS/GAM300-350/GAM-300-Prototype/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 (ID=0x1c20)
+    Vendor:   NVIDIA
+    VRAM:     6052 MB
+    Driver:   27.21.14.5167
+Initialize mono
+Mono path[0] = 'D:/Game Engine/Unity/Project Dump/2021.3.8f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Game Engine/Unity/Project Dump/2021.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Game Engine/Unity/Project Dump/2021.3.8f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56292
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Game Engine/Unity/Project Dump/2021.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.007377 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 83.12 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.875 seconds
+Domain Reload Profiling:
+	ReloadAssembly (876ms)
+		BeginReloadAssembly (91ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (631ms)
+			LoadAssemblies (90ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (161ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (54ms)
+			SetupLoadedEditorAssemblies (331ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (83ms)
+				BeforeProcessingInitializeOnLoad (3ms)
+				ProcessInitializeOnLoadAttributes (164ms)
+				ProcessInitializeOnLoadMethodAttributes (72ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.005236 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 123.04 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.624 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1625ms)
+		BeginReloadAssembly (149ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (28ms)
+		EndReloadAssembly (1324ms)
+			LoadAssemblies (115ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (373ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (97ms)
+			SetupLoadedEditorAssemblies (678ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (123ms)
+				BeforeProcessingInitializeOnLoad (108ms)
+				ProcessInitializeOnLoadAttributes (332ms)
+				ProcessInitializeOnLoadMethodAttributes (105ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 0.92 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4051 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 44 unused Assets / (0.8 MB). Loaded Objects now: 4515.
+Memory consumption went from 182.6 MB to 181.8 MB.
+Total: 5.505000 ms (FindLiveObjects: 0.594200 ms CreateObjectMapping: 0.554900 ms MarkObjects: 3.971600 ms  DeleteObjects: 0.382900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 16971.478436 seconds.
+  path: Assets/Settings/URP-HighFidelity-Renderer.asset
+  artifactKey: Guid(c40be3174f62c4acf8c1216858c64956) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Settings/URP-HighFidelity-Renderer.asset using Guid(c40be3174f62c4acf8c1216858c64956) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9598c4091cdc5956bf4e61a72a61a819') in 0.060299 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.036521 seconds.
+  path: Assets/Scenes/Pause Menu.unity
+  artifactKey: Guid(123656b67afa7424193744b24d709d29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Pause Menu.unity using Guid(123656b67afa7424193744b24d709d29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faa6a57f9366a99ce675a722dc22a294') in 0.015581 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005638 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.97 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.680 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3682ms)
+		BeginReloadAssembly (2081ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (112ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (549ms)
+		EndReloadAssembly (1448ms)
+			LoadAssemblies (236ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (427ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (85ms)
+			SetupLoadedEditorAssemblies (720ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (17ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (112ms)
+				ProcessInitializeOnLoadAttributes (433ms)
+				ProcessInitializeOnLoadMethodAttributes (151ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (27ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 111.11 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 38 unused Assets / (1.4 MB). Loaded Objects now: 4532.
+Memory consumption went from 173.7 MB to 172.3 MB.
+Total: 119.288800 ms (FindLiveObjects: 0.432000 ms CreateObjectMapping: 0.394900 ms MarkObjects: 117.525800 ms  DeleteObjects: 0.934700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.942587 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.13 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.355 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3356ms)
+		BeginReloadAssembly (636ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (49ms)
+		EndReloadAssembly (2585ms)
+			LoadAssemblies (1833ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (337ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (63ms)
+			SetupLoadedEditorAssemblies (709ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (15ms)
+				SetLoadedEditorAssemblies (4ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (87ms)
+				ProcessInitializeOnLoadAttributes (376ms)
+				ProcessInitializeOnLoadMethodAttributes (222ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (23ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.80 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 38 unused Assets / (1.4 MB). Loaded Objects now: 4547.
+Memory consumption went from 173.7 MB to 172.3 MB.
+Total: 4.773100 ms (FindLiveObjects: 0.509000 ms CreateObjectMapping: 0.448300 ms MarkObjects: 3.183300 ms  DeleteObjects: 0.631200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004791 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.89 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.731 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1732ms)
+		BeginReloadAssembly (163ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (49ms)
+		EndReloadAssembly (1434ms)
+			LoadAssemblies (96ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (433ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (83ms)
+			SetupLoadedEditorAssemblies (703ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (18ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (109ms)
+				ProcessInitializeOnLoadAttributes (433ms)
+				ProcessInitializeOnLoadMethodAttributes (136ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (28ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 38 unused Assets / (1.4 MB). Loaded Objects now: 4562.
+Memory consumption went from 173.8 MB to 172.4 MB.
+Total: 5.611900 ms (FindLiveObjects: 0.502900 ms CreateObjectMapping: 0.300200 ms MarkObjects: 4.064100 ms  DeleteObjects: 0.743600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005006 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.85 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.603 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1604ms)
+		BeginReloadAssembly (168ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (49ms)
+		EndReloadAssembly (1304ms)
+			LoadAssemblies (112ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (346ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (73ms)
+			SetupLoadedEditorAssemblies (682ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (16ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (98ms)
+				ProcessInitializeOnLoadAttributes (422ms)
+				ProcessInitializeOnLoadMethodAttributes (138ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (29ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.92 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3915 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 38 unused Assets / (1.5 MB). Loaded Objects now: 4577.
+Memory consumption went from 173.8 MB to 172.4 MB.
+Total: 6.394000 ms (FindLiveObjects: 0.426200 ms CreateObjectMapping: 0.508600 ms MarkObjects: 3.680400 ms  DeleteObjects: 1.777300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 7411.726080 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms
+  artifactKey: Guid(e267f109c3f7f564daf9776616437a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms using Guid(e267f109c3f7f564daf9776616437a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0e95aa8e884eafac77e782a0edd0440') in 0.036205 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.619643 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt
+  artifactKey: Guid(3069c2c44f6031a4fa8e9bc2f9bee2f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt using Guid(3069c2c44f6031a4fa8e9bc2f9bee2f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1f5c5617f2ed1363855a9a1c8e9c474') in 0.008743 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.810897 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Models
+  artifactKey: Guid(b9ec88ece52eea24eb27f87369378bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Models using Guid(b9ec88ece52eea24eb27f87369378bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '507fa02276f14fefbe2a76c550ec4083') in 0.009288 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.019641 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Models/crypt_chandelier.fbx
+  artifactKey: Guid(f48bdefdcbaa779498f3681fe52ccf6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Models/crypt_chandelier.fbx using Guid(f48bdefdcbaa779498f3681fe52ccf6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e75a8689441433ea3343db82ca50886') in 2.790934 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Models/crypt_sarcophagi.fbx
+  artifactKey: Guid(c8091bb30e8ac4a47a414f303cbce738) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Models/crypt_sarcophagi.fbx using Guid(c8091bb30e8ac4a47a414f303cbce738) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8baba70220f9bd6135442648163f7153') in 0.073964 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.027131 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs
+  artifactKey: Guid(f606e285bac37474097b51ae4a03754d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs using Guid(f606e285bac37474097b51ae4a03754d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c48312da0fda101ff3e495a15cebda3') in 0.006922 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.036588 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs/crypt_chandelier.prefab
+  artifactKey: Guid(8da19fac2d7b4534895cdd95853c048f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs/crypt_chandelier.prefab using Guid(8da19fac2d7b4534895cdd95853c048f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c59cd6369b961b432e30e54fcd95a0b2') in 0.488806 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs/crypt_window_wall.prefab
+  artifactKey: Guid(7a63c9abd174b4847a3c0d7ad1f68b07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs/crypt_window_wall.prefab using Guid(7a63c9abd174b4847a3c0d7ad1f68b07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ff4a64ab3d26c50d1cb8389e4bda276') in 0.135108 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs/crypt_sarcophagi.prefab
+  artifactKey: Guid(222dc4e090943b240b9a0d017908d3f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs/crypt_sarcophagi.prefab using Guid(222dc4e090943b240b9a0d017908d3f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ec3e94589c3316ae6b189e842726893') in 0.040036 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs/crypt_pillar.prefab
+  artifactKey: Guid(9f7a43d334ccc5b49a8011098b932e1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Prefabs/crypt_pillar.prefab using Guid(9f7a43d334ccc5b49a8011098b932e1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e21ec8512eee928b2b08593d3c79299b') in 0.032261 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.246765 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials
+  artifactKey: Guid(36dfc650e24dd9645b8162bcc2e6d916) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials using Guid(36dfc650e24dd9645b8162bcc2e6d916) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5055865d38eb653f67de90e49a2a190') in 0.021420 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.037595 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials/chandellier.mat
+  artifactKey: Guid(07f10b3edb1500149ac678d91de17a04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials/chandellier.mat using Guid(07f10b3edb1500149ac678d91de17a04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '047405d36f2661201f89625ee8434638') in 0.068399 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials/roof.mat
+  artifactKey: Guid(264223b08861d0d4e9515c2270cb83d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials/roof.mat using Guid(264223b08861d0d4e9515c2270cb83d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10e6f68b5d8992d930337b042c2a3371') in 0.030928 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials/window_frame2.mat
+  artifactKey: Guid(166498583bc741d4ba9a543058b9bd28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials/window_frame2.mat using Guid(166498583bc741d4ba9a543058b9bd28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb61cb45ff7ffbb41e2cfbe8182f567e') in 0.030074 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials/pillar.mat
+  artifactKey: Guid(aec62db37b39d744f9729ef92dde58d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Materials/pillar.mat using Guid(aec62db37b39d744f9729ef92dde58d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '801eba73ceb1c0ad5c1708f3f6eb3aa9') in 0.040736 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 143.185695 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures
+  artifactKey: Guid(66750ec51257f5448b7a79e9a4eb54aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures using Guid(66750ec51257f5448b7a79e9a4eb54aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c233499a4ed9d8805e87f0e43354699') in 0.009767 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_chandelier_lambert2_Emissive.png
+  artifactKey: Guid(3b8e838294553f8479afabc06929aaf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_chandelier_lambert2_Emissive.png using Guid(3b8e838294553f8479afabc06929aaf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc5a933aa896f185d9cda51849d0e51d') in 0.043149 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000104 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/old_worn_brick_basecolor.png
+  artifactKey: Guid(886775282bbadb84690bdb9f113bacd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/old_worn_brick_basecolor.png using Guid(886775282bbadb84690bdb9f113bacd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ecb2379fd2ac1213c63f96cb713ecc91') in 0.022364 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_chandelier_lambert2_Roughness.png
+  artifactKey: Guid(6de258f57a7dbbf499a88888b7dfd90a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_chandelier_lambert2_Roughness.png using Guid(6de258f57a7dbbf499a88888b7dfd90a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0e4443260d41ba733a4f66e146358f6') in 0.023602 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_chandelier_lambert2_Metallic.png
+  artifactKey: Guid(c62e16ef07d4e9b4ebdabeff481cf37f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_chandelier_lambert2_Metallic.png using Guid(c62e16ef07d4e9b4ebdabeff481cf37f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12553759cd3cff4acde4efccc727fe77') in 0.024682 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_sarcophagi_lambert1_BaseColor.png
+  artifactKey: Guid(6739c24195d643146a698920584a40ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_sarcophagi_lambert1_BaseColor.png using Guid(6739c24195d643146a698920584a40ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'affb2fe18914eb1f30e3aa1c8a5c0d5b') in 0.017988 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame2_lambert1_Height.png
+  artifactKey: Guid(cef0b18274188274fa0cdb2aaba56a68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame2_lambert1_Height.png using Guid(cef0b18274188274fa0cdb2aaba56a68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7555a89bfde2b56af714c0135e4491ec') in 0.020930 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_roof_lambert1_Metallic.png
+  artifactKey: Guid(641fa6e59d592a64c98330ca49c2506d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_roof_lambert1_Metallic.png using Guid(641fa6e59d592a64c98330ca49c2506d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d4ca0a953156320fe7c4d0af951389e') in 0.019838 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_sarcophagi_lambert1_Height.png
+  artifactKey: Guid(eae7cebe34d5f2f48a253b428960a5a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_sarcophagi_lambert1_Height.png using Guid(eae7cebe34d5f2f48a253b428960a5a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9910efa805b3fa96378c08bf7ecfadbf') in 0.021381 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame2_lambert1_Normal.png
+  artifactKey: Guid(c68d1ad030042a34c8cdd9f1c88ce260) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame2_lambert1_Normal.png using Guid(c68d1ad030042a34c8cdd9f1c88ce260) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fced1f95652494614a22b2c5f26bf01') in 0.036337 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/old_worn_brick_height.png
+  artifactKey: Guid(346b39f12a605fc4494baa8e0f1acf78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/old_worn_brick_height.png using Guid(346b39f12a605fc4494baa8e0f1acf78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51096177e91fc1d15a35c08f0db7b554') in 0.016756 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame3_lambert1_Roughness.png
+  artifactKey: Guid(be4b0dab04027964594e2c6166ffe852) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame3_lambert1_Roughness.png using Guid(be4b0dab04027964594e2c6166ffe852) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd55ad11b00be708cb15bd121718a8210') in 0.016469 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_pillar_lambert1_BaseColor.png
+  artifactKey: Guid(8d681ee6cd53da24599912c2d2d51df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_pillar_lambert1_BaseColor.png using Guid(8d681ee6cd53da24599912c2d2d51df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7ffcc8e04ce8f0964b23b002acc7307') in 0.015684 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame2_lambert1_Metallic.png
+  artifactKey: Guid(0a696e34261f78f4dafb72771aae42b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame2_lambert1_Metallic.png using Guid(0a696e34261f78f4dafb72771aae42b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa030f38afb3335c5daacebf64353ba8') in 0.019446 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_pillar_lambert1_Roughness.png
+  artifactKey: Guid(bfbc72129a32a114eb1ab22a1a44b75d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_pillar_lambert1_Roughness.png using Guid(bfbc72129a32a114eb1ab22a1a44b75d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8c712d8334d0811f00efd52f4dbc3dd') in 0.062711 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/window_alpha.png
+  artifactKey: Guid(d69883641f2d3974dad6a62724c3c35e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/window_alpha.png using Guid(d69883641f2d3974dad6a62724c3c35e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b69b218ce7570ba0eb6994a9991f75c') in 0.082372 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame3_lambert1_Emissive.png
+  artifactKey: Guid(e5e66563773c15e4898bd654dad28fa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame3_lambert1_Emissive.png using Guid(e5e66563773c15e4898bd654dad28fa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '590ad3fd482b84256d168c130ef9b46e') in 0.020036 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/stone_floor_ambientOcclusion.png
+  artifactKey: Guid(90cc06664e8f34344b6c2c9ae21ff380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/stone_floor_ambientOcclusion.png using Guid(90cc06664e8f34344b6c2c9ae21ff380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80e6c6a45f084a7ebae361f33d05aaf4') in 0.018106 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame2_lambert1_Roughness.png
+  artifactKey: Guid(8340120c6e788dd429416d20096f5bd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame2_lambert1_Roughness.png using Guid(8340120c6e788dd429416d20096f5bd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62a9aa16b73f8c7f3df0ffb90da5df73') in 0.034149 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/stone_floor_roughness.png
+  artifactKey: Guid(d92a1e2d2d473be46b338dcf070f1ba0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/stone_floor_roughness.png using Guid(d92a1e2d2d473be46b338dcf070f1ba0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5376f3a12a0d8964bfdd9409a11259ae') in 0.029988 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000103 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_sarcophagi_lambert1_Roughness.png
+  artifactKey: Guid(9aa78ebab76662b4782c21fb4614da68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_sarcophagi_lambert1_Roughness.png using Guid(9aa78ebab76662b4782c21fb4614da68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d125584a9bef8a8735bcd878ed58546') in 0.020264 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_roof_lambert1_BaseColor.png
+  artifactKey: Guid(8c05b699eaed2a5458844a9fe951c2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_roof_lambert1_BaseColor.png using Guid(8c05b699eaed2a5458844a9fe951c2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5539e2be1e116854897d370a1f6e789b') in 0.045087 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame3_lambert1_Normal.png
+  artifactKey: Guid(e12ba5284f8d82f4cb59d02099f29f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_window_frame3_lambert1_Normal.png using Guid(e12ba5284f8d82f4cb59d02099f29f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d1ecd796d060aa9213c986ac0c78649') in 0.083598 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_chandelier_lambert2_Normal.png
+  artifactKey: Guid(ebcc675eea4948345af517f181555137) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_chandelier_lambert2_Normal.png using Guid(ebcc675eea4948345af517f181555137) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd26478007ee46308f2b8293080be30bc') in 0.025857 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_pillar_lambert1_Metallic.png
+  artifactKey: Guid(df57d99482fe16e439a9588f50478cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Crypt Dungeon Environment/Rooms/Crypt/Textures/crypt_pillar_lambert1_Metallic.png using Guid(df57d99482fe16e439a9588f50478cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f42ed5d0b4f6d883605cccf4b8d9d6e6') in 0.043970 seconds 
