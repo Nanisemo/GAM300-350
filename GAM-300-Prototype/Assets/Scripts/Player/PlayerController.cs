@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamagable
 {
     CharacterController charaController;
     Camera mainCam;
@@ -25,9 +25,15 @@ public class PlayerController : MonoBehaviour
 
     float gravity = 4f;
 
-    //ROTATION VECTORS
-    Vector3 forwardVector;
-    Vector3 rightVector;
+    #endregion
+
+    #region Health & Attack
+
+    bool isAttacking;
+
+    public float currentHealth;
+    float maxHealth = 5;
+
     #endregion
 
     #region Ground Check
@@ -48,26 +54,16 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     [SerializeField] LayerMask groundMask;
-    bool isAttacking;
-
-    public int currentHealth;
-    int maxHealth = 5;
 
     void Start()
     {
         charaController = GetComponent<CharacterController>();
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
-        playerAnim = GameObject.Find("Player").GetComponent<Animator>();
+        playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         meshTrailRenderer = GetComponent<MeshTrailRenderer>();
 
         currentHealth = maxHealth;
 
-        #region Initializating Iso Rotation
-        forwardVector = Camera.main.transform.forward; // setting the player's forward to be the same as camera.
-        forwardVector.y = 0f;
-        forwardVector = Vector3.Normalize(forwardVector);
-        rightVector = Quaternion.Euler(new Vector3(0, 90, 0)) * forwardVector;
-        #endregion
     }
 
     void Update()
@@ -148,17 +144,14 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region Health Functions
+    #region Health, Damage Taken & Death Functions
     void CheckHealth()
     {
         if (currentHealth > maxHealth) currentHealth = maxHealth;
 
-        if (currentHealth <= 0 && !GlobalBool.isGameOver)
+        if (currentHealth <= 0)
         {
-            currentHealth = 0;
-            GlobalBool.isGameOver = true;
-            playerAnim.SetTrigger("isDead");
-
+            PlayerDeath();
         }
 
         if (Input.GetKeyDown(KeyCode.F) && currentHealth != 0) // to remove  for build
@@ -170,6 +163,20 @@ public class PlayerController : MonoBehaviour
 
         print(currentHealth);
     }
+
+    public void TakeDamage(float damageAmount)
+    {
+        currentHealth -= damageAmount;
+    }
+
+    void PlayerDeath()
+    {
+        currentHealth = 0;
+        GlobalBool.isGameOver = true;
+        playerAnim.SetTrigger("isDead");
+
+    }
+
     #endregion
 
     private (bool success, Vector3 position) GetMousePosition()
