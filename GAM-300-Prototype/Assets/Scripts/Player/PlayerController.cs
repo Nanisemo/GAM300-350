@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamagable
 {
+    ComboCheck comboCheck;
     CharacterController charaController;
     Camera mainCam;
 
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour, IDamagable
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         meshTrailRenderer = GetComponent<MeshTrailRenderer>();
+        comboCheck = GameObject.Find("ComboData").GetComponent<ComboCheck>();
 
         currentHealth = maxHealth;
 
@@ -82,17 +84,22 @@ public class PlayerController : MonoBehaviour, IDamagable
         if (Input.GetMouseButtonDown(0)) // rotates the player when clicked.
         {
             Aim();
-            print("LMB Clicked");
+            playerAnim.SetTrigger("lightPunch");
+            comboCheck.AddToQueue("light_punch");
         }
-        else isAttacking = false;
+        else if (Input.GetMouseButtonDown(1))
+        {
+            Aim();
+            playerAnim.SetTrigger("heavyPunch");
+            comboCheck.AddToQueue("heavy_punch");
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             StartCoroutine(Dash());
         }
-
         // TODO: make player face the mouse cursor when clicked. [DONE, left bugfix. angle offset is not in sets of 90 degs]
-        // TODO: make a basic combat system that uses LMB.
+        // TODO: make a basic combat system that uses LMB & RMB [ANIMS DONE]
     }
 
     #region Movement Functions
@@ -134,12 +141,10 @@ public class PlayerController : MonoBehaviour, IDamagable
         }
         else // Dash CD
         {
-
             yield return new WaitForSeconds(dashCoolDownTime);
             dashOnCoolDown = false;
             print("dash reset");
         }
-
     }
 
     #endregion
@@ -161,7 +166,7 @@ public class PlayerController : MonoBehaviour, IDamagable
         }
         if (Input.GetKeyDown(KeyCode.R) && currentHealth != 5) currentHealth++;
 
-        print(currentHealth);
+        //print(currentHealth);
     }
 
     public void TakeDamage(float damageAmount)
@@ -220,7 +225,8 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     IEnumerator CanAttackAgain()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         isAttacking = false;
     }
+
 }

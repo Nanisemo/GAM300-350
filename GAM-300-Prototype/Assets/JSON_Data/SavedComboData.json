@@ -1,0 +1,18 @@
+{
+    "slot1": [
+        "heavy_punch"
+    ],
+    "slot2": [
+        "light_punch",
+        "heavy_punch"
+    ],
+    "slot3": [
+        "heavy_punch",
+        "light_punch"
+    ],
+    "slot4": [
+        "heavy_punch",
+        "light_punch",
+        "heavy_punch"
+    ]
+}
