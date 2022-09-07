@@ -22,16 +22,17 @@ public class EnemySetUp : ScriptableObject
 
     public float detectionRange;
     public float attackRange;
+    public float maxChaseDistance;
 
     public bool isKilled;
     public bool isStunned;
 
     // add NavMesh Configs here if needed.
 
-    private void Awake()
-    {
-        targetTransform = GameObject.FindGameObjectWithTag(targetTag).GetComponent<Transform>();
-    }
+    //private void Start()
+    //{
+    //    targetTransform = GameObject.FindGameObjectWithTag(targetTag).GetComponent<Transform>();
+    //}
 
 
 }

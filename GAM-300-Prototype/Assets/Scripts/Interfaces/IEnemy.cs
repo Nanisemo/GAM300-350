@@ -5,7 +5,9 @@ using UnityEngine;
 public interface IEnemy
 {
     public void IdleBehaviour();
+
     public void PatrolBehaviour();
+
     public void ChaseBehaviour();
 
     public void AttackBehaviour();

@@ -14,15 +14,28 @@ public struct RenderFeatureToggle
 public class RenderFeatureToggler : MonoBehaviour
 {
     [SerializeField]
-    private List<RenderFeatureToggle> renderFeatures = new List<RenderFeatureToggle>();
+    // private List<RenderFeatureToggle> renderFeatures = new List<RenderFeatureToggle>();
+    RenderFeatureToggle lowHPmat;
     [SerializeField]
     private UniversalRenderPipelineAsset pipelineAsset;
 
     private void Update()
     {
-        foreach (RenderFeatureToggle toggleObj in renderFeatures)
-        {
-            toggleObj.feature.SetActive(toggleObj.isEnabled);
-        }
+        // TO UNCOMMENT THIS IF NEED TO HAVE MULTIPLE FEATURES TOGGLED.
+
+        //foreach (RenderFeatureToggle toggleObj in renderFeatures)
+        //{
+        //    toggleObj.feature.SetActive(toggleObj.isEnabled);
+        //}
+    }
+
+    public void DisableFeature()
+    {
+        lowHPmat.feature.SetActive(false);
+    }
+
+    public void EnableFeature()
+    {
+        lowHPmat.feature.SetActive(true);
     }
 }

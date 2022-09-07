@@ -8,7 +8,8 @@ public enum EnemyState
     IDLE,
     PATROL,
     CHASE,
-    ATTACK
+    ATTACK,
+    STUNNED
 }
 
 public class Enemy : MonoBehaviour, IEnemy, IDamagable
@@ -18,6 +19,8 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     bool hasReachedDestination;
 
+    [SerializeField] float moveSpeed;
+    [SerializeField] float chaseSpeed;
     [SerializeField] EnemySetUp enemyConfig;
     [SerializeField] Animator enemyAnimator;
     [SerializeField] Transform[] wayPointArray;
@@ -25,8 +28,10 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     void Start()
     {
+        moveSpeed = agent.speed;
         enemyConfig.idleTimer = 0f;
         enemyConfig.patrolTimer = 0f;
+        enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
     }
 
 
@@ -42,24 +47,50 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             case EnemyState.ATTACK: AttackBehaviour(); break;
         }
 
-        if (state == EnemyState.IDLE || state == EnemyState.PATROL) IsTargetInRange();
-        if (IsTargetInRange()) state = EnemyState.CHASE;
+        if (IsTargetInChaseRange())
+        {
+            state = EnemyState.CHASE;
+
+            if (IsInAtkRange()) state = EnemyState.ATTACK; else state = EnemyState.CHASE;
+        }
+
     }
 
-    bool IsTargetInRange() // is target within range of enemy?
+    #region Bool Functions
+
+    bool IsTargetInChaseRange() // is target within range of enemy?
     {
-        if (Vector3.Distance(enemyConfig.targetTransform.position, transform.position) < enemyConfig.detectionRange)
+        if (Vector3.Distance(enemyConfig.targetTransform.position, transform.position) < enemyConfig.detectionRange) // if target is within range.
         {
-            ChaseBehaviour();
             return true;
         }
-        // need to set player back to a non chasing state.
+
+        if (state == EnemyState.CHASE && Vector3.Distance(wayPointArray[index].position, transform.position) > enemyConfig.maxChaseDistance) // if target is out of max range from patrol pos after chasing, return back to patrol state. 
+                                                                                                                                             //can change to player instead of patrol pos for more chase.
+        {
+            state = EnemyState.PATROL;
+            return false;
+        }
+
         return false;
     }
+
+    bool IsInAtkRange()
+    {
+        if (Vector3.Distance(enemyConfig.targetTransform.position, transform.position) <= enemyConfig.attackRange)
+        {
+            return true;
+        }
+        else return false;
+
+    }
+
+    #endregion
 
     public void IdleBehaviour()
     {
         enemyConfig.idleTimer += Time.deltaTime;
+        agent.speed = moveSpeed;
 
         if (enemyConfig.idleTimer >= enemyConfig.idleDuration)
         {
@@ -68,13 +99,20 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             hasReachedDestination = false;
             enemyConfig.idleTimer = 0f;
         }
-        else enemyAnimator.SetBool("isPatrol", false);
+        else
+        {
+            enemyAnimator.SetBool("isPatrol", false);
+            enemyAnimator.SetBool("isChasing", false);
+        }
 
     }
 
     public void PatrolBehaviour() // patrol around set points. return to this state when target leaves range.
     {
-        enemyConfig.patrolTimer += Time.deltaTime;
+
+        enemyAnimator.SetBool("isChasing", false);
+
+        if (Vector3.Distance(wayPointArray[index].position, transform.position) > enemyConfig.maxChaseDistance) agent.speed = chaseSpeed; else agent.speed = moveSpeed;
 
         if (agent.remainingDistance <= agent.stoppingDistance && !hasReachedDestination)
         {
@@ -85,45 +123,41 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             {
                 index++;
                 hasReachedDestination = true;
-                print("has reached!");
 
                 if (index > wayPointArray.Length - 1)
                 {
                     index = 0;
                 }
             }
-
-            print(index);
         }
 
         if (hasReachedDestination)
         {
             state = EnemyState.IDLE;
             enemyAnimator.SetBool("isPatrol", false);
-            print("WEHHHH");
         }
         else enemyAnimator.SetBool("isPatrol", true);
-
-
-
-        //if (enemyConfig.patrolTimer >= enemyConfig.patrolDuration)
-        //{
-
-        //    enemyAnimator.SetBool("isPatrol", false);
-        //    enemyConfig.patrolTimer = 0f;
-        //}
 
     }
 
     public void ChaseBehaviour()
     {
-
+        agent.speed = chaseSpeed;
+        print("Chasing" + enemyConfig.targetTag);
+        agent.SetDestination(enemyConfig.targetTransform.position); // chase target
+        enemyAnimator.SetBool("isPatrol", false);
+        enemyAnimator.SetBool("isChasing", true);
+        IsInAtkRange();
     }
 
     public void AttackBehaviour()
     {
+        print("Time to attack!");
 
+        // attack logic here.
     }
+
+    #region TakeDamage & Death Functions
 
     public void TakeDamage(float damageAmount) // when enemy takes damage
     {
@@ -138,4 +172,6 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
         // add death anim, vfx, sounds here
     }
+
+    #endregion
 }

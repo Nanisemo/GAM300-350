@@ -100,6 +100,8 @@ public class PlayerController : MonoBehaviour, IDamagable
         }
         // TODO: make player face the mouse cursor when clicked. [DONE, left bugfix. angle offset is not in sets of 90 degs]
         // TODO: make a basic combat system that uses LMB & RMB [ANIMS DONE]
+        // TODO: player anim to also have the damage hitbox enabled. >> need to duplicate the animation clip and reassign onto the animator.
+        // TODO: import terrence's combat/combo sys if needed.
     }
 
     #region Movement Functions
@@ -135,7 +137,9 @@ public class PlayerController : MonoBehaviour, IDamagable
 
                 playerAnim.SetTrigger("Dash");
                 charaController.Move(transform.forward * Time.deltaTime * dashSpeed); // dash in the direction that the player is facing.
+
                 if (!meshTrailRenderer.isTrailActive) StartCoroutine(meshTrailRenderer.RenderMeshTrail(dashTime));
+
                 yield return null;
             }
         }
@@ -154,19 +158,12 @@ public class PlayerController : MonoBehaviour, IDamagable
     {
         if (currentHealth > maxHealth) currentHealth = maxHealth;
 
-        if (currentHealth <= 0)
-        {
-            PlayerDeath();
-        }
+        if (currentHealth <= 0) PlayerDeath();
 
-        if (Input.GetKeyDown(KeyCode.F) && currentHealth != 0) // to remove  for build
-        {
-            currentHealth--;
-
-        }
+        // to remove  for build
+        if (Input.GetKeyDown(KeyCode.F) && currentHealth != 0) currentHealth--;
         if (Input.GetKeyDown(KeyCode.R) && currentHealth != 5) currentHealth++;
 
-        //print(currentHealth);
     }
 
     public void TakeDamage(float damageAmount)
@@ -176,10 +173,10 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     void PlayerDeath()
     {
+        playerAnim.updateMode = AnimatorUpdateMode.UnscaledTime;
+        playerAnim.Play("Player Death");
         currentHealth = 0;
         GlobalBool.isGameOver = true;
-        playerAnim.SetTrigger("isDead");
-
     }
 
     #endregion

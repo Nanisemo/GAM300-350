@@ -9,6 +9,7 @@ public class LowHPShaderController : MonoBehaviour
     [SerializeField] float fadeInStep = 100f; // snapping values.
 
     [SerializeField] Material LowHPMat;
+    [SerializeField] RenderFeatureToggler featToggle;
 
     float currentFadeValue;
     float dangerousFadeAmount = 30f;
@@ -66,6 +67,8 @@ public class LowHPShaderController : MonoBehaviour
         if (currentFadeValue >= maxFadeOutAmount) currentFadeValue = maxFadeOutAmount;
         LowHPMat.SetFloat("_Intensity", currentFadeValue);
         lowerToHigher = false;
+
+        if (currentFadeValue == maxFadeOutAmount) featToggle.DisableFeature();
     }
 
     void LowWarning() // when HP == 4
@@ -73,6 +76,7 @@ public class LowHPShaderController : MonoBehaviour
         switch (lowerToHigher)
         {
             case false:
+                featToggle.EnableFeature();
                 currentFadeValue -= Time.unscaledDeltaTime * duration * fadeInStep;
                 if (currentFadeValue <= lowerFadeOutAmount) currentFadeValue = lowerFadeOutAmount; break;
             case true:
