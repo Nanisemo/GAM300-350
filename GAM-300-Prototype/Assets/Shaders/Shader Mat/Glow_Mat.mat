@@ -113,7 +113,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Transparency: -0.00000015646219
+    - _Transparency: 0.19999984
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
