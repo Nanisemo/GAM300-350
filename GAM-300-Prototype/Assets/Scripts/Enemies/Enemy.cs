@@ -9,7 +9,8 @@ public enum EnemyState
     PATROL,
     CHASE,
     ATTACK,
-    STUNNED
+    STUNNED,
+    DEAD
 }
 
 public class Enemy : MonoBehaviour, IEnemy, IDamagable
@@ -34,9 +35,16 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
     }
 
+    // TODO: CHECK ENEMY COLLISION WITH ENV
 
     void Update()
     {
+        if (enemyConfig.health <= 0)
+        {
+            Death();
+            enemyConfig.health = 0;
+        }
+
         if (GlobalBool.isGameOver || GlobalBool.isPaused) return;
 
         switch (state)
@@ -154,7 +162,16 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     {
         print("Time to attack!");
 
-        // attack logic here.
+        // ATTACK LOGIC HERE
+
+        // TODO: stop enemy from moving when attacking.
+        // TODO: enemy to chase player after attacking and when still in range.
+        // TODO: attack and damage player.
+    }
+
+    public void StunnedBehaviour()
+    {
+        // STUN LOGIC HERE
     }
 
     #region TakeDamage & Death Functions
@@ -162,7 +179,6 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     public void TakeDamage(float damageAmount) // when enemy takes damage
     {
         enemyConfig.health -= damageAmount;
-        if (enemyConfig.health <= 0) Death();
 
     }
 

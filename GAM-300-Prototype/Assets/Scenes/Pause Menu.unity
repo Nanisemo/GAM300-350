@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 404877161}
   - component: {fileID: 404877160}
   - component: {fileID: 404877159}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 671465033}
   - component: {fileID: 671465035}
   - component: {fileID: 671465034}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 1002708022}
   - component: {fileID: 1002708024}
   - component: {fileID: 1002708023}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}

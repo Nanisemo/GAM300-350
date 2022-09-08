@@ -11,6 +11,7 @@ public interface IEnemy
     public void ChaseBehaviour();
 
     public void AttackBehaviour();
+    public void StunnedBehaviour();
 
     public void Death();
 }
