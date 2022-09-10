@@ -20,9 +20,11 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     bool hasReachedDestination;
 
+    public EnemySetUp enemyConfig;
+
     [SerializeField] float moveSpeed;
     [SerializeField] float chaseSpeed;
-    [SerializeField] EnemySetUp enemyConfig;
+
     [SerializeField] Animator enemyAnimator;
     [SerializeField] Transform[] wayPointArray;
 
@@ -60,7 +62,6 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         {
             state = EnemyState.CHASE;
 
-
         }
         if (IsInAtkRange()) state = EnemyState.ATTACK;
 
@@ -75,11 +76,11 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             return true;
         }
 
+        // NOT WORKING BC OF THE CHASE LOGIC REEEE
         if (state == EnemyState.CHASE && Vector3.Distance(wayPointArray[index].position, transform.position) > enemyConfig.maxChaseDistance) // if target is out of max range from patrol pos after chasing, return back to patrol state. 
                                                                                                                                              //can change to player instead of patrol pos for more chase.
         {
             state = EnemyState.PATROL;
-            agent.isStopped = false; // false == AI can move, true == cannot move.
             return false;
         }
 
@@ -90,15 +91,11 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     {
         if (Vector3.Distance(enemyConfig.targetTransform.position, transform.position) <= enemyConfig.attackRange)
         {
-            print("target in range");
-            agent.isStopped = true;
             return true;
         }
         else
         {
             enemyAnimator.SetBool("isAttacking", false);
-            print("target no longer in range");
-            agent.isStopped = false;
             return false;
         }
 
@@ -111,7 +108,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     {
         enemyConfig.idleTimer += Time.deltaTime;
         agent.speed = moveSpeed;
-        
+
 
         if (enemyConfig.idleTimer >= enemyConfig.idleDuration)
         {
@@ -166,44 +163,54 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         agent.speed = chaseSpeed;
         print("Chasing" + enemyConfig.targetTag);
 
-        Vector3 targetCurrentPos = enemyConfig.targetTransform.position;
-
-        if (targetCurrentPos != targetLastPos)
-        {
-            // CHASE LOGIC
-            agent.isStopped = false;
-            agent.SetDestination(enemyConfig.targetTransform.position); // chase target
-            enemyAnimator.SetBool("isPatrol", false);
-            enemyAnimator.SetBool("isChasing", true);
-        }
-        else // AI stops when player stops running around.
-        {
-            targetLastPos = targetCurrentPos;
-            agent.isStopped = true; 
-            enemyAnimator.SetBool("isPatrol", false);
-            enemyAnimator.SetBool("isChasing", false);
-        }
+        // CHASE LOGIC
+        agent.SetDestination(enemyConfig.targetTransform.position); // chase target endlessly until different state.
+        enemyAnimator.SetBool("isPatrol", false);
+        enemyAnimator.SetBool("isChasing", true);
 
     }
 
     public void AttackBehaviour()
     {
         print("Time to attack!");
-
-        enemyAnimator.SetBool("isAttacking", true); // need to set this bool false somehow.
+        StartCoroutine(FaceTarget());
+        enemyAnimator.SetBool("isAttacking", true);
 
         // ATTACK LOGIC HERE
 
-        // TODO: stop enemy from moving when attacking. [DONE]
+        // TODO: stop enemy from moving when attacking. [DONE] - anim events.
         // TODO: enemy to chase player after attacking and when still in range. [DONE]
-        // TODO: attack and damage player.
-        // TODO: stop enemy from moving completely when attack anim is playing.
+        // TODO: attack and damage player. [DONE]
+        // TODO: stop enemy from moving completely when attack anim is playing. [DONE]
         // TODO: add a decal indicator to show attack up if any.
     }
 
     public void StunnedBehaviour()
     {
         // STUN LOGIC HERE
+    }
+
+    IEnumerator FaceTarget()
+    {
+        Quaternion lookRotation = Quaternion.LookRotation(enemyConfig.targetTransform.position - transform.position);
+        float time = 0;
+
+        while (time < 1)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, time);
+            time += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public void FreezePosition()
+    {
+        agent.isStopped = true;
+    }
+
+    public void UnFreezePosition()
+    {
+        agent.isStopped = false;
     }
 
     #region TakeDamage & Death Functions
@@ -222,4 +229,5 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     }
 
     #endregion
+
 }

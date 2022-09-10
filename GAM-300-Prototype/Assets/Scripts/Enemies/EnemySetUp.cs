@@ -20,8 +20,11 @@ public class EnemySetUp : ScriptableObject
     public float patrolTimer;
     public float patrolDuration;
 
-    public float detectionRange;
     public float attackRange;
+    public float attackInterval;
+
+    public float detectionRange;
+
     public float maxChaseDistance;
 
     public bool isKilled;

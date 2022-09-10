@@ -234,4 +234,19 @@ public class PlayerController : MonoBehaviour, IDamagable
         isAttacking = false;
     }
 
+    private void OnTriggerEnter(Collider hitInfo)
+    {
+
+
+        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox"))
+        {
+            Enemy thisEnemy = hitInfo.gameObject.transform.parent.gameObject.GetComponent<Enemy>(); // getting script from parent obj. hurtbox is a child.
+            TakeDamage(thisEnemy.enemyConfig.damage);
+            print("ouchie ouch");
+            playerAnim.Play("Hit");
+        }
+
+    }
+
+
 }
