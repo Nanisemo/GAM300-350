@@ -17,7 +17,7 @@ public class HealthBar : MonoBehaviour
     private void Update()
     {
         // TODO: Link the playercontroller.currrenthealth and maxhealth to here
-        // All values must x2 its value due to how the enum for the generating works
+        // All values must x2 its value due to how the HeartStatus enum works
 
         DrawHearts();
     }
@@ -37,6 +37,7 @@ public class HealthBar : MonoBehaviour
 
         for (int i = 0; i < hearts.Count; i++)
         {
+            // Replace the 2 with the highest number of the HeartStatus,
             int heartStatusRemainer = (int)Mathf.Clamp(currentHealth - (i * 2), 0, 2);
             hearts[i].SetHeartImage((Hearts.HeartStatus)heartStatusRemainer);
         }
