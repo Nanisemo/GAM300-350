@@ -16,6 +16,9 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
+        // TODO: Link the playercontroller.currrenthealth and maxhealth to here
+        // All values must x2 its value due to how the enum for the generating works
+
         DrawHearts();
     }
 
