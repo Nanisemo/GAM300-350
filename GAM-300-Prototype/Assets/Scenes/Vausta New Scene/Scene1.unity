@@ -757,7 +757,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7776947, y: 1}
+    m_SensorSize: {x: 1.778169, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -979,6 +979,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &985331284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5935273200700542706, guid: 4f25427e51f9d6b419e036b5e039dd84,
+    type: 3}
+  m_PrefabInstance: {fileID: 5935273201618386667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &985331288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985331284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aef9fa9c3d544b4986954120039aded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot1:
+  - heavy_punch
+  slot2:
+  - light_punch
+  - heavy_punch
+  slot3:
+  - heavy_punch
+  - light_punch
+  slot4:
+  - heavy_punch
+  - light_punch
+  - heavy_punch
 --- !u!1 &1758533653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,5 +1393,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ComboData
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5935273200700542705, guid: 4f25427e51f9d6b419e036b5e039dd84, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f25427e51f9d6b419e036b5e039dd84, type: 3}

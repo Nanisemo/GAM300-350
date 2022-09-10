@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComboCheck : MonoBehaviour
 {
-    public ComboData comboData;
+    private ComboData comboData;
 
     private List<string> inputQueue;
 
@@ -14,8 +14,9 @@ public class ComboCheck : MonoBehaviour
 
     private void Awake()
     {
+        comboData = GetComponent<ComboData>();
         inputQueue          = new List<string>();
-        timingWindowDefault = 0.25f;
+        timingWindowDefault = 0.2f;
         timingWindow        = timingWindowDefault;
         maxQueueCount       = 3;
     }
@@ -52,9 +53,9 @@ public class ComboCheck : MonoBehaviour
         isTimerRunning = false;
         timingWindow = timingWindowDefault;
     }
-    private void CheckQueue() //THONKING HOW TO NOT HARDCODE THIS PART & ALSO USE TOE JSON FILE DATA (TMR BAH)
+    private void CheckQueue() // still trying not to hardcode this part but nesting lists is abit *coughs blood*
     {
-        /*switch (inputQueue.Count)
+        switch (inputQueue.Count)
         {
             case 1:
                 if (comboData.slot1[0] == inputQueue[0])
@@ -78,9 +79,10 @@ public class ComboCheck : MonoBehaviour
                     print("Executed slot 4");
                 }
                 break;
-        }*/
+        }
         ClearQueue();
     }
+    
     public void RunTimer()
     {
         timingWindow -= Time.deltaTime;

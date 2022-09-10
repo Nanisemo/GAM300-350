@@ -83,15 +83,11 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         if (Input.GetMouseButtonDown(0)) // rotates the player when clicked.
         {
-            Aim();
-            playerAnim.SetTrigger("lightPunch");
-            comboCheck.AddToQueue("light_punch");
+            Aim(0); // light punch
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            Aim();
-            playerAnim.SetTrigger("heavyPunch");
-            comboCheck.AddToQueue("heavy_punch");
+            Aim(1); // heavy punch
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -197,7 +193,7 @@ public class PlayerController : MonoBehaviour, IDamagable
         }
     }
 
-    void Aim()
+    void Aim(int x) // x determines type of punch
     {
         var (success, position) = GetMousePosition();
         if (success)
@@ -216,6 +212,18 @@ public class PlayerController : MonoBehaviour, IDamagable
             transform.forward = padding;
 
             charaController.Move(direction.normalized * Time.deltaTime * attackMoveSpeed);
+
+            if (x == 0)
+            {
+                playerAnim.SetTrigger("lightPunch");
+                comboCheck.AddToQueue("light_punch");
+            }
+            else
+            {
+                playerAnim.SetTrigger("heavyPunch");
+                comboCheck.AddToQueue("heavy_punch");
+            }
+
             StartCoroutine(CanAttackAgain());
         }
     }
