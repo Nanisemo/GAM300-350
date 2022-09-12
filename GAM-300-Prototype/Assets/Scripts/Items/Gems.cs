@@ -5,13 +5,14 @@ using System;
 
 public class Gems : MonoBehaviour, ICollectible
 {
-    public static event Action OnGemsCollected;
+    public static event HandleGemCollected OnGemsCollected;
+    public delegate void HandleGemCollected(ItemData itemData);
+    public ItemData gemData;
 
     public void Collect()
     {
-        Debug.Log("You collected a coin");
+        // Debug.Log("You collected gem");
         Destroy(gameObject);
-        OnGemsCollected?.Invoke();
-        // Gems.OnGemsCollected = do something
+        OnGemsCollected?.Invoke(gemData);
     }
 }
