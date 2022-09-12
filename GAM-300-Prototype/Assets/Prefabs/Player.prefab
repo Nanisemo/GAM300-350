@@ -1258,6 +1258,7 @@ GameObject:
   - component: {fileID: 3600706020565696793}
   - component: {fileID: 3600706020565696792}
   - component: {fileID: 3600706020565696795}
+  - component: {fileID: 6354865722122749820}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1272,7 +1273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4411608840904698166}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.64, y: -0.307, z: 8.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1356,13 +1357,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshRefreshRate: 0.1
-  trailLifeTime: 0.15
+  trailLifeTime: 0.45
   isTrailActive: 0
   player: {fileID: 3923477988299551628}
   trailMaterial: {fileID: 2100000, guid: 36fe40e9939ebfc418755fe2e593b85c, type: 2}
   shaderVariableRef: _Transparency
   shaderVariableRate: 0.05
   shaderRefreshRate: 0.01
+--- !u!114 &6354865722122749820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411608840904698166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be6037234301e3459964909bf73c362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4538862686053141101
 GameObject:
   m_ObjectHideFlags: 0
