@@ -7,28 +7,22 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LowHP_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: e934c2e510a37184e80270cd0aef272c,
+  m_Name: Crystal_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: de601ee9455f3ce489b07ba5ccd3ea40,
     type: 3}
   m_ValidKeywords:
-  - _SURFACE_TYPE_TRANSPARENT
-  m_InvalidKeywords:
-  - ETC1_EXTERNAL_ALPHA
-  m_LightmapFlags: 4
+  - _SPECULAR_SETUP
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3000
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
   stringTagMap:
-    RenderType: Transparent
-  disabledShaderPasses:
-  - DepthOnly
+    RenderType: Opaque
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -43,34 +37,26 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_34ED42CF: 0
-    - Vector1_3949F1CB: 17
-    - Vector1_84941AE7: 5
-    - Vector1_9B499542: 10
-    - Vector1_A1232A4D: 1
-    - Vector1_CA00940E: 1
-    - Vector1_CC902800: 3
+    - Vector1_9BB02523: 0.9
     - _AlphaClip: 0
     - _Blend: 0
     - _CastShadows: 1
-    - _Cull: 2
-    - _DstBlend: 10
-    - _EtcVoronoi: 1
-    - _Float: 0
-    - _Intensity: 24918.678
+    - _Cull: 0
+    - _DstBlend: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SrcBlend: 5
-    - _Surface: 1
+    - _ReceiveShadows: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _Transparency: 1
+    - _WorkflowMode: 0
     - _ZTest: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - Color_67DD39F0: {r: 0.754717, g: 0.1381274, b: 0.1381274, a: 1}
-    - Color_681F9CA3: {r: 0.7471316, g: 0.07330345, b: 0.07330345, a: 1}
-    - Vector3_482D82C7: {r: 0, g: 0, b: 0, a: 0}
+    - Color_E2349FE4: {r: 0.49595794, g: 0.7901703, b: 1.6055588, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &8944435480750232480
+--- !u!114 &1345940184438139572
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

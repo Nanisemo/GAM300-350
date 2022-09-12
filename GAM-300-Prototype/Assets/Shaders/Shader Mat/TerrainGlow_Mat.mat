@@ -15,8 +15,9 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -63,7 +64,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_9BB02523: 3
+    - Vector1_9BB02523: 0.03
     - _AlphaClip: 0
     - _Blend: 0
     - _BlendOp: 0
@@ -71,6 +72,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
+    - _CastShadows: 1
     - _ColorMode: 0
     - _Cull: 2
     - _Cutoff: 0.5
@@ -102,9 +104,11 @@ Material:
     - _Surface: 0
     - _Transparency: 1
     - _WorkflowMode: 1
+    - _ZTest: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
-    - Color_E2349FE4: {r: 0.06151647, g: 2.6039217, b: 1.6627451, a: 1}
+    - Color_E2349FE4: {r: 0.011261749, g: 0.4301988, b: 0.27478665, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: 0, b: 0, a: 0}
