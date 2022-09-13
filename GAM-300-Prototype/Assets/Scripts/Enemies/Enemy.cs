@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     public void AttackBehaviour()
     {
         print("Time to attack!");
-        StartCoroutine(FaceTarget());
+       
         enemyAnimator.SetBool("isAttacking", true);
 
         // ATTACK LOGIC HERE
@@ -190,7 +190,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         // STUN LOGIC HERE
     }
 
-    IEnumerator FaceTarget()
+    IEnumerator Aim()
     {
         Quaternion lookRotation = Quaternion.LookRotation(enemyConfig.targetTransform.position - transform.position);
         float time = 0;
@@ -229,5 +229,19 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     }
 
     #endregion
+
+    private void OnTriggerEnter(Collider hitInfo)
+    {
+
+        if (hitInfo.gameObject.CompareTag("Player"))
+        {
+            PlayerController player = hitInfo.GetComponent<PlayerController>();
+
+
+            TakeDamage(player.damage);
+            print("enemy ouchie ouch");
+
+        }
+    }
 
 }

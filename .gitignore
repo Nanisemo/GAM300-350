@@ -42,3 +42,9 @@ Thumbs.db
 *.log
 *.log
 *.log
+GAM-300-Prototype/Logs/AssetImportWorker0-prev.log
+GAM-300-Prototype/Logs/AssetImportWorker0.log
+GAM-300-Prototype/Logs/AssetImportWorker1-prev.log
+GAM-300-Prototype/Logs/AssetImportWorker1.log
+GAM-300-Prototype/Logs/AssetImportWorker4-prev.log
+GAM-300-Prototype/Logs/AssetImportWorker5-prev.log

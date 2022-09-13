@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afaff3d315669d4fb6ee0a00472fcef, type: 3}
   m_Name: Low HP Warning
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     Event: 600
     blitMaterial: {fileID: 2100000, guid: 7bf0b46c570aa8949949213ca3fab581, type: 2}

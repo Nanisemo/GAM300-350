@@ -15,7 +15,7 @@ public class LowHPShaderController : MonoBehaviour
     float dangerousFadeAmount = 30f;
     float lowerFadeOutAmount = 60f;
     float maxFadeOutAmount = 1000f;
-    float minFadeInAmount = 15f;
+    float minFadeInAmount = 20f;
 
     bool lowerToHigher; // is hp going from low to high
 

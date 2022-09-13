@@ -7,10 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Crystal_Mat
+  m_Name: Crystal_Mat 1
   m_Shader: {fileID: -6465566751694194690, guid: de601ee9455f3ce489b07ba5ccd3ea40,
     type: 3}
   m_ValidKeywords:
+  - _RECEIVE_SHADOWS_OFF
   - _SPECULAR_SETUP
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -45,7 +46,7 @@ Material:
     - _DstBlend: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
+    - _ReceiveShadows: 0
     - _SrcBlend: 1
     - _Surface: 0
     - _Transparency: 1
@@ -54,7 +55,7 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - Color_E2349FE4: {r: 0.49595794, g: 0.7901703, b: 1.6055588, a: 1}
+    - Color_E2349FE4: {r: 1.6055588, g: 0.49595788, b: 0.8952541, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1345940184438139572
 MonoBehaviour:

@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour, IDamagable
     Vector3 heading;
 
     // DASH VARIABLES
-    bool dashOnCoolDown;
+    public bool dashOnCoolDown;
+    public bool isInDash;
 
     public float dashSpeed;
     public float dashTime = 0.2f; // how long in dash animation.
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     bool isAttacking;
 
+    public float damage = 1f;
     public float currentHealth;
     float maxHealth = 5;
 
@@ -90,7 +92,7 @@ public class PlayerController : MonoBehaviour, IDamagable
             Aim(1); // heavy punch
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !dashOnCoolDown)
         {
             StartCoroutine(Dash());
         }
@@ -98,6 +100,7 @@ public class PlayerController : MonoBehaviour, IDamagable
         // TODO: make a basic combat system that uses LMB & RMB [ANIMS DONE]
         // TODO: player anim to also have the damage hitbox enabled. >> need to duplicate the animation clip and reassign onto the animator.
         // TODO: import terrence's combat/combo sys if needed.
+
     }
 
     #region Movement Functions
@@ -125,6 +128,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     {
         float startTime = Time.time;
 
+
         if (!dashOnCoolDown)
         {
             while (Time.time < startTime + dashTime)
@@ -132,17 +136,25 @@ public class PlayerController : MonoBehaviour, IDamagable
                 dashOnCoolDown = true;
 
                 playerAnim.SetTrigger("Dash");
+                isInDash = true;
                 charaController.Move(transform.forward * Time.deltaTime * dashSpeed); // dash in the direction that the player is facing.
 
-                if (!meshTrailRenderer.isTrailActive) StartCoroutine(meshTrailRenderer.RenderMeshTrail(dashTime));
+                if (!meshTrailRenderer.isTrailActive)
+                {
+                    meshTrailRenderer.isTrailActive = true;
+                    StartCoroutine(meshTrailRenderer.RenderMeshTrail(dashTime));
+                }
 
                 yield return null;
             }
         }
-        else // Dash CD
+
+        if (dashOnCoolDown) // Dash CD
         {
+            isInDash = false;
             yield return new WaitForSeconds(dashCoolDownTime);
             dashOnCoolDown = false;
+            meshTrailRenderer.isTrailActive = false;
             print("dash reset");
         }
     }
@@ -241,9 +253,18 @@ public class PlayerController : MonoBehaviour, IDamagable
         if (hitInfo.gameObject.CompareTag("Enemy Hurtbox"))
         {
             Enemy thisEnemy = hitInfo.gameObject.transform.parent.gameObject.GetComponent<Enemy>(); // getting script from parent obj. hurtbox is a child.
-            TakeDamage(thisEnemy.enemyConfig.damage);
-            print("ouchie ouch");
-            playerAnim.Play("Hit");
+
+            if (isInDash)
+            {
+                print("to slow down time!!");
+            }
+            else
+            {
+                TakeDamage(thisEnemy.enemyConfig.damage);
+                print("ouchie ouch");
+                playerAnim.Play("Hit");
+            }
+
         }
 
     }
