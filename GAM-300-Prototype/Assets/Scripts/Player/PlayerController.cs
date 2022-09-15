@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamagable
 {
+    public GameObject timeSlowVolume;
     ComboCheck comboCheck;
     CharacterController charaController;
+    TimeSystem timeSystem;
     Camera mainCam;
 
     #region Movement Variables
@@ -58,8 +60,14 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     [SerializeField] LayerMask groundMask;
 
+    void Awake()
+    {
+        timeSystem = GameObject.Find("Game Manager").GetComponent<TimeSystem>();
+    }
+
     void Start()
     {
+        timeSlowVolume.SetActive(false);
         charaController = GetComponent<CharacterController>();
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
@@ -116,12 +124,12 @@ public class PlayerController : MonoBehaviour, IDamagable
             playerAnim.SetBool("isRunning", true);
 
             if (!isAttacking)
-                charaController.Move(direction.normalized * Time.deltaTime * moveSpeed); // player cannot move when attacking.
+                charaController.Move(direction.normalized * Time.unscaledDeltaTime * moveSpeed); // player cannot move when attacking.
         }
         else playerAnim.SetBool("isRunning", false);
 
-        velocity.y -= gravity * Time.deltaTime; // ensure that the player is grounded at all times.
-        charaController.Move(velocity * Time.deltaTime);
+        velocity.y -= gravity * Time.unscaledDeltaTime; // ensure that the player is grounded at all times.
+        charaController.Move(velocity * Time.unscaledDeltaTime);
     }
 
     IEnumerator Dash() // activated when Space is pressed.
@@ -223,7 +231,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
             transform.forward = padding;
 
-            charaController.Move(direction.normalized * Time.deltaTime * attackMoveSpeed);
+            charaController.Move(direction.normalized * Time.unscaledDeltaTime * attackMoveSpeed);
 
             if (x == 0)
             {
@@ -256,7 +264,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
             if (isInDash)
             {
-                print("to slow down time!!");
+                timeSystem.TimeFracture();
             }
             else
             {
@@ -268,6 +276,5 @@ public class PlayerController : MonoBehaviour, IDamagable
         }
 
     }
-
 
 }
