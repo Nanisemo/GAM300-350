@@ -99,7 +99,6 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             return false;
         }
 
-
     }
 
     #endregion
@@ -108,7 +107,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     {
         enemyConfig.idleTimer += Time.deltaTime;
         agent.speed = moveSpeed;
-
+        GlobalBool.isInCombat = false;
 
         if (enemyConfig.idleTimer >= enemyConfig.idleDuration)
         {
@@ -127,7 +126,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public void PatrolBehaviour() // patrol around set points. return to this state when target leaves range.
     {
-
+        GlobalBool.isInCombat = false;
         enemyAnimator.SetBool("isChasing", false);
 
         if (Vector3.Distance(wayPointArray[index].position, transform.position) > enemyConfig.maxChaseDistance) agent.speed = chaseSpeed; else agent.speed = moveSpeed;
@@ -160,6 +159,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public void ChaseBehaviour()
     {
+        GlobalBool.isInCombat = true;
         agent.speed = chaseSpeed;
         print("Chasing" + enemyConfig.targetTag);
 
@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     public void AttackBehaviour()
     {
         print("Time to attack!");
-       
+
         enemyAnimator.SetBool("isAttacking", true);
 
         // ATTACK LOGIC HERE
@@ -198,7 +198,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         while (time < 1)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, time);
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             yield return null;
         }
     }
@@ -218,13 +218,12 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     public void TakeDamage(float damageAmount) // when enemy takes damage
     {
         enemyConfig.health -= damageAmount;
-
     }
 
     public void Death()
     {
         enemyConfig.isKilled = true;
-
+        GlobalBool.isInCombat = false;
         // add death anim, vfx, sounds here
     }
 
@@ -236,7 +235,6 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         if (hitInfo.gameObject.CompareTag("Player"))
         {
             PlayerController player = hitInfo.GetComponent<PlayerController>();
-
 
             TakeDamage(player.damage);
             print("enemy ouchie ouch");

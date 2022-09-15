@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     //Animator gameOverCanvas;
     public GameObject gameOver;
+    public Animator camAnim;
 
     void Start()
     {
@@ -15,6 +17,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (GlobalBool.isGameOver) DisplayGameOverUI();
+
+        if (GlobalBool.isInCombat)
+        {
+            CameraZoomOut();
+        }
+        else CameraZoomIn();
     }
 
     void DisplayGameOverUI()
@@ -23,5 +31,15 @@ public class GameManager : MonoBehaviour
         LowHPShaderController matController = GetComponent<LowHPShaderController>();
         StartCoroutine(matController.DisableMaterial());
 
+    }
+
+    void CameraZoomOut()
+    {
+        camAnim.SetTrigger("zoomOut");
+    }
+
+    void CameraZoomIn()
+    {
+        camAnim.SetTrigger("zoomIn");
     }
 }

@@ -134,18 +134,18 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     IEnumerator Dash() // activated when Space is pressed.
     {
-        float startTime = Time.time;
+        float startTime = Time.unscaledTime;
 
 
         if (!dashOnCoolDown)
         {
-            while (Time.time < startTime + dashTime)
+            while (Time.unscaledTime < startTime + dashTime)
             {
                 dashOnCoolDown = true;
 
                 playerAnim.SetTrigger("Dash");
                 isInDash = true;
-                charaController.Move(transform.forward * Time.deltaTime * dashSpeed); // dash in the direction that the player is facing.
+                charaController.Move(transform.forward * Time.unscaledDeltaTime * dashSpeed); // dash in the direction that the player is facing.
 
                 if (!meshTrailRenderer.isTrailActive)
                 {
@@ -257,24 +257,34 @@ public class PlayerController : MonoBehaviour, IDamagable
     private void OnTriggerEnter(Collider hitInfo)
     {
 
-
-        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox"))
+        if (hitInfo.CompareTag("Dash Window"))
         {
-            Enemy thisEnemy = hitInfo.gameObject.transform.parent.gameObject.GetComponent<Enemy>(); // getting script from parent obj. hurtbox is a child.
-
             if (isInDash)
             {
                 timeSystem.TimeFracture();
             }
-            else
-            {
-                TakeDamage(thisEnemy.enemyConfig.damage);
-                print("ouchie ouch");
-                playerAnim.Play("Hit");
-            }
-
         }
 
+        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && !isInDash)
+        {
+            Enemy thisEnemy = hitInfo.gameObject.transform.parent.gameObject.GetComponent<Enemy>(); // getting script from parent obj. hurtbox is a child.
+
+            TakeDamage(thisEnemy.enemyConfig.damage);
+            print("ouchie ouch");
+            playerAnim.Play("Hit");
+        }
+
+    }
+
+    private void OnTriggerStay(Collider hitInfo)
+    {
+        if (hitInfo.CompareTag("Dash Window"))
+        {
+            if (isInDash)
+            {
+                timeSystem.TimeFracture();
+            }
+        }
     }
 
 }

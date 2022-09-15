@@ -44,8 +44,7 @@ public class MeshTrailRenderer : MonoBehaviour
 
             }
 
-
-            yield return new WaitForSeconds(dashTime);
+            yield return new WaitForSecondsRealtime(dashTime);
         }
 
         isTrailActive = false;
@@ -58,7 +57,7 @@ public class MeshTrailRenderer : MonoBehaviour
         {
             valueToAnimate -= rate;
             mat.SetFloat(shaderVariableRef, valueToAnimate);
-            yield return new WaitForSeconds(refreshRate);
+            yield return new WaitForSecondsRealtime(refreshRate);
         }
 
     }
