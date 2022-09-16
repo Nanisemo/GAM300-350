@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamagable
 {
-    public GameObject timeSlowVolume;
-    ComboCheck comboCheck;
-    CharacterController charaController;
-    TimeSystem timeSystem;
-    Camera mainCam;
 
     #region Movement Variables
 
@@ -17,7 +12,12 @@ public class PlayerController : MonoBehaviour, IDamagable
     public float attackMoveSpeed;
     Vector3 velocity;
     Vector3 direction;
+    Vector3 rightDirection;
+    Vector3 upDirection;
+    Vector3 newDirection;
     Vector3 heading;
+    Vector3 forward;
+    Vector3 right;
 
     // DASH VARIABLES
     public bool dashOnCoolDown;
@@ -53,8 +53,12 @@ public class PlayerController : MonoBehaviour, IDamagable
     #endregion
 
     #region MISC
-
+    public GameObject timeSlowVolume;
     MeshTrailRenderer meshTrailRenderer;
+    ComboCheck comboCheck;
+    CharacterController charaController;
+    TimeSystem timeSystem;
+    Camera mainCam;
 
     #endregion
 
@@ -76,12 +80,26 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         currentHealth = maxHealth;
 
+        // Iso Rotation
+        forward = Camera.main.transform.forward;
+        forward.y = 0f;
+        forward = Vector3.Normalize(forward);
+
+        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+
     }
 
     void Update()
     {
+        // used to check if the player has moved.
         direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         direction.Normalize();
+
+        // accounting for iso movement.
+        rightDirection = right * Input.GetAxisRaw("Horizontal");
+        upDirection = forward * Input.GetAxisRaw("Vertical");
+
+        newDirection = Vector3.Normalize(rightDirection + upDirection);
 
         isGrounded = charaController.isGrounded;
 
@@ -119,12 +137,12 @@ public class PlayerController : MonoBehaviour, IDamagable
         if (direction.magnitude >= 0.1f)
         {
             // rotate logic
-            heading = direction.normalized;
+            heading = Vector3.Normalize(rightDirection + upDirection);
             transform.forward = heading;
             playerAnim.SetBool("isRunning", true);
 
             if (!isAttacking)
-                charaController.Move(direction.normalized * Time.unscaledDeltaTime * moveSpeed); // player cannot move when attacking.
+                charaController.Move(newDirection * Time.unscaledDeltaTime * moveSpeed); // player cannot move when attacking.
         }
         else playerAnim.SetBool("isRunning", false);
 
