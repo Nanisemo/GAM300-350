@@ -45,7 +45,8 @@ public class AbilityCooldown : MonoBehaviour
         if (coolDownComplete)
         {
             AbilityReady();
-            if (Input.GetButtonDown(abilityButtonAxisName))
+            // NOTE TO LIYI: LINK THE COMBO SYSTEM TO HERE 
+            if (Input.GetButton(abilityButtonAxisName))
             {
                 ButtonTriggered();
             }
