@@ -4,7 +4,7 @@ using UnityEngine;
 
 // use this as example when creating a type of ability.
 // For exmaple: one for buffs and all
-// [CreateAssetMenu(menuName = "Abilities/ProjectileAbility")]
+[CreateAssetMenu(menuName = "Abilities/ProjectileAbility")]
 public class RaycastAbility : Ability
 {
     
