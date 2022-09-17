@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     public GameObject timeSlowVolume;
     MeshTrailRenderer meshTrailRenderer;
     ComboCheck comboCheck;
-    CharacterController charaController;
+    public CharacterController charaController;
     TimeSystem timeSystem;
     Camera mainCam;
 

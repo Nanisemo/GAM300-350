@@ -8,6 +8,8 @@ TagManager:
   - Waypoint
   - Enemy Hurtbox
   - Dash Window
+  - Cart Handle
+  - Cart
   layers:
   - Default
   - TransparentFX
