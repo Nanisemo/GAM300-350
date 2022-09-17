@@ -272,6 +272,8 @@ public class PlayerController : MonoBehaviour, IDamagable
         isAttacking = false;
     }
 
+    #region Trigger Collision Stuff
+
     private void OnTriggerEnter(Collider hitInfo)
     {
 
@@ -292,6 +294,13 @@ public class PlayerController : MonoBehaviour, IDamagable
             playerAnim.Play("Hit");
         }
 
+        if (hitInfo.CompareTag("Cart Handle"))
+        {
+            CartMove moveCart = hitInfo.GetComponent<CartMove>();
+
+            StartCoroutine(moveCart.Interact(gameObject.transform));
+        }
+
     }
 
     private void OnTriggerStay(Collider hitInfo)
@@ -304,5 +313,7 @@ public class PlayerController : MonoBehaviour, IDamagable
             }
         }
     }
+
+    #endregion
 
 }
