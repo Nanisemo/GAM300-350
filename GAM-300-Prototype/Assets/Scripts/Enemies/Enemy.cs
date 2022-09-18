@@ -231,14 +231,12 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-
-        if (hitInfo.gameObject.CompareTag("Player"))
+        if (hitInfo.gameObject.CompareTag("Player Hitbox"))
         {
-            PlayerController player = hitInfo.GetComponent<PlayerController>();
+            PlayerController player = hitInfo.GetComponentInParent<PlayerController>();
 
             TakeDamage(player.damage);
             print("enemy ouchie ouch");
-
         }
     }
 

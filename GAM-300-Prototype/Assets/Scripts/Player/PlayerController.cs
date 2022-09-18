@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour, IDamagable
     public float currentHealth;
     float maxHealth = 5;
 
+    int lightCounter = 1,
+        heavyCounter = 1; //TEST for varying punches
+
     #endregion
 
     #region Ground Check
@@ -109,11 +112,11 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         PlayerMove();
 
-        if (Input.GetMouseButtonDown(0)) // rotates the player when clicked.
+        if (Input.GetMouseButtonDown(0) && isAttacking == false) // rotates the player when clicked.
         {
             Aim(0); // light punch
         }
-        else if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1) && isAttacking == false)
         {
             Aim(1); // heavy punch
         }
@@ -253,13 +256,37 @@ public class PlayerController : MonoBehaviour, IDamagable
 
             if (x == 0)
             {
-                playerAnim.SetTrigger("lightPunch");
-                comboCheck.AddToQueue("light_punch");
+                switch (lightCounter)
+                {
+                    case 1:
+                        playerAnim.CrossFade("Light Punch", 0.025f);
+                        comboCheck.AddToQueue("light_punch");
+                        lightCounter += 1;
+                        break;
+                    case 2:
+                        playerAnim.CrossFade("Light Punch 2", 0.025f);
+                        comboCheck.AddToQueue("light_punch");
+                        lightCounter -= 1;
+                        break;
+                }
+                heavyCounter = 1;
             }
             else
             {
-                playerAnim.SetTrigger("heavyPunch");
-                comboCheck.AddToQueue("heavy_punch");
+                switch (heavyCounter)
+                {
+                    case 1:
+                        playerAnim.CrossFade("Heavy Punch", 0.025f);
+                        comboCheck.AddToQueue("heavy_punch");
+                        heavyCounter += 1;
+                        break;
+                    case 2:
+                        playerAnim.CrossFade("Heavy Punch 2", 0.025f);
+                        comboCheck.AddToQueue("heavy_punch");
+                        heavyCounter -= 1;
+                        break;
+                }
+                lightCounter = 1;
             }
 
             StartCoroutine(CanAttackAgain());
