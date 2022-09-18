@@ -10,6 +10,7 @@ TagManager:
   - Dash Window
   - Cart Handle
   - Cart
+  - Player Hitbox
   layers:
   - Default
   - TransparentFX

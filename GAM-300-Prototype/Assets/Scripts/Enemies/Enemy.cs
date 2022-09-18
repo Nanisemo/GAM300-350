@@ -217,13 +217,21 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public void TakeDamage(float damageAmount) // when enemy takes damage
     {
-        enemyConfig.health -= damageAmount;
+        if (enemyConfig.health - damageAmount > 0)
+        {
+            enemyConfig.health -= damageAmount;
+        }
+        else
+        {
+            Death();
+        } 
     }
 
     public void Death()
     {
         enemyConfig.isKilled = true;
         GlobalBool.isInCombat = false;
+
         // add death anim, vfx, sounds here
     }
 

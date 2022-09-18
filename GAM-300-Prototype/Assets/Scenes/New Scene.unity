@@ -5841,7 +5841,7 @@ GameObject:
   - component: {fileID: 552986383}
   m_Layer: 3
   m_Name: Player Hitbox
-  m_TagString: Untagged
+  m_TagString: Player Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6739,6 +6739,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.89, z: 0}
+--- !u!54 &1070897208
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070897200}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1072028061 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6636786727058182356, guid: 9d1e500ed0b9ace4c8d57d52f086dcad,
