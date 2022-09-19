@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameOver.SetActive(false);
+
+        GlobalBool.isGameOver = false;
+        GlobalBool.isPaused = false;
+        GlobalBool.isInCombat = false;
     }
 
     void Update()
