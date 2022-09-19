@@ -1,22 +1,12 @@
 fileFormatVersion: 2
-guid: 0e04435b0fb41af4ea35fb5c5ae1da63
+guid: cecaef10adaa86343962be347b1a901f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: mixamo.com
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Alpha_Body_MAT
-    second: {fileID: 2100000, guid: 5c80cf3c3f9c4814f9e8863bbd9eb948, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Alpha_Joints_MAT
-    second: {fileID: 2100000, guid: 5c80cf3c3f9c4814f9e8863bbd9eb948, type: 2}
+    second: Buff
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -46,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Buff
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -74,7 +64,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -894,11 +884,12 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

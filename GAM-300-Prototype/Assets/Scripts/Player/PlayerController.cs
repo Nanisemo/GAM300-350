@@ -132,6 +132,8 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         if (Input.GetKeyDown(KeyCode.V)) timeSystem.TimeFracture();
 
+        if (Input.GetKeyDown(KeyCode.LeftShift)) ActivateBuff();
+
     }
 
     #region Movement Functions
@@ -341,6 +343,15 @@ public class PlayerController : MonoBehaviour, IDamagable
                 timeSystem.TimeFracture();
             }
         }
+    }
+
+    #endregion
+
+    #region TEMPO FUNCTIONS
+
+    void ActivateBuff()
+    {
+        playerAnim.Play("Buff");
     }
 
     #endregion

@@ -439,7 +439,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -840037777384891287, guid: 0e04435b0fb41af4ea35fb5c5ae1da63, type: 3}
+  - {fileID: 2100000, guid: 1e3c45b0daef3f5438b3c1e03c7eb233, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1336,11 +1336,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   attackMoveSpeed: 10
+  dashOnCoolDown: 0
+  isInDash: 0
   dashSpeed: 10
   dashTime: 0.2
   dashCoolDownTime: 0.5
+  damage: 1
   currentHealth: 0
   isGrounded: 0
+  timeSlowVolume: {fileID: 0}
+  charaController: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2139,7 +2144,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4565884009001823619, guid: 0e04435b0fb41af4ea35fb5c5ae1da63, type: 3}
+  - {fileID: 2100000, guid: 5c80cf3c3f9c4814f9e8863bbd9eb948, type: 2}
+  - {fileID: 2100000, guid: dad33323a47ac344e979b7f869cda720, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
