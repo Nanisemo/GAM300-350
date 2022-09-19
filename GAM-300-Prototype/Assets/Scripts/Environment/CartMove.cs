@@ -18,7 +18,7 @@ public class CartMove : MonoBehaviour, Interactable
         while (cartBase.transform.position != targetPos)
         {
             rb.MovePosition(Vector3.MoveTowards(cartBase.transform.position, targetPos, moveSpeed * Time.deltaTime));
-            player.position = cartBase.transform.position;
+          //  player.position = cartBase.transform.position; // player to snap to center
 
             yield return null;
         }
