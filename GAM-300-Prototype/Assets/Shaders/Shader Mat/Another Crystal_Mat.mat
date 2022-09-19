@@ -49,10 +49,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _Bottom_Line: 0.418
-    - _Metallic: 0.5
+    - _Metallic: 0.351
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0.628
     - _Top_Line: 0.682
     m_Colors:
     - _Base_Color: {r: 0.7140867, g: 1.003861, b: 1.319508, a: 1}
