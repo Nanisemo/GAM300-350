@@ -15,9 +15,9 @@ MonoBehaviour:
   enemyName: Test Enemy
   targetTag: Player
   targetTransform: {fileID: 0}
-  health: 2
+  health: 5
   damage: 0.5
-  idleTimer: 0.84931135
+  idleTimer: 0.9625199
   idleDuration: 3
   patrolTimer: 0
   patrolDuration: 7
@@ -25,5 +25,5 @@ MonoBehaviour:
   attackInterval: 0
   detectionRange: 10
   maxChaseDistance: 5
-  isKilled: 1
+  isKilled: 0
   isStunned: 0

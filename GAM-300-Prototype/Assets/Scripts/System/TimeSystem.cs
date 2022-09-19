@@ -13,7 +13,7 @@ public class TimeSystem : MonoBehaviour
 
     float normalTimeScale = 1f; // use this variable to revert time back to normal.
 
-    public float timeFractureCoolDown = 10f; // CD for how long?
+    public float timeFractureCoolDown = 5f; // CD for how long?
     public float coolDownTimer = 0f;
 
     bool isOnCoolDown;

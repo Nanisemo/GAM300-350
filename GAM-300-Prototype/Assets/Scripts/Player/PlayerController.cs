@@ -130,6 +130,8 @@ public class PlayerController : MonoBehaviour, IDamagable
         // TODO: player anim to also have the damage hitbox enabled. >> need to duplicate the animation clip and reassign onto the animator.
         // TODO: import terrence's combat/combo sys if needed.
 
+        if (Input.GetKeyDown(KeyCode.V)) timeSystem.TimeFracture();
+
     }
 
     #region Movement Functions

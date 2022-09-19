@@ -24,46 +24,48 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     [SerializeField] float moveSpeed;
     [SerializeField] float chaseSpeed;
+    float health;
 
     [SerializeField] Animator enemyAnimator;
     [SerializeField] Transform[] wayPointArray;
 
     int index;
-    Vector3 targetLastPos;
 
     void Start()
     {
+        enemyConfig.isKilled = false;
+        health = enemyConfig.health;
         moveSpeed = agent.speed;
         enemyConfig.idleTimer = 0f;
         enemyConfig.patrolTimer = 0f;
         enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
+
     }
 
 
     void Update()
     {
-        if (enemyConfig.health <= 0)
-        {
-            Death();
-            enemyConfig.health = 0;
-        }
 
         if (GlobalBool.isGameOver || GlobalBool.isPaused) return;
 
-        switch (state)
+        if (!enemyConfig.isKilled)
         {
-            case EnemyState.IDLE: IdleBehaviour(); break;
-            case EnemyState.PATROL: PatrolBehaviour(); break;
-            case EnemyState.CHASE: ChaseBehaviour(); break;
-            case EnemyState.ATTACK: AttackBehaviour(); break;
-        }
+            switch (state)
+            {
+                case EnemyState.IDLE: IdleBehaviour(); break;
+                case EnemyState.PATROL: PatrolBehaviour(); break;
+                case EnemyState.CHASE: ChaseBehaviour(); break;
+                case EnemyState.ATTACK: AttackBehaviour(); break;
+            }
 
-        if (IsTargetInChaseRange())
-        {
-            state = EnemyState.CHASE;
+            if (IsTargetInChaseRange())
+            {
+                state = EnemyState.CHASE;
+
+            }
+            if (IsInAtkRange()) state = EnemyState.ATTACK;
 
         }
-        if (IsInAtkRange()) state = EnemyState.ATTACK;
 
     }
 
@@ -76,7 +78,6 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             return true;
         }
 
-        // NOT WORKING BC OF THE CHASE LOGIC REEEE
         if (state == EnemyState.CHASE && Vector3.Distance(wayPointArray[index].position, transform.position) > enemyConfig.maxChaseDistance) // if target is out of max range from patrol pos after chasing, return back to patrol state. 
                                                                                                                                              //can change to player instead of patrol pos for more chase.
         {
@@ -217,22 +218,33 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public void TakeDamage(float damageAmount) // when enemy takes damage
     {
-        if (enemyConfig.health - damageAmount > 0)
+        if (health - damageAmount > 0)
         {
-            enemyConfig.health -= damageAmount;
+            enemyAnimator.Play("Enemy1_Hurt");
+            enemyAnimator.SetBool("isAttacking", false);
+            health -= damageAmount;
         }
         else
         {
             Death();
-        } 
+            health = 0;
+        }
     }
 
     public void Death()
     {
+        state = EnemyState.DEAD;
         enemyConfig.isKilled = true;
         GlobalBool.isInCombat = false;
+        agent.isStopped = true;
+        enemyAnimator.SetBool("isAttacking", false);
+        enemyAnimator.SetBool("isPatrol", false);
+        enemyAnimator.SetBool("isChasing", false);
 
         // add death anim, vfx, sounds here
+        enemyAnimator.Play("Enemy1_Death");
+
+
     }
 
     #endregion
