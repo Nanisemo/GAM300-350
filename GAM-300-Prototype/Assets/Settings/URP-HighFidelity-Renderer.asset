@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afaff3d315669d4fb6ee0a00472fcef, type: 3}
   m_Name: Low HP Warning
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     Event: 600
     blitMaterial: {fileID: 2100000, guid: 7bf0b46c570aa8949949213ca3fab581, type: 2}
@@ -188,7 +188,8 @@ MonoBehaviour:
   - {fileID: -7538547918275184799}
   - {fileID: -8807277601595700659}
   - {fileID: -4948094796527667092}
-  m_RendererFeatureMap: adc0de57c6d2eee5f472904d4dcb7eb16177f2f89bb261974d4aa22eaf43c6856c7802aaffd554bb
+  - {fileID: 2149327478181747068}
+  m_RendererFeatureMap: adc0de57c6d2eee5f472904d4dcb7eb16177f2f89bb261974d4aa22eaf43c6856c7802aaffd554bb7c59022bf4f1d31d
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -228,3 +229,42 @@ MonoBehaviour:
   m_ClusteredRendering: 0
   m_TileSize: 32
   m_IntermediateTextureMode: 1
+--- !u!114 &2149327478181747068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: Render Player Damaged
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: Render Player Damaged
+    Event: 500
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 8
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: b6c35303ad288b24dba7058d890dd171, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 1
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
