@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 404038258}
   - component: {fileID: 404038257}
   - component: {fileID: 404038256}
-  - component: {fileID: 404038260}
+  - component: {fileID: 404038261}
   m_Layer: 5
   m_Name: Button Canvas
   m_TagString: Untagged
@@ -734,26 +734,18 @@ RectTransform:
   m_AnchoredPosition: {x: 217, y: 122}
   m_SizeDelta: {x: 434, y: 244}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &404038260
-Animator:
-  serializedVersion: 4
+--- !u!114 &404038261
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404038255}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4923a176f036b0c4ebe77a47db69b198, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: febb06ed19b364c46bb0c714d9cb735a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &423382811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,7 +2152,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1898732633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 404038261}
+        m_TargetAssemblyTypeName: GenericAnimEvent, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1898732633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2216,19 +2220,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 404038260}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Highlighted
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &1927417693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,19 +2431,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 404038260}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Highlighted
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &2047587231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2495,7 +2475,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2047587232}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 404038261}
+        m_TargetAssemblyTypeName: GenericAnimEvent, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2047587232
 MonoBehaviour:
   m_ObjectHideFlags: 0

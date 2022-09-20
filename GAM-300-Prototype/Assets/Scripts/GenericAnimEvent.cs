@@ -11,4 +11,21 @@ public class GenericAnimEvent : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void Load()
+    {
+        StartCoroutine(LoadScene());
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        print("quit");
+    }
+
+    IEnumerator LoadScene()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
