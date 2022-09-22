@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 129237710}
   - component: {fileID: 129237709}
   - component: {fileID: 129237713}
+  - component: {fileID: 129237714}
   m_Layer: 5
   m_Name: Main Menu Canvas
   m_TagString: Untagged
@@ -363,6 +364,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &129237714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129237708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6dbd228c6a2b648b613c4b49a69a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowHPmat:
+    feature: {fileID: -5656860549056531724, guid: c40be3174f62c4acf8c1216858c64956,
+      type: 2}
+    isEnabled: 0
+  pipelineAsset: {fileID: 11400000, guid: 7b7fd9122c28c4d15b667c7040e3b3fd, type: 2}
 --- !u!1 &164441574
 GameObject:
   m_ObjectHideFlags: 0
