@@ -31,9 +31,13 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     int index;
 
-    void Start()
+    void Awake()
     {
         enemyConfig.isKilled = false;
+    }
+    void Start()
+    {
+        // enemyConfig.isKilled = false;
         health = enemyConfig.health;
         moveSpeed = agent.speed;
         enemyConfig.idleTimer = 0f;
