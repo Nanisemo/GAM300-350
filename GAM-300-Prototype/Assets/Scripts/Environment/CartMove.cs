@@ -9,7 +9,6 @@ public class CartMove : MonoBehaviour, Interactable
     public float moveSpeed = 3f;
 
     bool colliding;
-
     public IEnumerator Interact(Transform player)
     {
         Rigidbody rb = cartBase.GetComponent<Rigidbody>();
@@ -19,7 +18,6 @@ public class CartMove : MonoBehaviour, Interactable
         {
             rb.MovePosition(Vector3.MoveTowards(cartBase.transform.position, targetPos, moveSpeed * Time.deltaTime));
           //  player.position = cartBase.transform.position; // player to snap to center
-
             yield return null;
         }
         cartBase.transform.position = targetPos;
