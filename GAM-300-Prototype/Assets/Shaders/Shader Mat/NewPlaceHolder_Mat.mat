@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Placeholder
+  m_Name: NewPlaceHolder_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 4c283fbcd248e094a94145648f556857,
     type: 3}
   m_ValidKeywords: []
@@ -56,6 +56,6 @@ Material:
     - _Top_Line: 0.747
     m_Colors:
     - _Base_Color: {r: 0.11355187, g: 2.23507, b: 4.3376827, a: 1}
-    - _Bottom_Color: {r: 6.2543077, g: 1.8664688, b: 4.4740977, a: 1}
-    - _Top_Color: {r: 1.4980392, g: 1.3411765, b: 0.2509804, a: 1}
+    - _Bottom_Color: {r: 0.045047, g: 1.7207954, b: 0.405423, a: 1}
+    - _Top_Color: {r: 15.813397, g: 0.24837798, b: 11.590972, a: 1}
   m_BuildTextureStacks: []
