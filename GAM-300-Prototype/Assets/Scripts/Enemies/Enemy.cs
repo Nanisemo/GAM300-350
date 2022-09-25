@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     int index;
 
+    public GameObject hitImpactPrefab;
+
     void Awake()
     {
         enemyConfig.isKilled = false;
@@ -227,6 +229,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             enemyAnimator.Play("Enemy1_Hurt");
             enemyAnimator.SetBool("isAttacking", false);
             health -= damageAmount;
+            print(health);
         }
         else
         {
@@ -258,7 +261,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         if (hitInfo.gameObject.CompareTag("Player Hitbox"))
         {
             PlayerController player = hitInfo.GetComponentInParent<PlayerController>();
-
+            Instantiate(hitImpactPrefab, hitInfo.transform.position, Quaternion.identity);
             TakeDamage(player.damage);
             print("enemy ouchie ouch");
         }

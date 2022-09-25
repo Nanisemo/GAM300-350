@@ -277,7 +277,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.774554, y: 1}
+    m_SensorSize: {x: 1.7771927, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1608,6 +1608,7 @@ MonoBehaviour:
   - {fileID: 1600399650}
   - {fileID: 225695235}
   - {fileID: 3209586}
+  hitImpactPrefab: {fileID: 0}
 --- !u!195 &293143934
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9988,6 +9989,8 @@ MonoBehaviour:
   - {fileID: 1600399650}
   - {fileID: 225695235}
   - {fileID: 3209586}
+  hitImpactPrefab: {fileID: 3651984596919297697, guid: 495e11e103bb1c04f8eedd7ff4d43662,
+    type: 3}
 --- !u!136 &1070897207
 CapsuleCollider:
   m_ObjectHideFlags: 0
