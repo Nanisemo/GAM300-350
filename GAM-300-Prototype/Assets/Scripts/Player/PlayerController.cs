@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     public float dashTime = 0.2f; // how long in dash animation.
     public float dashCoolDownTime = 0.1f;
 
-    float gravity = 4f;
+    float gravity = 2f;
 
     #endregion
 
@@ -330,6 +330,11 @@ public class PlayerController : MonoBehaviour, IDamagable
             CartMove moveCart = hitInfo.GetComponent<CartMove>();
 
             StartCoroutine(moveCart.Interact(gameObject.transform));
+        }
+
+        if(hitInfo.CompareTag("Death Zone"))
+        {
+            PlayerDeath();
         }
 
     }
