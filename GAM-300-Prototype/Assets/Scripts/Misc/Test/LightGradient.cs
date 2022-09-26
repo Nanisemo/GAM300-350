@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScrollingBackground : MonoBehaviour
+public class LightGradient : MonoBehaviour
 {
    // [SerializeField] float x, y;
     public Gradient myGradient;
