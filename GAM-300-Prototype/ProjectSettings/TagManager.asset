@@ -12,6 +12,7 @@ TagManager:
   - Cart
   - Player Hitbox
   - Death Zone
+  - Enemy
   layers:
   - Default
   - TransparentFX
