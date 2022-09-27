@@ -27,7 +27,10 @@ public class PlayerController : MonoBehaviour, IDamagable
     public float dashTime = 0.2f; // how long in dash animation.
     public float dashCoolDownTime = 0.1f;
 
-    float gravity = 2f;
+    float gravity = 1f;
+
+    Vector3 externalMovement;
+    GameObject myCart;
 
     #endregion
 
@@ -94,23 +97,22 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     void Update()
     {
-        // used to check if the player has moved.
         direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        // used to check if the player has moved.
         direction.Normalize();
 
         // accounting for iso movement.
         rightDirection = right * Input.GetAxisRaw("Horizontal");
         upDirection = forward * Input.GetAxisRaw("Vertical");
 
-        newDirection = Vector3.Normalize(rightDirection + upDirection);
-
-        isGrounded = charaController.isGrounded;
+        if (!isAttacking)
+        {
+            velocity += newDirection * Time.deltaTime * moveSpeed;
+        }
 
         CheckHealth();
 
         if (GlobalBool.isGameOver || GlobalBool.isPaused) return; // player unable to move if either bool is true.
-
-        PlayerMove();
 
         if (Input.GetMouseButtonDown(0) && isAttacking == false) // rotates the player when clicked.
         {
@@ -125,21 +127,37 @@ public class PlayerController : MonoBehaviour, IDamagable
         {
             StartCoroutine(Dash());
         }
-        // TODO: make player face the mouse cursor when clicked. [DONE, left bugfix. angle offset is not in sets of 90 degs]
-        // TODO: make a basic combat system that uses LMB & RMB [ANIMS DONE]
-        // TODO: player anim to also have the damage hitbox enabled. >> need to duplicate the animation clip and reassign onto the animator.
-        // TODO: import terrence's combat/combo sys if needed.
 
         if (Input.GetKeyDown(KeyCode.V)) timeSystem.TimeFracture();
 
         if (Input.GetKeyDown(KeyCode.LeftShift)) ActivateBuff();
+    }
 
+    void FixedUpdate()
+    {
+        newDirection = Vector3.Normalize(rightDirection + upDirection);
+
+        isGrounded = charaController.isGrounded;
+
+        PlayerMove();
+        // TODO: make player face the mouse cursor when clicked. [DONE, left bugfix. angle offset is not in sets of 90 degs]
+        // TODO: make a basic combat system that uses LMB & RMB [ANIMS DONE]
+        // TODO: player anim to also have the damage hitbox enabled. >> need to duplicate the animation clip and reassign onto the animator.
+        // TODO: import terrence's combat/combo sys if needed.
+        velocity.y -= gravity * Time.fixedDeltaTime; // ensure that the player is grounded at all times.
+
+        if (myCart != null)
+        {
+            velocity += myCart.GetComponent<Rigidbody>().velocity * Time.fixedDeltaTime;
+        }
+        charaController.Move(velocity);
+        velocity = Vector3.zero;
     }
 
     #region Movement Functions
-
     void PlayerMove()
     {
+        //velocity.y -= gravity; // ensure that the player is grounded at all times.
 
         if (direction.magnitude >= 0.1f)
         {
@@ -147,14 +165,12 @@ public class PlayerController : MonoBehaviour, IDamagable
             heading = Vector3.Normalize(rightDirection + upDirection);
             transform.forward = heading;
             playerAnim.SetBool("isRunning", true);
-
-            if (!isAttacking)
-                charaController.Move(newDirection * Time.unscaledDeltaTime * moveSpeed); // player cannot move when attacking.
         }
-        else playerAnim.SetBool("isRunning", false);
-
-        velocity.y -= gravity * Time.unscaledDeltaTime; // ensure that the player is grounded at all times.
-        charaController.Move(velocity * Time.unscaledDeltaTime);
+        else
+        {
+            playerAnim.SetBool("isRunning", false);
+            //charaController.Move(velocity * Time.unscaledDeltaTime);
+        }
     }
 
     IEnumerator Dash() // activated when Space is pressed.
@@ -328,11 +344,20 @@ public class PlayerController : MonoBehaviour, IDamagable
         if (hitInfo.CompareTag("Cart Handle"))
         {
             CartMove moveCart = hitInfo.GetComponent<CartMove>();
+            transform.position = GetComponentInParent<Transform>().position; //snap to cart middle
 
             StartCoroutine(moveCart.Interact(gameObject.transform));
         }
 
-        if(hitInfo.CompareTag("Death Zone"))
+        if (hitInfo.CompareTag("Cart"))
+        {
+            myCart = hitInfo.gameObject;
+            // transform.SetParent(hitInfo.transform);
+            Debug.Log("attach");
+
+        }
+
+        if (hitInfo.CompareTag("Death Zone"))
         {
             PlayerDeath();
         }
@@ -347,6 +372,17 @@ public class PlayerController : MonoBehaviour, IDamagable
             {
                 timeSystem.TimeFracture();
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider hitInfo)
+    {
+        if (hitInfo.CompareTag("Cart"))
+        {
+            // transform.SetParent(null);
+
+            myCart = null;
+            Debug.Log("remove");
         }
     }
 
