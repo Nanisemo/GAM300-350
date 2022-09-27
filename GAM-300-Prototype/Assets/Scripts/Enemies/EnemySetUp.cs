@@ -27,9 +27,6 @@ public class EnemySetUp : ScriptableObject
 
     public float maxChaseDistance;
 
-    public bool isKilled;
-    public bool isStunned;
-
     // add NavMesh Configs here if needed.
 
     //private void Start()

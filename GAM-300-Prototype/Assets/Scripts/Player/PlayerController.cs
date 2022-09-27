@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     public float dashTime = 0.2f; // how long in dash animation.
     public float dashCoolDownTime = 0.1f;
 
-    float gravity = 2f;
+    float gravity = 3f;
 
     #endregion
 

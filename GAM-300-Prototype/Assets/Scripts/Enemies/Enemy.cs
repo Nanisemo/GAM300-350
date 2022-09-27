@@ -33,9 +33,12 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public GameObject hitImpactPrefab;
 
+    public bool isKilled,
+                isStunned;
+
     void Awake()
     {
-        enemyConfig.isKilled = false;
+        isKilled = false;
     }
     void Start()
     {
@@ -54,7 +57,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
         if (GlobalBool.isGameOver || GlobalBool.isPaused) return;
 
-        if (!enemyConfig.isKilled)
+        if (!isKilled)
         {
             switch (state)
             {
@@ -241,7 +244,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     public void Death()
     {
         state = EnemyState.DEAD;
-        enemyConfig.isKilled = true;
+        isKilled = true;
         GlobalBool.isInCombat = false;
         agent.isStopped = true;
         enemyAnimator.SetBool("isAttacking", false);
