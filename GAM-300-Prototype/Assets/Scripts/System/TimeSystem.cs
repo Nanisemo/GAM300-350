@@ -5,6 +5,9 @@ using UnityEngine;
 public class TimeSystem : MonoBehaviour
 {
     public GameObject timeSlowVolume;
+    public int physicsFrameRate = 200;
+
+    private float physicsDeltaTime;
 
     #region Time Slow Stuffs
 
@@ -27,9 +30,9 @@ public class TimeSystem : MonoBehaviour
 
     #endregion
 
-    void Start()
+    void Awake()
     {
-
+        physicsDeltaTime = 1 / (float)physicsFrameRate;
     }
 
 
@@ -57,7 +60,7 @@ public class TimeSystem : MonoBehaviour
         isActive = true;
         timeSlowVolume.SetActive(true);
         Time.timeScale = timeSlowFactor; // slows down time by 20 times.
-        Time.fixedDeltaTime = Time.timeScale * 0.2f;
+        Time.fixedDeltaTime = Time.timeScale * physicsDeltaTime;
 
         StartCoroutine(ExitFracture());
     }
@@ -73,6 +76,7 @@ public class TimeSystem : MonoBehaviour
             timeSlowVolume.SetActive(false);
             print("time fracture ended!");
             Time.timeScale = normalTimeScale;
+            Time.fixedDeltaTime = physicsDeltaTime;
             toStartCoolDown = true;
             toStartNormalisingTime = false;
             isOnCoolDown = true;

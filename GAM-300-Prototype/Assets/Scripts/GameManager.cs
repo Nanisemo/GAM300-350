@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     {
         if (GlobalBool.isGameOver) DisplayGameOverUI();
 
+        // if there is at least 1 enemy in combat, set isInCombat to be true
+        GlobalBool.isInCombat = (GlobalBool.enemiesInCombat.Count > 0);
+
         if (GlobalBool.isInCombat)
         {
             CameraZoomOut();
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
     void CameraZoomOut()
     {
         camAnim.SetTrigger("zoomOut");
+        
     }
 
     void CameraZoomIn()

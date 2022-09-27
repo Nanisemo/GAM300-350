@@ -27,10 +27,10 @@ public class PlayerController : MonoBehaviour, IDamagable
     public float dashTime = 0.2f; // how long in dash animation.
     public float dashCoolDownTime = 0.1f;
 
-    float gravity = 1f;
+    float gravity;
 
     Vector3 externalMovement;
-    GameObject myCart;
+    Rigidbody myCartRB;
 
     #endregion
 
@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     void Start()
     {
+        gravity = Physics.gravity.magnitude;
         timeSlowVolume.SetActive(false);
         charaController = GetComponent<CharacterController>();
         mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -97,18 +98,6 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     void Update()
     {
-        direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        // used to check if the player has moved.
-        direction.Normalize();
-
-        // accounting for iso movement.
-        rightDirection = right * Input.GetAxisRaw("Horizontal");
-        upDirection = forward * Input.GetAxisRaw("Vertical");
-
-        if (!isAttacking)
-        {
-            velocity += newDirection * Time.deltaTime * moveSpeed;
-        }
 
         CheckHealth();
 
@@ -144,13 +133,14 @@ public class PlayerController : MonoBehaviour, IDamagable
         // TODO: make a basic combat system that uses LMB & RMB [ANIMS DONE]
         // TODO: player anim to also have the damage hitbox enabled. >> need to duplicate the animation clip and reassign onto the animator.
         // TODO: import terrence's combat/combo sys if needed.
-        velocity.y -= gravity * Time.fixedDeltaTime; // ensure that the player is grounded at all times.
+        velocity.y -= gravity * Time.fixedUnscaledDeltaTime; // ensure that the player is grounded at all times.
 
-        if (myCart != null)
+        if (myCartRB != null)
         {
-            velocity += myCart.GetComponent<Rigidbody>().velocity * Time.fixedDeltaTime;
+            velocity += myCartRB.velocity * Time.fixedUnscaledDeltaTime;
         }
         charaController.Move(velocity);
+        direction = Vector3.zero;
         velocity = Vector3.zero;
     }
 
@@ -158,6 +148,11 @@ public class PlayerController : MonoBehaviour, IDamagable
     void PlayerMove()
     {
         //velocity.y -= gravity; // ensure that the player is grounded at all times.
+
+
+        direction += new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        // used to check if the player has moved.
+        // direction.Normalize();
 
         if (direction.magnitude >= 0.1f)
         {
@@ -170,6 +165,15 @@ public class PlayerController : MonoBehaviour, IDamagable
         {
             playerAnim.SetBool("isRunning", false);
             //charaController.Move(velocity * Time.unscaledDeltaTime);
+        }
+
+        // accounting for iso movement.
+        rightDirection = right * Input.GetAxisRaw("Horizontal");
+        upDirection = forward * Input.GetAxisRaw("Vertical");
+
+        if (!isAttacking)
+        {
+            velocity += newDirection * Time.unscaledDeltaTime * moveSpeed;
         }
     }
 
@@ -234,6 +238,7 @@ public class PlayerController : MonoBehaviour, IDamagable
         playerAnim.Play("Player Death");
         currentHealth = 0;
         GlobalBool.isGameOver = true;
+        GlobalBool.enemiesInCombat.Clear();
     }
 
     #endregion
@@ -351,7 +356,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         if (hitInfo.CompareTag("Cart"))
         {
-            myCart = hitInfo.gameObject;
+            myCartRB = hitInfo.gameObject.GetComponent<Rigidbody>();
             // transform.SetParent(hitInfo.transform);
             Debug.Log("attach");
 
@@ -381,7 +386,7 @@ public class PlayerController : MonoBehaviour, IDamagable
         {
             // transform.SetParent(null);
 
-            myCart = null;
+            myCartRB = null;
             Debug.Log("remove");
         }
     }
