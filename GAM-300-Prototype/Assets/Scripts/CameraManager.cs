@@ -16,7 +16,7 @@ DO NOT MODIFY ANY OTHER SCRIPTS.
     - scrolls smoothly 
 */
 
-using Unity.PlasticSCM.Editor.WebApi;
+//using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour {
