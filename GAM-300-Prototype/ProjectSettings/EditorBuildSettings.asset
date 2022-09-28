@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Load Scene.unity
     guid: 5bf8c28617fb57946a492fe69d8fefa9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/New Scene.unity
     guid: c630dabaf6b827d4c9e2fc93d42acc59
+  - enabled: 1
+    path: Assets/Scenes/Vausta New Scene/Scene1.unity
+    guid: 405203f8db0c85449bc69e96184e7f6f
   m_configObjects: {}
