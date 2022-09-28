@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     {
         enemyConfig.idleTimer += Time.deltaTime;
         agent.speed = moveSpeed;
-        GlobalBool.isInCombat = false;
+        SetAggro(false);
 
         if (enemyConfig.idleTimer >= enemyConfig.idleDuration)
         {
@@ -136,7 +136,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public void PatrolBehaviour() // patrol around set points. return to this state when target leaves range.
     {
-        GlobalBool.isInCombat = false;
+        SetAggro(false);
         enemyAnimator.SetBool("isChasing", false);
 
         if (Vector3.Distance(wayPointArray[index].position, transform.position) > enemyConfig.maxChaseDistance) agent.speed = chaseSpeed; else agent.speed = moveSpeed;
@@ -169,7 +169,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public void ChaseBehaviour()
     {
-        GlobalBool.isInCombat = true;
+        SetAggro(true);
         agent.speed = chaseSpeed;
         print("Chasing" + enemyConfig.targetTag);
 
@@ -198,6 +198,12 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     public void StunnedBehaviour()
     {
         // STUN LOGIC HERE
+    }
+
+    public void SetAggro(bool aggroed)
+    {
+        if (aggroed) GlobalBool.SetInCombat(this, true);
+        else GlobalBool.SetInCombat(this, false);
     }
 
     IEnumerator Aim()
@@ -246,6 +252,8 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         state = EnemyState.DEAD;
         isKilled = true;
         GlobalBool.isInCombat = false;
+        enemyConfig.isKilled = true;
+        SetAggro(false);
         agent.isStopped = true;
         enemyAnimator.SetBool("isAttacking", false);
         enemyAnimator.SetBool("isPatrol", false);
