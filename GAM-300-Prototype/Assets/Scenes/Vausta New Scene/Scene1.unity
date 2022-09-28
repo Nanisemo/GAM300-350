@@ -8627,7 +8627,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerGO: {fileID: 1755763163}
-  defaultLerpSpeed: 4
+  defaultLerpSpeed: 5
+  maxSpeed: 1
   zoomIn: 4
   zoomOut: 5
   zoomSpeed: 1
