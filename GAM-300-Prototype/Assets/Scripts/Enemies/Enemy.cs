@@ -251,8 +251,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     {
         state = EnemyState.DEAD;
         isKilled = true;
-        GlobalBool.isInCombat = false;
-        enemyConfig.isKilled = true;
+        GlobalBool.isInCombat = false; 
         SetAggro(false);
         agent.isStopped = true;
         enemyAnimator.SetBool("isAttacking", false);
