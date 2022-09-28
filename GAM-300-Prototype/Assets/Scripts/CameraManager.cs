@@ -1,20 +1,3 @@
-/*
-CameraManager
-
-PLACE ALL CODE NECESSARY TO IMPLEMENT
-YOUR CAMERA IN THIS SCRIPT.
-
-DO NOT MODIFY ANY OTHER SCRIPTS.
-*/
-
-/*
-    LIST OF IMPLEMENTED FEATURES:
-    - Follows player
-    - Locks to features of the game world
-        - walls, horizontal and vertical boundaries
-        - platforms
-    - scrolls smoothly 
-*/
 
 //using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
