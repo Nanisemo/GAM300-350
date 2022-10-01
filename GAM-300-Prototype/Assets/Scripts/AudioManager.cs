@@ -27,7 +27,8 @@ public class AudioManager : MonoBehaviour
     {
         enemyState = new List<EnemyState>();
         currEnemyState = new List<EnemyState>();
-        //sets the enemy states to all be idle
+
+        //gets all initial states of enemies
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("Enemy").Length; i++)
         {
             enemyState.Add(GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<Enemy>().state);
@@ -36,33 +37,24 @@ public class AudioManager : MonoBehaviour
     }
     private void CheckForCombat()
     {
-        //Updates all enemy states
         for (int i = 0; i < enemyState.Count; i++)
         {
             currEnemyState[i] = GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<Enemy>().state;
         }
-        
-        for (int i = 0; i < currEnemyState.Count; i++)
+        if (currEnemyState.Contains(EnemyState.ATTACK) || currEnemyState.Contains(EnemyState.CHASE))
         {
-            //If any enemy's state has changed, run the following
-            if (currEnemyState[i] != enemyState[i])
+            if (inCombat != true)
             {
-                combatChange = inCombat;
-                switch (currEnemyState[i])
-                {
-                    case EnemyState.CHASE:
-                        inCombat = true;
-                        break;
-                    case EnemyState.ATTACK:
-                        inCombat = true;
-                        break;
-                    default:
-                        inCombat = false;
-                        break;
-                }
-                if (inCombat != combatChange)
-                    UpdateBGM();
-                enemyState[i] = currEnemyState[i];
+                inCombat = true;
+                UpdateBGM();
+            }
+        }
+        else
+        {
+            if (inCombat != false)
+            {
+                inCombat = false;
+                UpdateBGM();
             }
         }
     }
