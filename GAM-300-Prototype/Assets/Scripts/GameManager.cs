@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //Animator gameOverCanvas;
     public GameObject gameOver;
-    public Animator camAnim;
 
     void Start()
     {
@@ -24,12 +22,6 @@ public class GameManager : MonoBehaviour
 
         // if there is at least 1 enemy in combat, set isInCombat to be true
         GlobalBool.isInCombat = (GlobalBool.enemiesInCombat.Count > 0);
-
-        if (GlobalBool.isInCombat)
-        {
-            CameraZoomOut();
-        }
-        else CameraZoomIn();
     }
 
     void DisplayGameOverUI()
@@ -40,14 +32,5 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void CameraZoomOut()
-    {
-        camAnim.SetTrigger("zoomOut");
-        
-    }
 
-    void CameraZoomIn()
-    {
-        camAnim.SetTrigger("zoomIn");
-    }
 }

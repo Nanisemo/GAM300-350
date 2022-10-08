@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Test Enemy
   targetTag: Player
-  targetTransform: {fileID: 0}
+  targetTransform: {fileID: 2266143002363475668, guid: 4c492933b1f797049a2c64db81f42331,
+    type: 3}
   health: 10
   damage: 0.5
-  idleTimer: 0
+  idleTimer: 1.4849608
   idleDuration: 3
   patrolTimer: 0
   patrolDuration: 7
