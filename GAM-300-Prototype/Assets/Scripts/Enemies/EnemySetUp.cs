@@ -29,10 +29,5 @@ public class EnemySetUp : ScriptableObject
 
     // add NavMesh Configs here if needed.
 
-    //private void Start()
-    //{
-    //    targetTransform = GameObject.FindGameObjectWithTag(targetTag).GetComponent<Transform>();
-    //}
-
 
 }
