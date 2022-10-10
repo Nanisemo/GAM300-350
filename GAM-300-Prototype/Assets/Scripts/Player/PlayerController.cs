@@ -5,13 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IDamagable
 {
 
-    // DASH VARIABLES
-    public bool dashOnCoolDown;
-    public bool isInDash;
-
-    public float dashSpeed;
-    public float dashTime = 0.2f; // how long in dash animation.
-    public float dashCoolDownTime = 0.1f;
+   
 
     Vector3 externalMovement;
     Rigidbody myCartRB;
@@ -103,21 +97,20 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     #endregion
 
-
     #region Trigger Collision Stuff
 
     private void OnTriggerEnter(Collider hitInfo)
     {
 
-        if (hitInfo.CompareTag("Dash Window"))
-        {
-            if (isInDash)
-            {
-                timeSystem.TimeFracture();
-            }
-        }
+        //if (hitInfo.CompareTag("Dash Window"))
+        //{
+        //    if (isInDash)
+        //    {
+        //        timeSystem.TimeFracture();
+        //    }
+        //}
 
-        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && !isInDash)
+        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") /*&& !isInDash*/)
         {
             Enemy thisEnemy = hitInfo.gameObject.transform.parent.gameObject.GetComponent<Enemy>(); // getting script from parent obj. hurtbox is a child.
 
@@ -151,13 +144,13 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void OnTriggerStay(Collider hitInfo)
     {
-        if (hitInfo.CompareTag("Dash Window"))
-        {
-            if (isInDash)
-            {
-                timeSystem.TimeFracture();
-            }
-        }
+        //if (hitInfo.CompareTag("Dash Window"))
+        //{
+        //    if (isInDash)
+        //    {
+        //        timeSystem.TimeFracture();
+        //    }
+        //}
     }
 
     private void OnTriggerExit(Collider hitInfo)
