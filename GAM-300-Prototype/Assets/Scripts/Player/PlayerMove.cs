@@ -26,10 +26,15 @@ public class PlayerMove : MonoBehaviour
 
     bool canJump;
     bool isDashing;
+    bool jump;
+    bool dash;
 
     public Transform orientation;
+    public Transform pivotPoint;
+
     float horizontalInput;
     float verticalInput;
+
     Vector3 moveDirection;
     Rigidbody rb;
 
@@ -40,8 +45,19 @@ public class PlayerMove : MonoBehaviour
 
     public float dashDuration = 0.2f; // how long in dash animation.
     public float dashCoolDownTime = 0.5f;
+
     float dashCDTimer;
+
     public KeyCode dashKey = KeyCode.X;
+
+
+    [Header("Momentum")]
+    MovementState lastState;
+
+    float desiredSpeed;
+    float lastDesiredSpeed;
+
+    bool toKeepMomentum;
 
     #endregion
 
@@ -58,7 +74,6 @@ public class PlayerMove : MonoBehaviour
     #endregion
 
     [Header("References")]
-    //public Animator playerAnim;
     PlayerController pc;
     MeshTrailRenderer meshTrailRenderer;
 
@@ -74,20 +89,18 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         GroundCheck();
-        SpeedLimiter();
         CheckInput();
         StateHandler();
 
         if (dashCDTimer > 0) dashCDTimer -= Time.deltaTime;
-
-        if (state == MovementState.AIR) // player was too floaty after jump.
-            rb.AddForce(Vector3.down * 10f, ForceMode.Force);
-
     }
 
     void FixedUpdate()
     {
         Movement();
+
+        if (jump) Jump();
+        if (dash) Dash();
     }
 
     void CheckInput()
@@ -98,13 +111,12 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isGrounded && canJump)
         {
             canJump = false;
-            Jump();
-            Invoke(nameof(ResetJump), jumpCoolDown);
+            jump = true;
         }
 
         if (Input.GetKeyDown(dashKey))
         {
-            Dash();
+            dash = true;
         }
     }
 
@@ -119,7 +131,7 @@ public class PlayerMove : MonoBehaviour
         else if (isGrounded)
         {
             rb.drag = groundDrag;
-            canJump = true;
+            ResetJump();
 
             if (moveDirection.magnitude > 0.1f)
             {
@@ -154,40 +166,26 @@ public class PlayerMove : MonoBehaviour
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force); // ensures that the player stays on the slope
         }
 
-        if (isGrounded) rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        else if (!isGrounded) rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        if (isGrounded) rb.velocity = moveDirection.normalized * moveSpeed;
+
+        else if (!isGrounded)
+        {
+            Vector3 normalJumpVector = moveDirection.normalized;
+            rb.velocity = new Vector3(normalJumpVector.x * moveSpeed * airMultiplier, rb.velocity.y, normalJumpVector.z * moveSpeed * airMultiplier);
+        }
 
         rb.useGravity = !OnSlope(); // turning gravity on and off depending if player is on slope.
     }
 
     void GroundCheck()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundMask);
-
-    }
-
-    void SpeedLimiter()
-    {
-        if (OnSlope() && !isExitingSlope)
-        {
-            if (rb.velocity.magnitude > moveSpeed) rb.velocity = rb.velocity.normalized * moveSpeed;
-        }
-        else
-        {
-            Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-            if (flatVelocity.magnitude > moveSpeed)
-            {
-                Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
-                rb.velocity = new Vector3(limitedVelocity.x, 0f, limitedVelocity.z);
-            }
-        }
-
+        isGrounded = Physics.Raycast(pivotPoint.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundMask);
     }
 
     #region Jump Functions
     void Jump()
     {
+        jump = false;
         isExitingSlope = true;
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // reset y velo to 0 to ensure always jump same height.
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
@@ -209,6 +207,7 @@ public class PlayerMove : MonoBehaviour
         else dashCDTimer = dashCoolDownTime;
 
         isDashing = true;
+        dash = false;
 
         if (!meshTrailRenderer.isTrailActive)
         {
@@ -217,7 +216,9 @@ public class PlayerMove : MonoBehaviour
         }
 
         Vector3 dashForceToApply = orientation.forward * dashForce + orientation.up * dashUpwardsForce;
+
         delayDashForce = dashForceToApply;
+
         Invoke(nameof(DelayDashForce), 0.25f);
         Invoke(nameof(ResetDash), dashDuration);
     }
@@ -226,7 +227,6 @@ public class PlayerMove : MonoBehaviour
     void DelayDashForce()
     {
         rb.AddForce(delayDashForce, ForceMode.Impulse);
-
     }
 
     void ResetDash()
@@ -235,10 +235,11 @@ public class PlayerMove : MonoBehaviour
     }
 
     #endregion
+
     #region Slope Functions
     bool OnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHitInfo, playerHeight * 0.5f + 0.3f))
+        if (Physics.Raycast(pivotPoint.position, Vector3.down, out slopeHitInfo, playerHeight * 0.5f + 0.3f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHitInfo.normal); // calculate how steep the slope is.
             return angle > maxSlopeAngle && angle != 0; // if the angle is greatter than the max slope, return true.

@@ -208,6 +208,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     IEnumerator Aim()
     {
+        
         Quaternion lookRotation = Quaternion.LookRotation(enemyConfig.targetTransform.position - transform.position);
         float time = 0;
 

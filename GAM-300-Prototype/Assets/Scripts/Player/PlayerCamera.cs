@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public enum CameraState
 {
@@ -20,8 +21,8 @@ public class PlayerCamera : MonoBehaviour
     public Transform combatLookAt;
     public CameraState currentState;
 
-    public GameObject defaultCamera;
-    public GameObject combatCamera;
+    public CinemachineFreeLook defaultCamera;
+    public CinemachineFreeLook combatCamera;
 
     void Start()
     {
@@ -64,17 +65,17 @@ public class PlayerCamera : MonoBehaviour
     }
 
     public void ChangeCameraState(CameraState newState)
-    { 
+    {
 
         if (newState == CameraState.DEFAULT)
         {
-            defaultCamera.SetActive(true);
-            combatCamera.SetActive(false);
+            defaultCamera.Priority = 10;
+            combatCamera.Priority = 0;
         }
         if (newState == CameraState.COMBAT)
         {
-            defaultCamera.SetActive(false);
-            combatCamera.SetActive(true);
+            defaultCamera.Priority = 0;
+            combatCamera.Priority = 10;
         }
 
         currentState = newState;

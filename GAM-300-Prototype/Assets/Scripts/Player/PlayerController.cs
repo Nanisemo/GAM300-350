@@ -28,10 +28,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     public Transform VFXPoint;
 
     #region MISC
-    public GameObject timeSlowVolume;
     TimeSystem timeSystem;
-    Camera mainCam;
-
     #endregion
 
   
@@ -42,7 +39,6 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     void Start()
     {
-        timeSlowVolume.SetActive(false);
         currentHealth = maxHealth;
     }
 
