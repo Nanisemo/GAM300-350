@@ -74,6 +74,10 @@ public class PlayerMove : MonoBehaviour
 
         if (dashCDTimer > 0) dashCDTimer -= Time.deltaTime;
 
+        if (state == MovementState.AIR) // player was too floaty after jump.
+            rb.AddForce(Vector3.down * 10f, ForceMode.Force);
+
+
     }
 
     void FixedUpdate()
@@ -126,6 +130,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             rb.drag = 0f;
+
             state = MovementState.AIR;
         }
     }
@@ -191,6 +196,8 @@ public class PlayerMove : MonoBehaviour
 
     #endregion
 
+    #region Dash Functions
+
     void Dash()
     {
         if (dashCDTimer > 0) return;
@@ -222,6 +229,7 @@ public class PlayerMove : MonoBehaviour
         isDashing = false;
     }
 
+    #endregion
     #region Slope Functions
     bool OnSlope()
     {
