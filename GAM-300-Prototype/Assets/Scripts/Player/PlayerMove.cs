@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
 {
     public MovementState state;
 
+    #region Movemment
     [Header("Movement")]
     public float moveSpeed = 7f;
     public float dashSpeed = 10f;
@@ -42,6 +43,9 @@ public class PlayerMove : MonoBehaviour
     float dashCDTimer;
     public KeyCode dashKey = KeyCode.X;
 
+    #endregion
+
+    #region Ground and Slop Checks
     [Header("Ground Check")]
     public float playerHeight = 2f;
     public LayerMask groundMask;
@@ -51,15 +55,17 @@ public class PlayerMove : MonoBehaviour
     public float maxSlopeAngle = 30f;
     RaycastHit slopeHitInfo;
     bool isExitingSlope;
+    #endregion
 
-    [Header("Animator")]
-    public Animator playerAnim;
-
+    [Header("References")]
+    //public Animator playerAnim;
+    PlayerController pc;
     MeshTrailRenderer meshTrailRenderer;
 
     void Start()
     {
         canJump = true;
+        pc = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody>();
         meshTrailRenderer = GetComponent<MeshTrailRenderer>();
         rb.freezeRotation = true;
@@ -76,7 +82,6 @@ public class PlayerMove : MonoBehaviour
 
         if (state == MovementState.AIR) // player was too floaty after jump.
             rb.AddForce(Vector3.down * 10f, ForceMode.Force);
-
 
     }
 
@@ -108,29 +113,29 @@ public class PlayerMove : MonoBehaviour
         if (isDashing)
         {
             state = MovementState.DASHING;
-            playerAnim.SetTrigger("Dash");
+            pc.playerAnim.SetTrigger("Dash");
         }
 
         else if (isGrounded)
         {
             rb.drag = groundDrag;
+            canJump = true;
+
             if (moveDirection.magnitude > 0.1f)
             {
                 state = MovementState.RUNNING;
-                playerAnim.SetBool("isRunning", true);
+                pc.playerAnim.SetBool("isRunning", true);
             }
             else
             {
-                playerAnim.SetBool("isRunning", false);
+                pc.playerAnim.SetBool("isRunning", false);
                 state = MovementState.IDLE;
             }
-
 
         }
         else
         {
             rb.drag = 0f;
-
             state = MovementState.AIR;
         }
     }

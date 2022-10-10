@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IDamagable
 {
 
-   
-
     Vector3 externalMovement;
     Rigidbody myCartRB;
 
@@ -31,15 +29,12 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     #region MISC
     public GameObject timeSlowVolume;
-    MeshTrailRenderer meshTrailRenderer;
-
     TimeSystem timeSystem;
     Camera mainCam;
 
     #endregion
 
-    [SerializeField] LayerMask groundMask;
-
+  
     void Awake()
     {
         timeSystem = GameObject.Find("Game Manager").GetComponent<TimeSystem>();
@@ -47,12 +42,8 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     void Start()
     {
-
         timeSlowVolume.SetActive(false);
-        meshTrailRenderer = GetComponent<MeshTrailRenderer>();
-
         currentHealth = maxHealth;
-
     }
 
     void Update()
@@ -66,7 +57,6 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         if (Input.GetKeyDown(KeyCode.LeftShift)) ActivateBuff();
     }
-
 
     #region Health, Damage Taken & Death Functions
     void CheckHealth()
