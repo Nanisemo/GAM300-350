@@ -208,13 +208,15 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     IEnumerator Aim()
     {
-        
-        Quaternion lookRotation = Quaternion.LookRotation(enemyConfig.targetTransform.position - transform.position);
+        Vector3 relativePos = enemyConfig.targetTransform.position - transform.position;
+        relativePos.y = 0f;
+
+        Quaternion lookRotation = Quaternion.LookRotation(relativePos);
         float time = 0;
 
         while (time < 1)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, time);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, time);
             time += Time.unscaledDeltaTime;
             yield return null;
         }

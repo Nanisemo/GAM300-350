@@ -9,6 +9,7 @@ public class GlobalBool : MonoBehaviour
     public static bool isInCombat;
 
     public static List<Enemy> enemiesInCombat = new List<Enemy>();
+    public static List<RangedEnemy> rangedEnemiesInCombat = new List<RangedEnemy>();
 
     void Awake()
     {
@@ -32,6 +33,23 @@ public class GlobalBool : MonoBehaviour
         {
             // enemy not in combat, check if enemy is still accounted for in the list
             if (enemiesInCombat.Contains(enemy)) enemiesInCombat.Remove(enemy);
+        }
+    }
+
+    public static void SetInRangeCombat(RangedEnemy rangedEnemy, bool _isInCombat)
+    {
+        // in combat, check if enemy is already accounted for in the list
+        if (_isInCombat)
+        {
+            // enemy is accounted for
+            if (rangedEnemiesInCombat.Contains(rangedEnemy)) return;
+            // account for new enemy in combat
+            rangedEnemiesInCombat.Add(rangedEnemy);
+        }
+        else
+        {
+            // enemy not in combat, check if enemy is still accounted for in the list
+            if (rangedEnemiesInCombat.Contains(rangedEnemy)) rangedEnemiesInCombat.Remove(rangedEnemy);
         }
     }
 }

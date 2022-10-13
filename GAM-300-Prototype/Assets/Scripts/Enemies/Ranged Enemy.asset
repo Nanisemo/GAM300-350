@@ -7,21 +7,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b59ec2aa802c4c3459292beb5edd2d92, type: 3}
-  m_Name: Enemy 1
+  m_Name: Ranged Enemy
   m_EditorClassIdentifier: 
-  enemyName: Test Enemy
+  enemyName: Ranged Enemy
   targetTag: Player
   targetTransform: {fileID: 0}
-  health: 10
-  damage: 0.5
+  health: 3
+  damage: 1
   idleTimer: 0
-  idleDuration: 3
+  idleDuration: 10
   patrolTimer: 0
-  patrolDuration: 7
-  attackRange: 2
+  patrolDuration: 0
+  attackRange: 5
   attackInterval: 0
   detectionRange: 10
   maxChaseDistance: 5
