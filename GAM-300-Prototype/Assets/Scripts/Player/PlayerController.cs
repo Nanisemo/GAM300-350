@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamagable
 {
-
     Vector3 externalMovement;
     Rigidbody myCartRB;
 
     #region Health & Attack
 
-    bool isAttacking;
+    public bool isAttacking;
 
     public float damage = 1f;
     public float currentHealth;

@@ -61,7 +61,7 @@ public class PlayerMove : MonoBehaviour
 
     #endregion
 
-    #region Ground and Slop Checks
+    #region Ground and Slope Checks
     [Header("Ground Check")]
     public float playerHeight = 2f;
     public LayerMask groundMask;
