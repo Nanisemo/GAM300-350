@@ -1,3 +1,13 @@
+// /*!
+//  * file:		PlayerAbility.cs
+//  * author:	Neo Ting Wei Terrence
+//  * email:	neo.w@digipen.edu
+//  * project:	UnityPrototype
+//  * brief:	TODO
+//  *
+//  * Copyright © 2021 DigiPen, All rights reserved.
+//  */
+
 using UnityEngine;
 
 namespace Player
