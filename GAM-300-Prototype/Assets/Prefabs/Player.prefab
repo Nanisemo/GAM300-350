@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &786202377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 786202378}
+  m_Layer: 3
+  m_Name: VFX Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &786202378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786202377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2266143002363475668}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1211591782
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +108,7 @@ GameObject:
   - component: {fileID: 2266143002363475670}
   - component: {fileID: 2266143002363475669}
   - component: {fileID: 1929308714}
+  - component: {fileID: 1929308715}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -100,6 +132,7 @@ Transform:
   - {fileID: 2266143002114134509}
   - {fileID: 6209711242897146836}
   - {fileID: 5768775387835207377}
+  - {fileID: 786202378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,17 +178,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd3a887692b026428d1c7a601506753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   moveSpeed: 7
+  dashSpeed: 10
   groundDrag: 3
   jumpForce: 7
   jumpCoolDown: 0.25
   airMultiplier: 0.5
   orientation: {fileID: 2266143002114134509}
+  dashForce: 100
+  dashUpwardsForce: 0
+  dashDuration: 0.2
+  dashCoolDownTime: 0.7
+  dashKey: 120
   playerHeight: 1.8
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   isGrounded: 0
+  maxSlopeAngle: 30
   playerAnim: {fileID: 5627353993950017427}
 --- !u!114 &1929308714
 MonoBehaviour:
@@ -169,18 +210,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d783cbbe0e373624e9053090e5f7861b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashOnCoolDown: 0
-  isInDash: 0
-  dashSpeed: 0
-  dashTime: 0.2
-  dashCoolDownTime: 0.1
   damage: 1
   currentHealth: 0
   playerAnim: {fileID: 5627353993950017427}
+  buffVFXTest: {fileID: 7081042699788648416, guid: ddca02d265f1f7a4996816c7df3c64e7,
+    type: 3}
+  VFXPoint: {fileID: 786202378}
   timeSlowVolume: {fileID: 6209711242897146837}
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+--- !u!114 &1929308715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266143002363475667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc386f2a14eabf4593456fb3ef0638d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRefreshRate: 0.05
+  trailLifeTime: 0.2
+  isTrailActive: 0
+  player: {fileID: 1799272099344936425}
+  trailMaterial: {fileID: 2100000, guid: 36fe40e9939ebfc418755fe2e593b85c, type: 2}
+  shaderVariableRef: _Transparency
+  shaderVariableRate: 0.07
+  shaderRefreshRate: 0.01
 --- !u!1001 &2266143000868719106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,7 +265,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
         type: 3}
@@ -547,6 +606,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 72265849d05e616468a67eb435b317fa, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6240733294840144465, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
         type: 3}
       propertyPath: m_Layer
