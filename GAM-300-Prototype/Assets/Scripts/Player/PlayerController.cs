@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     public float damage = 1f;
     public float currentHealth;
-    float maxHealth = 5;
+    public float maxHealth = 5;
 
     #endregion
 

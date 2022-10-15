@@ -2,47 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    PlayerController playerController;
+    private bool
+        isCooldown = false;
 
     public float
-        player_CurrentHealth,
-        player_maxHealth;
+        cooldownTime = 5.0f,
+        cooldownTimer = 0.0f;
 
-    public Image[] hearts;
+    [SerializeField]
+    private Image
+        abilityCooldown;
 
-    public Sprite
-        fullHearts,
-        emptyHearts,
-        halfHearts;
+    [SerializeField]
+    private TMP_Text ability_cooldownText;
+
+    private void Start()
+    {
+        ability_cooldownText.gameObject.SetActive(false);
+
+        abilityCooldown.fillAmount = 0.0f;
+    }
 
     private void Update()
     {
-        // NOTE: Rmb to link currentHealth and maxhealth to the Player Controller
-        //player_CurrentHealth = GameObject.Find("Player").GetComponent("PlayerController").currentHealth;
-        //player_maxHealth = GameObject.Find("Player").GetComponent("PlayerController").maxHealth;
+        if (Input.GetKey(KeyCode.Q))
+        {
+            Debug.Log("User pressed Q");
+            isCooldown = true;
+            cooldownTimer = cooldownTime;
+            cooldownTimer -= Time.deltaTime;
 
-        HealthUI();
+            if (cooldownTimer <= 0.0f)
+            {
+                isCooldown = false;
+                cooldownTimer = 0.0f;
+                ability_cooldownText.gameObject.SetActive(false);
+                abilityCooldown.fillAmount = 0.0f;
+            } 
+            else {
+                abilityCooldown.fillAmount = cooldownTimer / cooldownTime;
+            }
+        }
     }
 
-    void HealthUI()
+    public void UseSpell()
     {
-        if (player_CurrentHealth > player_maxHealth)
-            player_CurrentHealth = player_maxHealth;
-
-        for (int i = 0; i < hearts.Length; i++)
+        if (isCooldown)
         {
-            if (i < player_CurrentHealth)
-                hearts[i].sprite = fullHearts;
-            else
-                hearts[i].sprite = emptyHearts;
-
-            if (i < player_maxHealth)
-                hearts[i].enabled = true;
-            else
-                hearts[i].enabled = false;
+            Debug.Log("user cast an ability");
+        }
+        else
+        {
+            isCooldown = true;
+            ability_cooldownText.gameObject.SetActive(true);
+            cooldownTimer = cooldownTime;
         }
     }
 }

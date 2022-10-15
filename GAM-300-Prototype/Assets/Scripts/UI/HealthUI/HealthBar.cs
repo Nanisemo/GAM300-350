@@ -6,7 +6,7 @@ public class HealthBar : MonoBehaviour
 {
     public GameObject heartPrefab;
 
-    // public PlayerController playerController;
+    public PlayerController playerController;
 
     List<Hearts> hearts = new List<Hearts>();
 
@@ -18,6 +18,11 @@ public class HealthBar : MonoBehaviour
     {
         // TODO: Link the playercontroller.currrenthealth and maxhealth to here
         // All values must x2 its value due to how the HeartStatus enum works
+
+        playerController = FindObjectOfType<PlayerController>();
+
+        maxHealth = (int)playerController.maxHealth*2;
+        currentHealth = (int)playerController.currentHealth*2;
 
         DrawHearts();
     }
