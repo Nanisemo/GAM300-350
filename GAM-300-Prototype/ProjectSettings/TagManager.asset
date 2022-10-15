@@ -13,6 +13,7 @@ TagManager:
   - Player Hitbox
   - Death Zone
   - Enemy
+  - Camera Point
   layers:
   - Default
   - TransparentFX

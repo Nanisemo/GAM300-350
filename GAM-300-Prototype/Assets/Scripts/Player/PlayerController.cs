@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
+        playerAnim.Play("Hit");
     }
 
     void PlayerDeath()
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
             TakeDamage(thisEnemy.enemyConfig.damage);
             print("ouchie ouch");
-            playerAnim.Play("Hit");
+           
         }
 
         if (hitInfo.CompareTag("Cart Handle"))
