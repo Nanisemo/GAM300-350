@@ -12,31 +12,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        pc = GetComponent<PlayerController>();
+        pc = GetComponentInParent<PlayerController>();
         attackCount = 1;
     }
     private void Update()
     {
-        if (!AnimPlaying(pc.playerAnim, "Punch 1") && !AnimPlaying(pc.playerAnim, "Punch 2") && !AnimPlaying(pc.playerAnim, "Punch 3"))
-        {
-            print("not attacking");
-            pc.isAttacking = false;
-        }
-        else
-        {
-            print("attacking");
-            pc.isAttacking = true;
-        }
-        /*if (attackCount > 1)
-        {
-            StartCoroutine("Timer");
-            attackCount = 1;
-        }*/
         Punch();
-    }
-    IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(5f);
     }
     private void Punch()
     {
@@ -47,28 +28,41 @@ public class PlayerAttack : MonoBehaviour
                 case 1:
                     if (!AnimPlaying(pc.playerAnim, "Punch 1"))
                     {
-                        pc.playerAnim.Play("Punch 1");
+                        pc.playerAnim.SetTrigger("Punch1");
                         attackCount += 1;
                     }
                     break;
                 case 2:
                     if (!AnimPlaying(pc.playerAnim, "Punch 2"))
                     {
-                        pc.playerAnim.Play("Punch 2");
+                        pc.playerAnim.CrossFade("Punch 2", 0.1f);
                         attackCount += 1;
                     }
                     break;
                 case 3:
                     if (!AnimPlaying(pc.playerAnim, "Punch 3"))
                     {
-                        pc.playerAnim.Play("Punch 3");
+                        pc.playerAnim.CrossFade("Punch 3", 0.1f);
                         attackCount = 1;
                     }
                     break;
             }
         }
     }
-
+    #region Animation Events
+    private void ResetAttack()
+    {
+        attackCount = 1;
+    }
+    private void Attack()
+    {
+        pc.isAttacking = true;
+    }
+    private void StopAttack()
+    {
+        pc.isAttacking = false;
+    }
+    #endregion
     private bool AnimPlaying(Animator anim, string animName)
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName(animName))
