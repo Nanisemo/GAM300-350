@@ -7,7 +7,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Abilities/ProjectileAbility")]
 public class RaycastAbility : Ability
 {
-    
     public int gunDamage = 1;
     public float weaponRange = 50f;
     public float hitForce = 100f;

@@ -6,7 +6,13 @@ using TMPro;
 
 public class AbilityCooldown : MonoBehaviour
 {
-    public string abilityButtonAxisName = "Fire1";
+    public enum keyboardInputs
+    {
+        Q,
+        X
+    }
+
+    public keyboardInputs abilityButton;
     public Image darkMask;
     public TMP_Text coolDownTextDisplay;
 
@@ -16,15 +22,28 @@ public class AbilityCooldown : MonoBehaviour
     private Image myButtonImage;
     // private AudioSource abilitySource;
 
-    private float 
-        coolDownDuration, 
-        nextReadyTime, 
+    private float
+        coolDownDuration,
+        nextReadyTime,
         coolDownTimeLeft;
-
 
     void Start()
     {
         Initialize(ability, weaponHolder);
+    }
+
+    public KeyCode CheckInputs(keyboardInputs keyboard)
+    {
+        switch(keyboard)
+        {
+            case keyboardInputs.Q:
+                return KeyCode.Q;
+                break;
+            case keyboardInputs.X:
+                return KeyCode.X;
+                break;
+            default: return KeyCode.None;
+        }
     }
 
     public void Initialize(Ability selectedAbility, GameObject weaponHolder)
@@ -45,8 +64,7 @@ public class AbilityCooldown : MonoBehaviour
         if (coolDownComplete)
         {
             AbilityReady();
-            // NOTE TO LIYI: LINK THE COMBO SYSTEM TO HERE 
-            if (Input.GetButton(abilityButtonAxisName))
+            if (Input.GetKeyDown(CheckInputs(abilityButton)))
             {
                 ButtonTriggered();
             }
