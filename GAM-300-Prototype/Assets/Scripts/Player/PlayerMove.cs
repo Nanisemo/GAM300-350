@@ -164,8 +164,8 @@ public class PlayerMove : MonoBehaviour
                 pc.playerAnim.SetBool("isRunning", false);
                 state = MovementState.IDLE;
             }
-
         }
+
         else if (!isGrounded)
         {
             rb.drag = 0f;
