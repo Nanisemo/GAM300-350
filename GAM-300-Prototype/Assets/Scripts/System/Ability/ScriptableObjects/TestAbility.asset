@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestAbility
   m_EditorClassIdentifier: 
   abilityName: Testing
-  abilitySprite: {fileID: 21300000, guid: 9bd90c5f4ffd6254f81b72e2937338ba, type: 3}
+  abilitySprite: {fileID: 21300000, guid: 4d0ebd6c82822fa43a428fb80388f648, type: 3}
   abilityBaseCoolDown: 5
