@@ -49,6 +49,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
+
     #region Animation Events
     private void ResetAttack()
     {

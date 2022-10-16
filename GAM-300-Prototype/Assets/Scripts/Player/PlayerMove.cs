@@ -6,6 +6,7 @@ public enum MovementState
 {
     IDLE,
     RUNNING,
+    FALLING,
     DASHING,
     AIR
 }
@@ -26,6 +27,7 @@ public class PlayerMove : MonoBehaviour
 
     bool canJump;
     bool isDashing;
+    bool isFalling;
     bool jump;
     bool dash;
 
@@ -97,7 +99,7 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        Movement();
+        if (!pc.isAttacking) Movement();
 
         if (jump) Jump();
         if (dash) Dash();
@@ -113,11 +115,28 @@ public class PlayerMove : MonoBehaviour
             canJump = false;
             jump = true;
         }
+        //  else pc.playerAnim.SetBool("isJumping", false);
 
         if (Input.GetKeyDown(dashKey))
         {
             dash = true;
         }
+
+        if (isFalling)
+        {
+            pc.playerAnim.SetBool("isFalling", true);
+        }
+        else
+        {
+            pc.playerAnim.SetBool("isFalling", false);
+        }
+
+        if (isGrounded)
+        {
+            isFalling = false;
+            pc.playerAnim.SetBool("isGrounded", true);
+        }
+        else pc.playerAnim.SetBool("isGrounded", false);
     }
 
     void StateHandler()
@@ -130,6 +149,8 @@ public class PlayerMove : MonoBehaviour
 
         else if (isGrounded)
         {
+            pc.playerAnim.SetBool("isJumping", false);
+            pc.playerAnim.SetBool("isFalling", false);
             rb.drag = groundDrag;
             ResetJump();
 
@@ -145,10 +166,18 @@ public class PlayerMove : MonoBehaviour
             }
 
         }
-        else
+        else if (!isGrounded)
         {
             rb.drag = 0f;
             state = MovementState.AIR;
+
+            pc.playerAnim.SetBool("isGrounded", false);
+
+            if (rb.velocity.y < 0)
+            {
+                state = MovementState.FALLING;
+                isFalling = true;
+            }
         }
     }
 
@@ -189,6 +218,8 @@ public class PlayerMove : MonoBehaviour
         isExitingSlope = true;
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // reset y velo to 0 to ensure always jump same height.
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        pc.playerAnim.SetBool("isJumping", true);
+
     }
 
     void ResetJump()
