@@ -7,35 +7,26 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LowHP_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: e934c2e510a37184e80270cd0aef272c,
+  m_Name: Trail_Mat 2
+  m_Shader: {fileID: -6465566751694194690, guid: 65ad769ceee10cd47a3d2dfce6f7a933,
     type: 3}
   m_ValidKeywords:
+  - _ALPHATEST_ON
   - _SURFACE_TYPE_TRANSPARENT
-  m_InvalidKeywords:
-  - ETC1_EXTERNAL_ALPHA
-  m_LightmapFlags: 4
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3000
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
-  - SHADOWCASTER
   - DepthOnly
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTexd:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: aae19bc4e4520fa47889da967df35d0c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -52,35 +43,28 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_34ED42CF: 0
-    - Vector1_3949F1CB: 17
-    - Vector1_84941AE7: 5
-    - Vector1_9B499542: 10
-    - Vector1_A1232A4D: 1
-    - Vector1_CA00940E: 1
-    - Vector1_CC902800: 3
-    - _AlphaClip: 0
+    - _AlphaClip: 1
     - _Blend: 0
-    - _CastShadows: 0
+    - _CastShadows: 1
     - _Cull: 0
     - _DstBlend: 10
-    - _EtcVoronoi: 1
-    - _Float: 0
-    - _Intensity: 60
+    - _NoisePower: 0.3
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReceiveShadows: 1
     - _SrcBlend: 5
     - _Surface: 1
-    - _Test: 1.38
+    - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - Color_67DD39F0: {r: 0.65205944, g: 0.11948734, b: 0.11948734, a: 1}
-    - Color_681F9CA3: {r: 0.7490196, g: 0.07450981, b: 0.07450981, a: 1}
-    - Vector3_482D82C7: {r: 0, g: 0, b: 0, a: 0}
+    - _Base_Color: {r: 2.828427, g: 0.17077279, b: 0.5047183, a: 1}
+    - _MainTexScrollSpeed: {r: 0.3, g: 0, b: 0, a: 0}
+    - _NoiseSpeed: {r: -0.5, g: 0, b: 0, a: 0}
+    - _Secondary_Color: {r: 1, g: 0.35534027, b: 0.19245279, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &8944435480750232480
+--- !u!114 &5412096930818124398
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
