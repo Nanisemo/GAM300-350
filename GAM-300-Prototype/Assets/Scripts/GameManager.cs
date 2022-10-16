@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOver;
+    public float deathAnimLength = 1.5f;
 
     void Start()
     {
@@ -18,14 +19,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (GlobalBool.isGameOver) DisplayGameOverUI();
+        if (GlobalBool.isGameOver) StartCoroutine(DisplayGameOverUI());
 
         // if there is at least 1 enemy in combat, set isInCombat to be true
         GlobalBool.isInCombat = (GlobalBool.enemiesInCombat.Count > 0);
     }
 
-    void DisplayGameOverUI()
+    IEnumerator DisplayGameOverUI()
     {
+        yield return new WaitForSeconds(deathAnimLength);
         gameOver.SetActive(true);
         LowHPShaderController matController = GetComponent<LowHPShaderController>();
         StartCoroutine(matController.DisableMaterial());

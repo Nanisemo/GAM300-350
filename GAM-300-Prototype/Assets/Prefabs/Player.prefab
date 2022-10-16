@@ -279,7 +279,7 @@ MonoBehaviour:
   dashSpeed: 10
   groundDrag: 3
   jumpForce: 8
-  jumpCoolDown: 1
+  jumpCoolDown: 2
   airMultiplier: 0.4
   orientation: {fileID: 2266143002114134509}
   pivotPoint: {fileID: 392169884}
