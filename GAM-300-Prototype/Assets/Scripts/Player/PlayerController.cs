@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     TimeSystem timeSystem;
     #endregion
 
-  
+
     void Awake()
     {
         timeSystem = GameObject.Find("Game Manager").GetComponent<TimeSystem>();
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         CheckHealth();
 
-        if (GlobalBool.isGameOver || GlobalBool.isPaused) return; // player unable to move if either bool is true.
+        if (GlobalBool.isGameOver || GlobalBool.isPaused || GlobalBool.isLoading) return; // player unable to move if either bool is true.
 
         if (Input.GetKeyDown(KeyCode.V)) timeSystem.TimeFracture();
 
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
             TakeDamage(thisEnemy.enemyConfig.damage);
             print("ouchie ouch");
-           
+
         }
 
         if (hitInfo.CompareTag("Cart Handle"))

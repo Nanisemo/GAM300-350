@@ -91,6 +91,9 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         GroundCheck();
+
+        if (GlobalBool.isLoading || GlobalBool.isGameOver || GlobalBool.isGameOver) return;
+
         CheckInput();
         StateHandler();
 
@@ -99,6 +102,7 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
+
         if (!pc.isAttacking) Movement();
 
         if (jump) Jump();

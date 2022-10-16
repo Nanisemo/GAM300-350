@@ -33,6 +33,8 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
+        if (GlobalBool.isGameOver || GlobalBool.isPaused || GlobalBool.isLoading) return;
+
         Vector3 viewDirection = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDirection.normalized;
 

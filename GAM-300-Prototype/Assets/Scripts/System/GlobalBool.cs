@@ -7,6 +7,7 @@ public class GlobalBool : MonoBehaviour
     public static bool isGameOver;
     public static bool isPaused;
     public static bool isInCombat;
+    public static bool isLoading;
 
     public static List<Enemy> enemiesInCombat = new List<Enemy>();
     public static List<RangedEnemy> rangedEnemiesInCombat = new List<RangedEnemy>();
@@ -16,6 +17,7 @@ public class GlobalBool : MonoBehaviour
         isGameOver = false;
         isPaused = false;
         isInCombat = false;
+        isLoading = false;
         enemiesInCombat.Clear();
     }
 

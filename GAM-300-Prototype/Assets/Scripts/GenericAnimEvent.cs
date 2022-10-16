@@ -28,4 +28,14 @@ public class GenericAnimEvent : MonoBehaviour
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void StartingScene()
+    {
+        GlobalBool.isLoading = true;
+    }
+
+    public void DoneLoading()
+    {
+        GlobalBool.isLoading = false;
+    }
 }
