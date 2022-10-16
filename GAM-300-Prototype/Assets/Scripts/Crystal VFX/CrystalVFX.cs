@@ -7,6 +7,7 @@ public class CrystalVFX : MonoBehaviour
     public Transform activationPoint;
     public GameObject activationEffect;
     public ParticleSystem activatedRingEffect;
+    public ParticleSystem upwardsStreamEffect;
     public float ringDelayDuration = 2f;
 
     bool isActivated;
@@ -32,11 +33,13 @@ public class CrystalVFX : MonoBehaviour
         if (hitInfo.CompareTag("Player"))
         {
             activatedRingEffect.Stop();
+            upwardsStreamEffect.Play();
         }
     }
 
     IEnumerator ActivateRingEffect()
     {
+        upwardsStreamEffect.Stop();
         yield return new WaitForSeconds(ringDelayDuration);
         activatedRingEffect.Play();
     }
