@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
                 case 1:
                     if (!AnimPlaying(pc.playerAnim, "Punch 1"))
                     {
-                        pc.playerAnim.SetTrigger("Punch1");
+                        pc.playerAnim.CrossFade("Punch 1", 0.05f);
                         attackCount += 1;
                     }
                     break;
