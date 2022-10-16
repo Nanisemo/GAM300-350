@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestDash
   m_EditorClassIdentifier: 
   abilityName: Dash
-  abilitySprite: {fileID: 21300000, guid: 58830361eb6d4524cb3199186aac65ef, type: 3}
+  abilitySprite: {fileID: 1074551260, guid: 1f63d9613aa228f479b6f770a49818f3, type: 3}
   abilityBaseCoolDown: 0.5

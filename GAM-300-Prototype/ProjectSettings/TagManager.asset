@@ -51,3 +51,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Postprocess
+    uniqueID: 2193002931
+    locked: 0
+  - name: UI
+    uniqueID: 1966267339
+    locked: 0
