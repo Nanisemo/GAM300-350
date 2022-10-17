@@ -32,6 +32,7 @@ public class PlayerMove : MonoBehaviour
     bool dash;
 
     public Transform orientation;
+    public Transform playerYBot;
     public Transform pivotPoint;
 
     float horizontalInput;
@@ -104,6 +105,7 @@ public class PlayerMove : MonoBehaviour
     {
 
         if (!pc.isAttacking) Movement();
+        else rb.velocity = Vector3.zero;
 
         if (jump) Jump();
         if (dash) Dash();
@@ -250,14 +252,12 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(meshTrailRenderer.RenderMeshTrail(dashDuration));
         }
 
-        Vector3 dashForceToApply = orientation.forward * dashForce + orientation.up * dashUpwardsForce;
-
+        Vector3 dashForceToApply = playerYBot.forward * dashForce + playerYBot.up * dashUpwardsForce;
         delayDashForce = dashForceToApply;
 
         Invoke(nameof(DelayDashForce), 0.25f);
         Invoke(nameof(ResetDash), dashDuration);
     }
-
 
     void DelayDashForce()
     {

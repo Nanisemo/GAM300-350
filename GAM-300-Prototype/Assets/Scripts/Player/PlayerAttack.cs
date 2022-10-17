@@ -18,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         if (GlobalBool.isLoading || GlobalBool.isGameOver || GlobalBool.isPaused) return;
-
+        print(pc.isAttacking);
         Punch();
     }
     private void Punch()
