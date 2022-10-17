@@ -39,9 +39,9 @@ public class PlayerCamera : MonoBehaviour
         orientation.forward = viewDirection.normalized;
 
         if (currentState == CameraState.DEFAULT) PlayerRotation();
-        else if (currentState == CameraState.COMBAT) CombatDirection();
+        //else if (currentState == CameraState.COMBAT) CombatDirection();
 
-        if (GlobalBool.isInCombat) ChangeCameraState(CameraState.COMBAT); else ChangeCameraState(CameraState.DEFAULT);
+       // if (GlobalBool.isInCombat) ChangeCameraState(CameraState.COMBAT); else ChangeCameraState(CameraState.DEFAULT);
 
     }
 
@@ -74,11 +74,11 @@ public class PlayerCamera : MonoBehaviour
             defaultCamera.Priority = 10;
             combatCamera.Priority = 0;
         }
-        if (newState == CameraState.COMBAT)
-        {
-            defaultCamera.Priority = 0;
-            combatCamera.Priority = 10;
-        }
+        //if (newState == CameraState.COMBAT)
+        //{
+        //    defaultCamera.Priority = 0;
+        //    combatCamera.Priority = 10;
+        //}
 
         currentState = newState;
     }
