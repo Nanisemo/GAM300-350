@@ -252,7 +252,7 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(meshTrailRenderer.RenderMeshTrail(dashDuration));
         }
 
-        Vector3 dashForceToApply = playerYBot.forward * dashForce + playerYBot.up * dashUpwardsForce;
+        Vector3 dashForceToApply = orientation.forward * dashForce + orientation.up * dashUpwardsForce;
         delayDashForce = dashForceToApply;
 
         Invoke(nameof(DelayDashForce), 0.25f);
