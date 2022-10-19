@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     void Start()
     {
         currentHealth = maxHealth;
-       // pa = GetComponent<PlayerAttack>();
+      
     }
 
     void Update()
@@ -88,14 +88,6 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-
-        //if (hitInfo.CompareTag("Dash Window"))
-        //{
-        //    if (isInDash)
-        //    {
-        //        timeSystem.TimeFracture();
-        //    }
-        //}
 
         if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && !pa.hasIFrame)
         {
@@ -146,8 +138,6 @@ public class PlayerController : MonoBehaviour, IDamagable
     {
         if (hitInfo.CompareTag("Cart"))
         {
-            // transform.SetParent(null);
-
             myCartRB = null;
             Debug.Log("remove");
         }
