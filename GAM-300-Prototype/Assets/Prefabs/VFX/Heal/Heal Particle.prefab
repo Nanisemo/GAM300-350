@@ -43,7 +43,7 @@ ParticleSystem:
   m_GameObject: {fileID: 7392462024939124752}
   serializedVersion: 8
   lengthInSec: 4
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -4897,6 +4897,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lengthInSec
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813256030337622084, guid: f2b23695ab4dd434b9aa25a32ca2b94e,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4813256030337622084, guid: f2b23695ab4dd434b9aa25a32ca2b94e,
         type: 3}

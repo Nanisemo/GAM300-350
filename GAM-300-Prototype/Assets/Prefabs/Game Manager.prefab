@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7686076228918386228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7686076228918386231}
+  - component: {fileID: 7686076228918386235}
+  - component: {fileID: 7686076228918386232}
+  - component: {fileID: 7686076228918386233}
+  - component: {fileID: 7686076228918386230}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7686076228918386231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686076228918386228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7686076228918386235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686076228918386228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16f4c373d355c9468b5a16d8413c5c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 10
+  fadeInStep: 100
+  LowHPMat: {fileID: 2100000, guid: 7bf0b46c570aa8949949213ca3fab581, type: 2}
+  featToggle: {fileID: 7686076228918386233}
+--- !u!114 &7686076228918386232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686076228918386228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d727c1d6c637eb4f8de175f359aa565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
+  deathAnimLength: 1.5
+--- !u!114 &7686076228918386233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686076228918386228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6dbd228c6a2b648b613c4b49a69a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lowHPmat:
+    feature: {fileID: -5656860549056531724, guid: c40be3174f62c4acf8c1216858c64956,
+      type: 2}
+    isEnabled: 0
+  pipelineAsset: {fileID: 11400000, guid: 7b7fd9122c28c4d15b667c7040e3b3fd, type: 2}
+--- !u!114 &7686076228918386230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686076228918386228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196cdca29a4a38d448399efb1668dd45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicsFrameRate: 200
+  timeFractureDuration: 3
+  timeSlowFactor: 0.05
+  timeFractureCoolDown: 10
+  coolDownTimer: 0
+  timeSlowVolume: {fileID: 0}
+  volAnim: {fileID: 0}

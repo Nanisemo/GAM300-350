@@ -237,7 +237,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2266143002363475667}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 62d03a3d74b03604a93148886522353e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d783cbbe0e373624e9053090e5f7861b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pa: {fileID: 743865080}
   isAttacking: 0
   damage: 1
   currentHealth: 0
@@ -284,6 +285,7 @@ MonoBehaviour:
   jumpCoolDown: 2
   airMultiplier: 0.4
   orientation: {fileID: 2266143002114134509}
+  playerYBot: {fileID: 1799272099344936425}
   pivotPoint: {fileID: 392169884}
   dashForce: 100
   dashUpwardsForce: 0
@@ -354,6 +356,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 786202378}
     m_Modifications:
+    - target: {fileID: 6081131884246985445, guid: 39e1500b3d394e748a6bf87514e9a167,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081131884246985445, guid: 39e1500b3d394e748a6bf87514e9a167,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6081131884246985445, guid: 39e1500b3d394e748a6bf87514e9a167,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7392462024939124752, guid: 39e1500b3d394e748a6bf87514e9a167,
         type: 3}
       propertyPath: m_Name
@@ -363,6 +380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392462024939124758, guid: 39e1500b3d394e748a6bf87514e9a167,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7392462024939124759, guid: 39e1500b3d394e748a6bf87514e9a167,
         type: 3}
@@ -382,7 +404,7 @@ PrefabInstance:
     - target: {fileID: 7392462024939124759, guid: 39e1500b3d394e748a6bf87514e9a167,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.238
       objectReference: {fileID: 0}
     - target: {fileID: 7392462024939124759, guid: 39e1500b3d394e748a6bf87514e9a167,
         type: 3}
@@ -452,7 +474,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.37
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
         type: 3}
@@ -795,6 +817,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 72265849d05e616468a67eb435b317fa, type: 2}
     - target: {fileID: 5866666021909216657, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
         type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
+        type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
@@ -863,6 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b477b4f75dd524aa09609639ef8d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasIFrame: 0
 --- !u!4 &1799272099344936425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,
@@ -972,10 +1000,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 786202378}
     m_Modifications:
+    - target: {fileID: 4571639041451461914, guid: ee6a34706143d104a97b9418ed11f77a,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6284793444457775252, guid: ee6a34706143d104a97b9418ed11f77a,
         type: 3}
       propertyPath: simulationSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284793444457775252, guid: ee6a34706143d104a97b9418ed11f77a,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7936589712245500492, guid: ee6a34706143d104a97b9418ed11f77a,
         type: 3}
@@ -986,6 +1024,11 @@ PrefabInstance:
         type: 3}
       propertyPath: simulationSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936589712245500494, guid: ee6a34706143d104a97b9418ed11f77a,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.19215687
       objectReference: {fileID: 0}
     - target: {fileID: 7936589713367839507, guid: ee6a34706143d104a97b9418ed11f77a,
         type: 3}
