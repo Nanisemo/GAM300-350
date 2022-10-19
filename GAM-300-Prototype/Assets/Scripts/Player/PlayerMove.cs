@@ -252,8 +252,21 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(meshTrailRenderer.RenderMeshTrail(dashDuration));
         }
 
-        Vector3 dashForceToApply = orientation.forward * dashForce + orientation.up * dashUpwardsForce;
-        delayDashForce = dashForceToApply;
+        Vector3 dashDirection = GetDashDirection(orientation);
+
+        if (dashDirection.magnitude != 0)
+        {
+            Vector3 dashForceToApply = dashDirection * dashForce + orientation.up * dashUpwardsForce;
+            delayDashForce = dashForceToApply;
+        }
+        else
+        {
+            Vector3 dashForceToApply = orientation.forward * dashForce + orientation.up * dashUpwardsForce;
+            delayDashForce = dashForceToApply;
+        }
+
+
+
 
         Invoke(nameof(DelayDashForce), 0.25f);
         Invoke(nameof(ResetDash), dashDuration);
@@ -267,6 +280,18 @@ public class PlayerMove : MonoBehaviour
     void ResetDash()
     {
         isDashing = false;
+    }
+
+    Vector3 GetDashDirection(Transform forward)
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 direction = new Vector3();
+
+        direction = forward.forward * vertical + forward.right * horizontal;
+
+        return direction.normalized;
     }
 
     #endregion

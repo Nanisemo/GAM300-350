@@ -4678,6 +4678,7 @@ GameObject:
   - component: {fileID: 269015753}
   - component: {fileID: 269015752}
   - component: {fileID: 269015751}
+  - component: {fileID: 269015755}
   m_Layer: 0
   m_Name: Fade Canvas
   m_TagString: Untagged
@@ -4787,6 +4788,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &269015755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269015749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: febb06ed19b364c46bb0c714d9cb735a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &270882323
 GameObject:
   m_ObjectHideFlags: 0
@@ -11249,7 +11262,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379873960}
-  m_LocalRotation: {x: 0.08983708, y: -0.000000008568404, z: 7.7288564e-10, w: 0.9959565}
+  m_LocalRotation: {x: 0.089837074, y: 0.000000008568404, z: -7.728856e-10, w: 0.9959565}
   m_LocalPosition: {x: -1.71, y: 1.5, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20154,7 +20167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &824548979
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -20207,7 +20220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 824548979}
-  enemyConfig: {fileID: 0}
+  enemyConfig: {fileID: 11400000, guid: 26fe71fc9d8cf4f4caf0181b23c9b3a0, type: 2}
   state: 0
   moveSpeed: 0
   wayPointArray: []
@@ -20334,7 +20347,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832920820}
-  m_LocalRotation: {x: 0.08983708, y: -0.0000000042842014, z: 3.864427e-10, w: 0.9959565}
+  m_LocalRotation: {x: 0.089837074, y: 0.0000000042842014, z: -3.864427e-10, w: 0.9959565}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25660,6 +25673,7 @@ Transform:
   - {fileID: 1680060017}
   - {fileID: 556412662}
   - {fileID: 1247269134}
+  - {fileID: 1917197146}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39774,6 +39788,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1916053429}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1917197145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1917197146}
+  - component: {fileID: 1917197147}
+  m_Layer: 0
+  m_Name: Time Slow Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1917197146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917197145}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1190679362}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1917197147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917197145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 1
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 607733d5236251d4eb0bda105fae32cd, type: 2}
 --- !u!1001 &1919904067
 PrefabInstance:
   m_ObjectHideFlags: 0
