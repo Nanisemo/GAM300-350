@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour, IDamagable
     Vector3 externalMovement;
     Rigidbody myCartRB;
 
+    public PlayerAttack pa;
+
     #region Health & Attack
 
     public bool isAttacking;
@@ -17,19 +19,17 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     #endregion
 
-
     #region Animation
 
     public Animator playerAnim;
     #endregion
 
-    public GameObject buffVFXTest;
-    public Transform VFXPoint;
-
     #region MISC
     TimeSystem timeSystem;
-    #endregion
 
+    public GameObject buffVFXTest;
+    public Transform VFXPoint;
+    #endregion
 
     void Awake()
     {
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     void Start()
     {
         currentHealth = maxHealth;
+       // pa = GetComponent<PlayerAttack>();
     }
 
     void Update()
@@ -96,13 +97,18 @@ public class PlayerController : MonoBehaviour, IDamagable
         //    }
         //}
 
-        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") /*&& !isInDash*/)
+        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && !pa.hasIFrame)
         {
             Enemy thisEnemy = hitInfo.gameObject.transform.parent.gameObject.GetComponent<Enemy>(); // getting script from parent obj. hurtbox is a child.
 
             TakeDamage(thisEnemy.enemyConfig.damage);
             print("ouchie ouch");
 
+        }
+
+        else if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && pa.hasIFrame)
+        {
+            timeSystem.TimeFracture();
         }
 
         if (hitInfo.CompareTag("Cart Handle"))
@@ -130,13 +136,10 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void OnTriggerStay(Collider hitInfo)
     {
-        //if (hitInfo.CompareTag("Dash Window"))
-        //{
-        //    if (isInDash)
-        //    {
-        //        timeSystem.TimeFracture();
-        //    }
-        //}
+        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && pa.hasIFrame)
+        {
+            timeSystem.TimeFracture();
+        }
     }
 
     private void OnTriggerExit(Collider hitInfo)

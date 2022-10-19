@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class TimeSystem : MonoBehaviour
 {
-    public GameObject timeSlowVolume;
+    // public GameObject timeSlowVolume;
     public int physicsFrameRate = 200;
 
     private float physicsDeltaTime;
@@ -30,16 +32,30 @@ public class TimeSystem : MonoBehaviour
 
     #endregion
 
+    #region Time Slow Volume
+
+    public Volume timeSlowVolume;
+    public Animator volAnim;
+
+    float minWeight = 0;
+    #endregion
+
     void Awake()
     {
         physicsDeltaTime = 1 / (float)physicsFrameRate;
     }
 
+    private void Start()
+    {
+        timeSlowVolume.weight = minWeight;
+    }
 
     void Update()
     {
+        if (GlobalBool.isPaused) volAnim.updateMode = AnimatorUpdateMode.Normal; else volAnim.updateMode = AnimatorUpdateMode.UnscaledTime;
         if (toStartNormalisingTime) RevertTime();
         if (toStartCoolDown) StartCountDown();
+
     }
 
     public void TimeFracture()
@@ -58,7 +74,9 @@ public class TimeSystem : MonoBehaviour
     {
         print("!");
         isActive = true;
-        timeSlowVolume.SetActive(true);
+       
+        volAnim.SetTrigger("MaxWeight");
+    
         Time.timeScale = timeSlowFactor; // slows down time by 20 times.
         Time.fixedDeltaTime = Time.timeScale * physicsDeltaTime;
 
@@ -73,7 +91,9 @@ public class TimeSystem : MonoBehaviour
         if (Time.timeScale > 0.98f)
         {
             isActive = false;
-            timeSlowVolume.SetActive(false);
+         
+            volAnim.SetTrigger("MinWeight");
+
             print("time fracture ended!");
             Time.timeScale = normalTimeScale;
             Time.fixedDeltaTime = physicsDeltaTime;

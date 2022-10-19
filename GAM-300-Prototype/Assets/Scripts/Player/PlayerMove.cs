@@ -245,6 +245,7 @@ public class PlayerMove : MonoBehaviour
 
         isDashing = true;
         dash = false;
+        pc.pa.ActivateIFrames(); // player cannot take damage when in dash.
 
         if (!meshTrailRenderer.isTrailActive)
         {
@@ -265,9 +266,6 @@ public class PlayerMove : MonoBehaviour
             delayDashForce = dashForceToApply;
         }
 
-
-
-
         Invoke(nameof(DelayDashForce), 0.25f);
         Invoke(nameof(ResetDash), dashDuration);
     }
@@ -280,6 +278,7 @@ public class PlayerMove : MonoBehaviour
     void ResetDash()
     {
         isDashing = false;
+        pc.pa.DeActivateIFrames(); // player can resume to take damage.
     }
 
     Vector3 GetDashDirection(Transform forward)

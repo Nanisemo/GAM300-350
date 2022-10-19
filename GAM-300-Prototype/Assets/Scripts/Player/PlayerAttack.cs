@@ -6,18 +6,27 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("References")]
     PlayerController pc;
+    Animator anim;
 
     [Header("Variables")]
     int attackCount;
+    public bool hasIFrame;
 
     private void Start()
     {
         pc = GetComponentInParent<PlayerController>();
+        anim = GetComponent<Animator>();
         attackCount = 1;
     }
     private void Update()
     {
-        if (GlobalBool.isLoading || GlobalBool.isGameOver || GlobalBool.isPaused) return;
+        if (GlobalBool.isLoading || GlobalBool.isGameOver || GlobalBool.isPaused)
+        {
+            anim.updateMode = AnimatorUpdateMode.Normal;
+            return;
+        }
+        else anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+
         print(pc.isAttacking);
         Punch();
     }
@@ -64,6 +73,16 @@ public class PlayerAttack : MonoBehaviour
     private void StopAttack()
     {
         pc.isAttacking = false;
+    }
+
+    public void ActivateIFrames()
+    {
+        hasIFrame = true;
+    }
+
+    public void DeActivateIFrames()
+    {
+        hasIFrame = false;
     }
     #endregion
     private bool AnimPlaying(Animator anim, string animName)
