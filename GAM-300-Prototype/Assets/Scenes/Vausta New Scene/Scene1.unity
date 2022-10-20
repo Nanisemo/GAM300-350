@@ -3347,7 +3347,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210994101}
-  m_LocalRotation: {x: 0.08107325, y: 1e-45, z: -0, w: 0.99670815}
+  m_LocalRotation: {x: 0.08107324, y: 1e-45, z: -0, w: 0.99670815}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11487,7 +11487,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379873960}
-  m_LocalRotation: {x: 0.08983708, y: 0.000000008568404, z: -7.7288564e-10, w: 0.9959565}
+  m_LocalRotation: {x: 0.08983708, y: 0.000000008569667, z: -7.729995e-10, w: 0.9959565}
   m_LocalPosition: {x: -1.71, y: 1.5, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18775,7 +18775,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737364060}
-  m_LocalRotation: {x: 0.13378079, y: -1e-45, z: -0, w: 0.99101096}
+  m_LocalRotation: {x: 0.13378079, y: 7.36943e-23, z: 1.5828892e-23, w: 0.99101096}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20478,7 +20478,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832920820}
-  m_LocalRotation: {x: 0.08983708, y: 0.0000000042842014, z: -3.864427e-10, w: 0.9959565}
+  m_LocalRotation: {x: 0.08983708, y: 0.00000000428673, z: -3.8667083e-10, w: 0.9959565}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23812,38 +23812,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 835087102}
     m_Modifications:
-    - target: {fileID: 454418217, guid: 32ae02e679742f74f9bffc998ac1be9c, type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 454418217, guid: 32ae02e679742f74f9bffc998ac1be9c, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2353598350881177668, guid: 32ae02e679742f74f9bffc998ac1be9c,
         type: 3}
       propertyPath: m_Name
       value: Crystal Particles
-      objectReference: {fileID: 0}
-    - target: {fileID: 4267787063784306230, guid: 32ae02e679742f74f9bffc998ac1be9c,
-        type: 3}
-      propertyPath: ShapeModule.angle
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4267787063784306230, guid: 32ae02e679742f74f9bffc998ac1be9c,
-        type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4267787063784306230, guid: 32ae02e679742f74f9bffc998ac1be9c,
-        type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4267787063784306230, guid: 32ae02e679742f74f9bffc998ac1be9c,
-        type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7306984841135341646, guid: 32ae02e679742f74f9bffc998ac1be9c,
         type: 3}
@@ -43027,6 +42999,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1190679362}
     m_Modifications:
+    - target: {fileID: 872118076891250035, guid: 1bc804f14f523ea4d96eb1127b3a12ff,
+        type: 3}
+      propertyPath: weight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 872118077954687137, guid: 1bc804f14f523ea4d96eb1127b3a12ff,
         type: 3}
       propertyPath: m_Name

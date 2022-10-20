@@ -254,7 +254,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     {
         state = EnemyState.DEAD;
         isKilled = true;
-        GlobalBool.isInCombat = false; 
+        GlobalBool.isInCombat = false;
         SetAggro(false);
         agent.isStopped = true;
         enemyAnimator.SetBool("isAttacking", false);
@@ -274,7 +274,8 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         if (hitInfo.gameObject.CompareTag("Player Hitbox"))
         {
             PlayerController player = hitInfo.GetComponentInParent<PlayerController>();
-            Instantiate(hitImpactPrefab, hitInfo.transform.position, Quaternion.identity);
+            Vector3 hitPointPos = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y + 1, hitInfo.transform.position.z);
+            Instantiate(hitImpactPrefab, hitPointPos, Quaternion.identity);
             TakeDamage(player.damage);
             print("enemy ouchie ouch");
         }
