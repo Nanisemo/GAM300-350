@@ -14,6 +14,7 @@ TagManager:
   - Death Zone
   - Enemy
   - Camera Point
+  - Enemy Regular Bullet
   layers:
   - Default
   - TransparentFX

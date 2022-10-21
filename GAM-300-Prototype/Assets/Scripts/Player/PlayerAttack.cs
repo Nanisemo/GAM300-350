@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("References")]
     PlayerController pc;
+    PlayerMove pm;
     Animator anim;
 
     [Header("Variables")]
@@ -15,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         pc = GetComponentInParent<PlayerController>();
+        pm = GetComponentInParent<PlayerMove>();
         anim = GetComponent<Animator>();
         attackCount = 1;
     }
@@ -27,8 +29,8 @@ public class PlayerAttack : MonoBehaviour
         }
         else anim.updateMode = AnimatorUpdateMode.UnscaledTime;
 
-        print(pc.isAttacking);
-        Punch();
+        if (pm.isGrounded) Punch();
+        else return;
     }
     private void Punch()
     {

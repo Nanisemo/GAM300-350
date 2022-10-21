@@ -7,17 +7,6 @@ public class RegularBullet : MonoBehaviour
     public GameObject hitImpactPrefab;
     public EnemySetUp enemyConfig;
 
-    void Start()
-    {
-
-    }
-
-
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider hitInfo)
     {
         if (hitInfo != null)
@@ -26,11 +15,11 @@ public class RegularBullet : MonoBehaviour
             HitImpact();
         }
 
-        if (hitInfo.CompareTag("Player"))
-        {
-            PlayerController player = hitInfo.gameObject.GetComponent<PlayerController>();
-            player.TakeDamage(enemyConfig.damage);
-        }
+        //if (hitInfo.CompareTag("Player"))
+        //{
+        //    PlayerController player = hitInfo.gameObject.GetComponent<PlayerController>();
+        //    player.TakeDamage(enemyConfig.damage);
+        //}
     }
 
     void HitImpact()

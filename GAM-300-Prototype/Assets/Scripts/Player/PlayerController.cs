@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     void Start()
     {
         currentHealth = maxHealth;
-      
+
     }
 
     void Update()
@@ -98,10 +98,18 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         }
 
-        else if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && pa.hasIFrame)
+        if (hitInfo.gameObject.CompareTag("Enemy Regular Bullet") && !pa.hasIFrame)
+        {
+            RegularBullet thisRangedEnemyBullet = hitInfo.gameObject.GetComponent<RegularBullet>();
+            TakeDamage(thisRangedEnemyBullet.enemyConfig.damage);
+            print("bullet ouchie ouch");
+        }
+
+        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && pa.hasIFrame || hitInfo.gameObject.CompareTag("Enemy Regular Bullet") && pa.hasIFrame)
         {
             timeSystem.TimeFracture();
         }
+
 
         if (hitInfo.CompareTag("Cart Handle"))
         {
@@ -128,7 +136,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void OnTriggerStay(Collider hitInfo)
     {
-        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && pa.hasIFrame)
+        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && pa.hasIFrame || hitInfo.gameObject.CompareTag("Enemy Regular Bullet") && pa.hasIFrame)
         {
             timeSystem.TimeFracture();
         }

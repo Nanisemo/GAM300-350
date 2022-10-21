@@ -26,14 +26,18 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     public RangeEnemyState state = RangeEnemyState.IDLE;
 
     [SerializeField] float moveSpeed;
+    [SerializeField] float damageTimeOut = 1f;
     [SerializeField] Transform[] wayPointArray;
 
     float health;
 
     bool hasReachedDestination;
 
+    public GameObject hitImpactPrefab;
+    Animator anim;
+
     public bool isKilled,
-            isStunned;
+            isStunned, damageTaken;
 
     [Header("Shooting")]
     // public GameObject bulletPrefab;
@@ -69,6 +73,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
         enemyConfig.patrolTimer = 0f;
         bulletLeft = maxBullet;
         enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -128,12 +133,12 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
     public void ReloadBehaviour()
     {
-
+        // for any VFX or Anim
     }
 
     public void ChaseBehaviour()
     {
-
+        SetAggro(true);
     }
 
     public void AttackBehaviour()
@@ -173,7 +178,29 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
         state = RangeEnemyState.DEAD;
         isKilled = true;
+        anim.Play("Death");
         FreezePosition();
+    }
+
+    private void OnTriggerEnter(Collider hitInfo)
+    {
+        if (hitInfo.gameObject.CompareTag("Player Hitbox") && !damageTaken && !isKilled)
+        {
+            damageTaken = true;
+            StartCoroutine(DamageFrameDelay());
+            PlayerController player = hitInfo.GetComponentInParent<PlayerController>();
+            Vector3 hitPointPos = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y + 1, hitInfo.transform.position.z);
+            Instantiate(hitImpactPrefab, hitPointPos, transform.rotation);
+            TakeDamage(player.damage);
+
+            print("ranged enemy ouchie ouch");
+        }
+    }
+
+    IEnumerator DamageFrameDelay()
+    {
+        yield return new WaitForSecondsRealtime(damageTimeOut);
+        damageTaken = false;
     }
 
     #endregion

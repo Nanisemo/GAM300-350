@@ -272,7 +272,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-        if (hitInfo.gameObject.CompareTag("Player Hitbox") && !damageTaken)
+        if (hitInfo.gameObject.CompareTag("Player Hitbox") && !damageTaken && !isKilled)
         {
             damageTaken = true;
             StartCoroutine(DamageFrameDelay());
@@ -287,7 +287,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     IEnumerator DamageFrameDelay()
     {
-        yield return new WaitForSeconds(damageTimeOut);
+        yield return new WaitForSecondsRealtime(damageTimeOut);
         damageTaken = false;
     }
 

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1180774766561235462}
   m_Layer: 0
   m_Name: Ranged Projectile
-  m_TagString: Untagged
+  m_TagString: Enemy Regular Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9442f0931c6ee8d42bd05c624865bdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitImpactPrefab: {fileID: 3651984596919297697, guid: 495e11e103bb1c04f8eedd7ff4d43662,
+  hitImpactPrefab: {fileID: 3651984596919297697, guid: e641c732f937aba47b65d540288684af,
     type: 3}
   enemyConfig: {fileID: 11400000, guid: 26fe71fc9d8cf4f4caf0181b23c9b3a0, type: 2}
 --- !u!96 &1180774766561235462
