@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     [SerializeField] float moveSpeed;
     [SerializeField] float chaseSpeed;
+    [SerializeField] float damageTimeOut = 1f;
     float health;
 
     [SerializeField] Animator enemyAnimator;
@@ -34,7 +35,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     public GameObject hitImpactPrefab;
 
     public bool isKilled,
-                isStunned;
+                isStunned, damageTaken;
 
     void Awake()
     {
@@ -271,14 +272,23 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-        if (hitInfo.gameObject.CompareTag("Player Hitbox"))
+        if (hitInfo.gameObject.CompareTag("Player Hitbox") && !damageTaken)
         {
+            damageTaken = true;
+            StartCoroutine(DamageFrameDelay());
             PlayerController player = hitInfo.GetComponentInParent<PlayerController>();
             Vector3 hitPointPos = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y + 1, hitInfo.transform.position.z);
-            Instantiate(hitImpactPrefab, hitPointPos, Quaternion.identity);
+            Instantiate(hitImpactPrefab, hitPointPos, transform.rotation);
             TakeDamage(player.damage);
+
             print("enemy ouchie ouch");
         }
+    }
+
+    IEnumerator DamageFrameDelay()
+    {
+        yield return new WaitForSeconds(damageTimeOut);
+        damageTaken = false;
     }
 
 }
