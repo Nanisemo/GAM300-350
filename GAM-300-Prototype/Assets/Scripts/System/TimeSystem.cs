@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 public class TimeSystem : MonoBehaviour
 {
@@ -26,9 +25,6 @@ public class TimeSystem : MonoBehaviour
 
     bool toStartNormalisingTime;
     bool toStartCoolDown;
-
-
-
 
     #endregion
 

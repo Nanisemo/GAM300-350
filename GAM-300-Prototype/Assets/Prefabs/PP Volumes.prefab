@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107764490}
   - component: {fileID: 1107764491}
+  - component: {fileID: 1504629271}
   m_Layer: 0
   m_Name: Poison Volume
   m_TagString: Untagged
@@ -49,6 +50,26 @@ MonoBehaviour:
   blendDistance: 0
   weight: 0
   sharedProfile: {fileID: 11400000, guid: a9154b0f028858c41aead894de651a25, type: 2}
+--- !u!95 &1504629271
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107764489}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d86762ec638c99498e46385f2756812, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &872118076489692965
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 1
+  priority: 0
   blendDistance: 0
   weight: 0
   sharedProfile: {fileID: 11400000, guid: 607733d5236251d4eb0bda105fae32cd, type: 2}
