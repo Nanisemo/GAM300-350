@@ -518,6 +518,12 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6963619352836507092, guid: 3521b855a062d6040bf3476849b8cd1f,
         type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 48614283c61a4a544b7569f96766ba74,
+        type: 2}
+    - target: {fileID: 6963619352836507092, guid: 3521b855a062d6040bf3476849b8cd1f,
+        type: 3}
       propertyPath: weaponHolder
       value: 
       objectReference: {fileID: 1955867691}

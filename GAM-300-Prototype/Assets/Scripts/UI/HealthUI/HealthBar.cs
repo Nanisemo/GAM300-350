@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
 
     List<Hearts> hearts = new List<Hearts>();
 
-    public int
+    public float
         maxHealth,
         currentHealth;
 
@@ -18,8 +18,8 @@ public class HealthBar : MonoBehaviour
     {
         playerController = FindObjectOfType<PlayerController>();
 
-        maxHealth = (int)playerController.maxHealth*2;
-        currentHealth = (int)playerController.currentHealth*2;
+        maxHealth = playerController.maxHealth*2;
+        currentHealth = playerController.currentHealth*2;
 
         DrawHearts();
     }
