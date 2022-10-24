@@ -189,7 +189,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
             damageTaken = true;
             StartCoroutine(DamageFrameDelay());
             PlayerController player = hitInfo.GetComponentInParent<PlayerController>();
-            Vector3 hitPointPos = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y + 1, hitInfo.transform.position.z);
+            Vector3 hitPointPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             Instantiate(hitImpactPrefab, hitPointPos, transform.rotation);
             TakeDamage(player.damage);
 

@@ -59,10 +59,10 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Base_Color: {r: 0.17801042, g: 0, b: 0.5312495, a: 1}
+    - _Base_Color: {r: 0, g: 0.09574651, b: 5.960785, a: 1}
     - _MainTexScrollSpeed: {r: 0.3, g: 0, b: 0, a: 0}
     - _NoiseSpeed: {r: -0.5, g: 0, b: 0, a: 0}
-    - _Secondary_Color: {r: 0, g: 0.1981132, b: 0.12180292, a: 1}
+    - _Secondary_Color: {r: 0, g: 0.43711543, b: 0.26899412, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5412096930818124398
 MonoBehaviour:
