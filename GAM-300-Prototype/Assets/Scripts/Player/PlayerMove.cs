@@ -116,6 +116,11 @@ public class PlayerMove : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+        if (Input.GetMouseButton(1))
+        {
+            pc.playerAnim.SetTrigger("isInteract");
+        }
+
         if (Input.GetKey(KeyCode.Space) && isGrounded && canJump)
         {
             canJump = false;
