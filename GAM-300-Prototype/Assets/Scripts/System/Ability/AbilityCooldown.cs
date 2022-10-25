@@ -16,7 +16,8 @@ public class AbilityCooldown : MonoBehaviour
     public Image darkMask;
     public TMP_Text coolDownTextDisplay;
 
-    [SerializeField] private Ability ability;
+    public Ability ability;
+
     [SerializeField] private GameObject weaponHolder;
 
     private Image myButtonImage;
@@ -60,6 +61,8 @@ public class AbilityCooldown : MonoBehaviour
 
     void Update()
     {
+        CheckImageSprite();
+
         bool coolDownComplete = (Time.time > nextReadyTime);
         if (coolDownComplete)
         {
@@ -99,5 +102,11 @@ public class AbilityCooldown : MonoBehaviour
         //abilitySource.clip = ability.abilitySound;
         //abilitySource.Play();
         ability.TriggerAbility();
+    }
+
+    private void CheckImageSprite()
+    {
+        myButtonImage = GetComponent<Image>();
+        myButtonImage.sprite = ability.abilitySprite;
     }
 }
