@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         health = enemyConfig.health;
         moveSpeed = agent.speed;
         enemyConfig.idleTimer = 0f;
-        enemyConfig.patrolTimer = 0f;
+        //enemyConfig.patrolTimer = 0f;
         enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
 
     }
@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         agent.speed = moveSpeed;
         SetAggro(false);
 
-        if (enemyConfig.idleTimer >= enemyConfig.idleDuration)
+        if (enemyConfig.idleTimer >= enemyConfig.idleDuration) // after idle timer has elapsed, set state to patrol.
         {
             state = EnemyState.PATROL;
             enemyAnimator.SetBool("isPatrol", true);

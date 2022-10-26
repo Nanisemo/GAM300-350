@@ -21,13 +21,16 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     // MOVES AWAY FROM PLAYER WHEN PLAYER IS TOO CLOSE.
     // LONGER IDLE AND SHORTER PATROL ROUTES.
 
+    [Header("AI Configs")]
     public NavMeshAgent agent;
     public EnemySetUp enemyConfig;
     public RangeEnemyState state = RangeEnemyState.IDLE;
 
     [SerializeField] float moveSpeed;
+    [SerializeField] float chaseSpeed;
     [SerializeField] float damageTimeOut = 1f;
     [SerializeField] Transform[] wayPointArray;
+    public int index;
 
     float health;
 
@@ -56,6 +59,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     bool canShoot;
     bool isReloading;
 
+    [Header("Others")]
     public Transform firePoint;
     public GameObject bulletPrefab;
 
@@ -69,8 +73,10 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
         canShoot = true;
         health = enemyConfig.health;
         moveSpeed = agent.speed;
+
         enemyConfig.idleTimer = 0f;
-        enemyConfig.patrolTimer = 0f;
+        //enemyConfig.patrolTimer = 0f;
+
         bulletLeft = maxBullet;
         enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
         anim = GetComponent<Animator>();
@@ -79,6 +85,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     void Update()
     {
         if (GlobalBool.isGameOver || GlobalBool.isPaused) return;
+
 
         if (!isKilled)
         {
@@ -106,15 +113,18 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     {
         if (Vector3.Distance(enemyConfig.targetTransform.position, transform.position) <= enemyConfig.detectionRange)
         {
-            print("in detection range");
+
             return true;
         }
-        else
+        else if (state == RangeEnemyState.ATTACK) // return AI back to patrol state if out of detection range
         {
-            //enemyAnimator.SetBool("isAttacking", false);
             state = RangeEnemyState.PATROL;
+            UnFreezePosition();
+
             return false;
         }
+
+        return false;
 
     }
 
@@ -123,12 +133,48 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     #region Behaviour Logic
     public void IdleBehaviour()
     {
+        enemyConfig.idleTimer += Time.deltaTime;
+        agent.speed = moveSpeed;
         SetAggro(false);
+        UnFreezePosition();
+
+        if (enemyConfig.idleTimer >= enemyConfig.idleDuration) // after idle timer has elapsed, set state to patrol.
+        {
+            state = RangeEnemyState.PATROL;
+            //  enemyAnimator.SetBool("isPatrol", true);
+            hasReachedDestination = false;
+            enemyConfig.idleTimer = 0f;
+        }
+
     }
 
     public void PatrolBehaviour()
     {
         SetAggro(false);
+
+        if (Vector3.Distance(wayPointArray[index].position, transform.position) > enemyConfig.maxChaseDistance) agent.speed = chaseSpeed; else agent.speed = moveSpeed;
+
+        if (agent.remainingDistance <= agent.stoppingDistance && !hasReachedDestination)
+        {
+
+            agent.SetDestination(wayPointArray[index].position);
+
+            if (Vector3.Distance(wayPointArray[index].position, transform.position) <= 1f)
+            {
+                index++;
+                hasReachedDestination = true;
+
+                if (index > wayPointArray.Length - 1)
+                {
+                    index = 0;
+                }
+            }
+        }
+
+        if (hasReachedDestination)
+        {
+            state = RangeEnemyState.IDLE;
+        }
     }
 
     public void ReloadBehaviour()
@@ -245,7 +291,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
     void Shoot()
     {
-        UnFreezePosition();
+        FreezePosition();
 
         if (canShoot && !isReloading)
         {
@@ -275,7 +321,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
     IEnumerator Reload()
     {
-        FreezePosition();
+        //FreezePosition();
         isReloading = true;
 
         bulletLeft = maxBullet;

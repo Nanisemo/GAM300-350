@@ -17,11 +17,11 @@ public class EnemySetUp : ScriptableObject
     public float idleTimer;
     public float idleDuration;
 
-    public float patrolTimer;
-    public float patrolDuration;
+    //public float patrolTimer;
+    //public float patrolDuration;
 
     public float attackRange;
-    public float attackInterval;
+   // public float attackInterval;
 
     public float detectionRange;
 

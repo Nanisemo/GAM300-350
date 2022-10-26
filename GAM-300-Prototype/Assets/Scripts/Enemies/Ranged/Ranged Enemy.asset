@@ -18,9 +18,9 @@ MonoBehaviour:
   health: 3
   damage: 1
   idleTimer: 0
-  idleDuration: 10
+  idleDuration: 7
   patrolTimer: 0
-  patrolDuration: 0
+  patrolDuration: 14
   attackRange: 5
   attackInterval: 0
   detectionRange: 10

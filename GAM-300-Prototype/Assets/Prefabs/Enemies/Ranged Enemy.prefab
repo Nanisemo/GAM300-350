@@ -284,7 +284,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.7
-  m_BaseOffset: 0.27
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4857570716423673041
@@ -303,8 +303,13 @@ MonoBehaviour:
   enemyConfig: {fileID: 11400000, guid: 26fe71fc9d8cf4f4caf0181b23c9b3a0, type: 2}
   state: 0
   moveSpeed: 3
+  chaseSpeed: 5
   damageTimeOut: 1
-  wayPointArray: []
+  wayPointArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  index: 0
   hitImpactPrefab: {fileID: 3651984596919297697, guid: 495e11e103bb1c04f8eedd7ff4d43662,
     type: 3}
   isKilled: 0
