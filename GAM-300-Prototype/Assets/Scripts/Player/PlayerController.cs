@@ -88,28 +88,33 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-
-        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && !pa.hasIFrame)
+        if (!pa.hasIFrame)
         {
-            Enemy thisEnemy = hitInfo.gameObject.transform.parent.gameObject.GetComponent<Enemy>(); // getting script from parent obj. hurtbox is a child.
+            if (hitInfo.gameObject.CompareTag("Enemy Hurtbox"))
+            {
+                Enemy thisEnemy = hitInfo.gameObject.transform.parent.gameObject.GetComponent<Enemy>(); // getting script from parent obj. hurtbox is a child.
 
-            TakeDamage(thisEnemy.enemyConfig.damage);
-            print("ouchie ouch");
+                TakeDamage(thisEnemy.enemyConfig.damage);
+                print("ouchie ouch");
 
+            }
+
+
+            if (hitInfo.gameObject.CompareTag("Enemy Regular Bullet"))
+            {
+                RegularBullet thisRangedEnemyBullet = hitInfo.gameObject.GetComponent<RegularBullet>();
+                TakeDamage(thisRangedEnemyBullet.enemyConfig.damage);
+                print("bullet ouchie ouch");
+            }
         }
 
-        if (hitInfo.gameObject.CompareTag("Enemy Regular Bullet") && !pa.hasIFrame)
+        if (pa.hasIFrame)
         {
-            RegularBullet thisRangedEnemyBullet = hitInfo.gameObject.GetComponent<RegularBullet>();
-            TakeDamage(thisRangedEnemyBullet.enemyConfig.damage);
-            print("bullet ouchie ouch");
+            if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") || hitInfo.gameObject.CompareTag("Enemy Regular Bullet"))
+            {
+                timeSystem.TimeFracture();
+            }
         }
-
-        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && pa.hasIFrame || hitInfo.gameObject.CompareTag("Enemy Regular Bullet") && pa.hasIFrame)
-        {
-            timeSystem.TimeFracture();
-        }
-
 
         if (hitInfo.CompareTag("Cart Handle"))
         {
