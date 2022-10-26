@@ -278,6 +278,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             StartCoroutine(DamageFrameDelay());
             PlayerController player = hitInfo.GetComponentInParent<PlayerController>();
             Vector3 hitPointPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            FindObjectOfType<HitStop>().StartHitStop(damageTimeOut);
             Instantiate(hitImpactPrefab, hitPointPos, transform.rotation);
             TakeDamage(player.damage);
 

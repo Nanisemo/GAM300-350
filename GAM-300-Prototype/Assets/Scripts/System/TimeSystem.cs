@@ -21,7 +21,7 @@ public class TimeSystem : MonoBehaviour
     public float coolDownTimer = 0f;
 
     bool isOnCoolDown;
-    bool isActive;
+    public bool isActive;
 
     bool toStartNormalisingTime;
     bool toStartCoolDown;
@@ -54,6 +54,7 @@ public class TimeSystem : MonoBehaviour
 
     }
 
+    #region Time Slow Function
     public void TimeFracture()
     {
         if (!isActive && !isOnCoolDown) SlowingTime();
@@ -70,9 +71,9 @@ public class TimeSystem : MonoBehaviour
     {
         print("!");
         isActive = true;
-       
+
         volAnim.SetTrigger("MaxWeight");
-    
+
         Time.timeScale = timeSlowFactor; // slows down time by 20 times.
         Time.fixedDeltaTime = Time.timeScale * physicsDeltaTime;
 
@@ -87,7 +88,7 @@ public class TimeSystem : MonoBehaviour
         if (Time.timeScale > 0.98f)
         {
             isActive = false;
-         
+
             volAnim.SetTrigger("MinWeight");
 
             print("time fracture ended!");
@@ -115,4 +116,8 @@ public class TimeSystem : MonoBehaviour
         }
 
     }
+
+    #endregion
+
+   
 }

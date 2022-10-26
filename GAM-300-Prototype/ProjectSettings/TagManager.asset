@@ -16,6 +16,7 @@ TagManager:
   - Camera Point
   - Enemy Regular Bullet
   - AbilityUI
+  - GM
   layers:
   - Default
   - TransparentFX

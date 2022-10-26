@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     PlayerController pc;
     PlayerMove pm;
     Animator anim;
+    TimeSystem ts;
 
     [Header("Variables")]
     int attackCount;
@@ -15,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
+        ts = GameObject.FindGameObjectWithTag("GM").GetComponent<TimeSystem>();
         pc = GetComponentInParent<PlayerController>();
         pm = GetComponentInParent<PlayerMove>();
         anim = GetComponent<Animator>();
@@ -27,7 +29,10 @@ public class PlayerAttack : MonoBehaviour
             anim.updateMode = AnimatorUpdateMode.Normal;
             return;
         }
-        else anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+        else if (ts.isActive)
+        {
+            anim.updateMode = AnimatorUpdateMode.UnscaledTime;
+        }
 
         if (pm.isGrounded) Punch();
         else return;

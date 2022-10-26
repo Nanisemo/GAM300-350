@@ -304,7 +304,7 @@ MonoBehaviour:
   state: 0
   moveSpeed: 3
   chaseSpeed: 5
-  damageTimeOut: 1
+  damageTimeOut: 0.15
   wayPointArray:
   - {fileID: 0}
   - {fileID: 0}
