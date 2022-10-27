@@ -920,7 +920,7 @@ MonoBehaviour:
   dashUpwardsForce: 0
   dashDuration: 0.2
   dashCoolDownTime: 0.7
-  dashKey: 120
+  dashKey: 304
   playerHeight: 1.8
   groundMask:
     serializedVersion: 2
@@ -3314,7 +3314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitStop: {fileID: 1772722052}
-  hasIFrame: 0
+  hasDodgeIFrame: 0
+  damageTakenIFrameActive: 0
+  damageIFrameDuration: 0.3
   firstHitStop: 0.05
   secondHitStop: 0.1
   thirdHitStop: 0.13

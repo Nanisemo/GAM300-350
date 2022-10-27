@@ -13,7 +13,11 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Variables")]
     int attackCount;
-    public bool hasIFrame;
+    public bool hasDodgeIFrame;
+    public bool damageTakenIFrameActive;
+
+    public float damageIFrameDuration = 0.3f;
+
     public float firstHitStop = 0.05f;
     public float secondHitStop = 0.1f;
     public float thirdHitStop = 0.13f;
@@ -26,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
         anim = GetComponent<Animator>();
         attackCount = 1;
     }
+
     private void Update()
     {
         if (GlobalBool.isLoading || GlobalBool.isGameOver || GlobalBool.isPaused)
@@ -88,12 +93,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void ActivateIFrames()
     {
-        hasIFrame = true;
+        hasDodgeIFrame = true;
     }
 
     public void DeActivateIFrames()
     {
-        hasIFrame = false;
+        hasDodgeIFrame = false;
     }
 
     void FirstHitStop()
@@ -113,11 +118,24 @@ public class PlayerAttack : MonoBehaviour
 
 
     #endregion
+
     private bool AnimPlaying(Animator anim, string animName)
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName(animName))
             return true;
         else
             return false;
+    }
+
+    public void SetDamageIFrame()
+    {
+        damageTakenIFrameActive = true;
+        StartCoroutine(ResetDamageIFrame());
+    }
+
+    IEnumerator ResetDamageIFrame()
+    {
+        yield return new WaitForSeconds(damageIFrameDuration);
+        damageTakenIFrameActive = false;
     }
 }

@@ -15,6 +15,7 @@ public enum EnemyState
 
 public class Enemy : MonoBehaviour, IEnemy, IDamagable
 {
+    [Header("AI Configs")]
     public NavMeshAgent agent;
     public EnemyState state = EnemyState.IDLE;
 
@@ -31,11 +32,26 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     [SerializeField] Transform[] wayPointArray;
 
     int index;
+    public bool isKilled,
+                   isStunned, damageTaken;
 
+
+    public Collider col;
+
+    [Header("Effects")]
     public GameObject hitImpactPrefab;
 
-    public bool isKilled,
-                isStunned, damageTaken;
+    #region Flash Effect
+
+    [SerializeField] SkinnedMeshRenderer mr;
+
+    public float flashIntensity = 1.2f;
+    public float flashDuration = 0.1f;
+    float flashTimer;
+
+    #endregion
+
+
 
     void Awake()
     {
@@ -43,12 +59,13 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     }
     void Start()
     {
-        // enemyConfig.isKilled = false;
+
         health = enemyConfig.health;
         moveSpeed = agent.speed;
         enemyConfig.idleTimer = 0f;
-        //enemyConfig.patrolTimer = 0f;
+
         enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
+        mr = GetComponentInChildren<SkinnedMeshRenderer>();
 
     }
 
@@ -75,6 +92,11 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             }
             if (IsInAtkRange()) state = EnemyState.ATTACK;
 
+            FlashEffect();
+        }
+        else
+        {
+            col.enabled = false;
         }
 
     }
@@ -113,6 +135,8 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     }
 
     #endregion
+
+    #region Behaviour Logic
 
     public void IdleBehaviour()
     {
@@ -183,9 +207,11 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public void AttackBehaviour()
     {
-        print("Time to attack!");
-
-        enemyAnimator.SetBool("isAttacking", true);
+        if (!GlobalBool.isGameOver)
+        {
+            print("Time to attack!");
+            enemyAnimator.SetBool("isAttacking", true);
+        }
 
         // ATTACK LOGIC HERE
 
@@ -201,12 +227,15 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         // STUN LOGIC HERE
     }
 
+    #endregion
+
     public void SetAggro(bool aggroed)
     {
         if (aggroed) GlobalBool.SetInCombat(this, true);
         else GlobalBool.SetInCombat(this, false);
     }
 
+    #region Anim Events
     IEnumerator Aim()
     {
         Vector3 relativePos = enemyConfig.targetTransform.position - transform.position;
@@ -233,6 +262,8 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         agent.isStopped = false;
     }
 
+    #endregion
+
     #region TakeDamage & Death Functions
 
     public void TakeDamage(float damageAmount) // when enemy takes damage
@@ -249,6 +280,8 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             Death();
             health = 0;
         }
+
+        flashTimer = flashDuration;
     }
 
     public void Death()
@@ -291,6 +324,16 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     {
         yield return new WaitForSecondsRealtime(damageTimeOut);
         damageTaken = false;
+    }
+
+
+    void FlashEffect()
+    {
+        flashTimer -= Time.deltaTime;
+        float lerp = Mathf.Clamp01(flashTimer / flashDuration);
+        float intensity = (lerp * flashIntensity) + 1f;
+        mr.material.color = Color.white * intensity;
+
     }
 
 }

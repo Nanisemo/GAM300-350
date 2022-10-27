@@ -99,6 +99,8 @@ public class PlayerMove : MonoBehaviour
         StateHandler();
 
         if (dashCDTimer > 0) dashCDTimer -= Time.deltaTime;
+
+        print(state);
     }
 
     void FixedUpdate()
@@ -126,7 +128,6 @@ public class PlayerMove : MonoBehaviour
             canJump = false;
             jump = true;
         }
-        //  else pc.playerAnim.SetBool("isJumping", false);
 
         if (Input.GetKeyDown(dashKey))
         {
@@ -194,6 +195,8 @@ public class PlayerMove : MonoBehaviour
 
     void Movement()
     {
+        TimeScaleFix();
+
         // calculate move direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
@@ -227,6 +230,7 @@ public class PlayerMove : MonoBehaviour
     {
         jump = false;
         isExitingSlope = true;
+        TimeScaleFix();
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // reset y velo to 0 to ensure always jump same height.
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         pc.playerAnim.SetBool("isJumping", true);
@@ -318,4 +322,9 @@ public class PlayerMove : MonoBehaviour
     }
 
     #endregion
+
+    void TimeScaleFix()
+    {
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+    }
 }

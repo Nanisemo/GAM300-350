@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         if (Input.GetKeyDown(KeyCode.V)) timeSystem.TimeFracture();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)) ActivateBuff();
+        // if (Input.GetKeyDown(KeyCode.LeftShift)) ActivateBuff();
     }
 
     #region Health, Damage Taken & Death Functions
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     {
         if (currentHealth > maxHealth) currentHealth = maxHealth;
 
-        if (currentHealth <= 0) PlayerDeath();
+        if (currentHealth <= 0 && !GlobalBool.isGameOver) PlayerDeath();
 
         // to remove  for build
         if (Input.GetKeyDown(KeyCode.F) && currentHealth != 0) currentHealth--;
@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     public void TakeDamage(float damageAmount)
     {
+        pa.SetDamageIFrame();
         currentHealth -= damageAmount;
         playerAnim.Play("Hit");
     }
@@ -88,7 +89,9 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-        if (!pa.hasIFrame)
+        if (pa.damageTakenIFrameActive) return;
+
+        if (!pa.hasDodgeIFrame)
         {
             if (hitInfo.gameObject.CompareTag("Enemy Hurtbox"))
             {
@@ -108,13 +111,14 @@ public class PlayerController : MonoBehaviour, IDamagable
             }
         }
 
-        if (pa.hasIFrame)
+        if (pa.hasDodgeIFrame)
         {
             if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") || hitInfo.gameObject.CompareTag("Enemy Regular Bullet"))
             {
                 timeSystem.TimeFracture();
             }
         }
+
 
         if (hitInfo.CompareTag("Cart Handle"))
         {
@@ -141,7 +145,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void OnTriggerStay(Collider hitInfo)
     {
-        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && pa.hasIFrame || hitInfo.gameObject.CompareTag("Enemy Regular Bullet") && pa.hasIFrame)
+        if (hitInfo.gameObject.CompareTag("Enemy Hurtbox") && pa.hasDodgeIFrame || hitInfo.gameObject.CompareTag("Enemy Regular Bullet") && pa.hasDodgeIFrame)
         {
             timeSystem.TimeFracture();
         }

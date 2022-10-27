@@ -95,9 +95,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsFrameRate: 200
-  timeFractureDuration: 3
-  timeSlowFactor: 0.05
-  timeFractureCoolDown: 10
+  timeFractureDuration: 0.7
+  timeSlowFactor: 0.1
+  currentTimeScale: 0
+  timeFractureCoolDown: 1
   coolDownTimer: 0
   isActive: 0
   timeSlowVolume: {fileID: 0}

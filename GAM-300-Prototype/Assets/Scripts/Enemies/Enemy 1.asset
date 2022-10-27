@@ -19,9 +19,6 @@ MonoBehaviour:
   damage: 0.5
   idleTimer: 0
   idleDuration: 3
-  patrolTimer: 0
-  patrolDuration: 7
   attackRange: 2
-  attackInterval: 0
   detectionRange: 10
   maxChaseDistance: 5

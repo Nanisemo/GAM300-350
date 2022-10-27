@@ -54,8 +54,6 @@ public class TimeSystem : MonoBehaviour
         if (toStartNormalisingTime) RevertTime();
         if (toStartCoolDown) StartCountDown();
 
-        print(Time.timeScale);
-
     }
 
     #region Time Slow Function

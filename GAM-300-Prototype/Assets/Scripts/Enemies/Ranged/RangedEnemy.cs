@@ -19,7 +19,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     // SHOOTS PROJECTILES AT PLAYER WHEN WITHIN DETECTION RANGE. - done
     // STOPS MOVING AFTER EVERY 5 PROJECTILES SHOT TO RELOAD. - done
     // MOVES AWAY FROM PLAYER WHEN PLAYER IS TOO CLOSE.
-    // LONGER IDLE AND SHORTER PATROL ROUTES.
+    // LONGER IDLE AND SHORTER PATROL ROUTES. - done
 
     [Header("AI Configs")]
     public NavMeshAgent agent;
@@ -36,12 +36,13 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
     bool hasReachedDestination;
 
-    public GameObject hitImpactPrefab;
+
     Animator anim;
 
     public bool isKilled,
             isStunned, damageTaken;
 
+    #region Shooting
     [Header("Shooting")]
     // public GameObject bulletPrefab;
     public float reloadTime = 3f;
@@ -59,9 +60,20 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     bool canShoot;
     bool isReloading;
 
+    #endregion
+
     [Header("Others")]
     public Transform firePoint;
     public GameObject bulletPrefab;
+
+    [Header("Effects")]
+    public GameObject hitImpactPrefab;
+
+    [SerializeField] Renderer mr;
+
+    public float flashIntensity = 10f;
+    public float flashDuration = 0.2f;
+    float flashTimer;
 
     void Awake()
     {
@@ -75,11 +87,12 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
         moveSpeed = agent.speed;
 
         enemyConfig.idleTimer = 0f;
-        //enemyConfig.patrolTimer = 0f;
+
 
         bulletLeft = maxBullet;
         enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
         anim = GetComponent<Animator>();
+        mr = GetComponentInChildren<Renderer>();
     }
 
     void Update()
@@ -104,6 +117,8 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
                 canShoot = true;
             }
             else canShoot = false;
+
+            FlashEffect();
         }
 
     }
@@ -216,6 +231,8 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
             health = 0f;
             Death();
         }
+
+        flashTimer = flashDuration;
     }
 
     public void Death()
@@ -335,6 +352,15 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
         isReloading = false;
         print("dont reloading");
+    }
+
+    void FlashEffect()
+    {
+        flashTimer -= Time.deltaTime;
+        float lerp = Mathf.Clamp01(flashTimer / flashDuration);
+        float intensity = (lerp * flashIntensity) + 1f;
+        mr.material.SetColor("_EmissionColor", Color.white * intensity);
+
     }
 
 }

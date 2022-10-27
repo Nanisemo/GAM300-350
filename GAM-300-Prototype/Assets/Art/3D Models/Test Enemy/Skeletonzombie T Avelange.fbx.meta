@@ -8,6 +8,16 @@ ModelImporter:
     second: mixamo.com
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skeletonZombie_Material
+    second: {fileID: 2100000, guid: 7145348d93ccb5c49877158b9b9127f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skeletonZombie_Material1
+    second: {fileID: 2100000, guid: 7c41c28d6741e344da75b91ae00278db, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: skeletonZombie_body_diffuse
