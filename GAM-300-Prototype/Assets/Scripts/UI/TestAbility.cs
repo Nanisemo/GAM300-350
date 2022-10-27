@@ -16,4 +16,9 @@ public class TestAbility : Ability
     {
         Debug.Log("Trigger Ability from TestAbility");
     }
+
+    public override void DeactivateAbility()
+    {
+        Debug.Log("Deactivate Ability from TestAbility");
+    }
 }

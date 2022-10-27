@@ -9,7 +9,8 @@ public class AbilityCooldown : MonoBehaviour
     public enum keyboardInputs
     {
         Q,
-        X
+        Shift,
+        None
     }
 
     public keyboardInputs abilityButton;
@@ -40,8 +41,11 @@ public class AbilityCooldown : MonoBehaviour
             case keyboardInputs.Q:
                 return KeyCode.Q;
                 break;
-            case keyboardInputs.X:
-                return KeyCode.X;
+            case keyboardInputs.Shift:
+                return KeyCode.LeftShift;
+                break;
+            case keyboardInputs.None:
+                return KeyCode.None;
                 break;
             default: return KeyCode.None;
         }

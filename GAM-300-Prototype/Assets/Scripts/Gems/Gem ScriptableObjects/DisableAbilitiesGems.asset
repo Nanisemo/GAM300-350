@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e370db38f83ac945a551bf20b07ac18, type: 3}
-  m_Name: Heal
+  m_Script: {fileID: 11500000, guid: 4086b859b7da56642bc0bde80d537378, type: 3}
+  m_Name: DisableAbilitiesGems
   m_EditorClassIdentifier: 
-  abilityName: Heal
-  abilitySprite: {fileID: 614429169, guid: 1f63d9613aa228f479b6f770a49818f3, type: 3}
-  abilityBaseCoolDown: 5
-  healAmount: 0.5
+  gemName: Disable Gem
+  isInZone: 0
+  gemAbility: {fileID: 11400000, guid: a3544638c3098b34d8f3ca70843737f9, type: 2}
+  abilityTypes: 0
