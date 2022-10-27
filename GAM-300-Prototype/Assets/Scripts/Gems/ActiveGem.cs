@@ -29,6 +29,6 @@ public class ActiveGem : Gem
 
     public override void ActivatePassiveAbility()
     {
-        //Do Nothing
+
     }
 }
