@@ -24,7 +24,7 @@ public class PassiveGem : Gem
     public override void ActivatePassiveAbility()
     {
         if(isInZone) {
-            // Activate Ability
+            gemAbility.TriggerAbility();
         }
     }
 }

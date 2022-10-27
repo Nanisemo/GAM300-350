@@ -10,11 +10,6 @@ public abstract class Gem : ScriptableObject
         active
     }
 
-    public Ability 
-        ability;
-
-    public AbilityTypes type;
-
     public string gemName = "New Gem";
 
     public abstract void Initialize(GameObject obj);

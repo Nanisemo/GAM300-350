@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc337ba50d6c3364eaaa04b37d4c2546, type: 3}
+  m_Name: HealGem
+  m_EditorClassIdentifier: 
+  type: 0
+  gemName: New Gem
+  isInZone: 0
+  gemAbility: {fileID: 0}
+  abilityTypes: 1
