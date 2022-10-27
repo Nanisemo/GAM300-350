@@ -815,6 +815,7 @@ GameObject:
   - component: {fileID: 1929308714}
   - component: {fileID: 2266143002363475669}
   - component: {fileID: 1929308715}
+  - component: {fileID: 1772722052}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -946,6 +947,19 @@ MonoBehaviour:
   shaderVariableRef: _Transparency
   shaderVariableRate: 0.07
   shaderRefreshRate: 0.01
+--- !u!114 &1772722052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266143002363475667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f18ba4f3fae2564e81e0eeae1736998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitStopDuration: 0.13
 --- !u!1 &5780569700986710327
 GameObject:
   m_ObjectHideFlags: 0
@@ -3299,7 +3313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b477b4f75dd524aa09609639ef8d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitStop: {fileID: 1772722052}
   hasIFrame: 0
+  firstHitStop: 0.05
+  secondHitStop: 0.1
+  thirdHitStop: 0.13
 --- !u!4 &1799272099344936425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,

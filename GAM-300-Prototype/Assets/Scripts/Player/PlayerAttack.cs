@@ -9,10 +9,14 @@ public class PlayerAttack : MonoBehaviour
     PlayerMove pm;
     Animator anim;
     TimeSystem ts;
+    public HitStop hitStop;
 
     [Header("Variables")]
     int attackCount;
     public bool hasIFrame;
+    public float firstHitStop = 0.05f;
+    public float secondHitStop = 0.1f;
+    public float thirdHitStop = 0.13f;
 
     private void Start()
     {
@@ -91,6 +95,23 @@ public class PlayerAttack : MonoBehaviour
     {
         hasIFrame = false;
     }
+
+    void FirstHitStop()
+    {
+        hitStop.hitStopDuration = firstHitStop;
+    }
+
+    void SecondHitStop()
+    {
+        hitStop.hitStopDuration = secondHitStop;
+    }
+
+    void ThirdHitStop()
+    {
+        hitStop.hitStopDuration = thirdHitStop;
+    }
+
+
     #endregion
     private bool AnimPlaying(Animator anim, string animName)
     {

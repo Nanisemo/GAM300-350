@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7686076228918386230}
   m_Layer: 0
   m_Name: Game Manager
-  m_TagString: Untagged
+  m_TagString: GM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,5 +99,6 @@ MonoBehaviour:
   timeSlowFactor: 0.05
   timeFractureCoolDown: 10
   coolDownTimer: 0
+  isActive: 0
   timeSlowVolume: {fileID: 0}
   volAnim: {fileID: 0}

@@ -11,18 +11,29 @@ public class HitStop : MonoBehaviour
 
     #endregion
 
-    public void StartHitStop(float duration)
+    TimeSystem ts;
+
+    void Start()
+    {
+        ts = GameObject.FindGameObjectWithTag("GM").GetComponent<TimeSystem>();
+    }
+
+    public void StartHitStop()
     {
         if (waiting) return;
         Time.timeScale = 0;
-        StartCoroutine(ResetHitStop(duration));
+        StartCoroutine(ResetHitStop(hitStopDuration));
     }
 
     IEnumerator ResetHitStop(float duration)
     {
         waiting = true;
         yield return new WaitForSecondsRealtime(duration);
-        Time.timeScale = 1;
+        if (!ts.isActive)
+        {
+            Time.timeScale = 1;
+        }
+
         waiting = false;
     }
 }

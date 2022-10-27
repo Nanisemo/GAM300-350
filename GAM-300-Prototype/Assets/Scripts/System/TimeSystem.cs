@@ -16,6 +16,7 @@ public class TimeSystem : MonoBehaviour
     public float timeSlowFactor = 0.05f; //by how slow?
 
     float normalTimeScale = 1f; // use this variable to revert time back to normal.
+    public float currentTimeScale; // whats the current time scale?
 
     public float timeFractureCoolDown = 5f; // CD for how long?
     public float coolDownTimer = 0f;
@@ -39,6 +40,7 @@ public class TimeSystem : MonoBehaviour
     void Awake()
     {
         physicsDeltaTime = 1 / (float)physicsFrameRate;
+        currentTimeScale = Time.timeScale;
     }
 
     private void Start()
@@ -51,6 +53,8 @@ public class TimeSystem : MonoBehaviour
         if (GlobalBool.isPaused) volAnim.updateMode = AnimatorUpdateMode.Normal; else volAnim.updateMode = AnimatorUpdateMode.UnscaledTime;
         if (toStartNormalisingTime) RevertTime();
         if (toStartCoolDown) StartCountDown();
+
+        print(Time.timeScale);
 
     }
 
@@ -80,7 +84,7 @@ public class TimeSystem : MonoBehaviour
         StartCoroutine(ExitFracture());
     }
 
-    void RevertTime()
+    public void RevertTime()
     {
         Time.timeScale += (1f / timeFractureDuration) * Time.unscaledDeltaTime;
         Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, normalTimeScale); // timescale cannot go below 0 and beyond 1.
@@ -119,5 +123,5 @@ public class TimeSystem : MonoBehaviour
 
     #endregion
 
-   
+
 }
