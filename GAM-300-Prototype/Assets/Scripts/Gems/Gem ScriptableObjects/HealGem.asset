@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc337ba50d6c3364eaaa04b37d4c2546, type: 3}
   m_Name: HealGem
   m_EditorClassIdentifier: 
-  type: 0
-  gemName: New Gem
+  gemName: Heal Gem
   isInZone: 0
-  gemAbility: {fileID: 0}
+  gemAbility: {fileID: 11400000, guid: 48614283c61a4a544b7569f96766ba74, type: 2}
   abilityTypes: 1

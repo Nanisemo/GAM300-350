@@ -51,7 +51,7 @@ public class PlayerMove : MonoBehaviour
 
     float dashCDTimer;
 
-    public KeyCode dashKey = KeyCode.X;
+    public KeyCode dashKey = KeyCode.LeftShift;
 
 
     [Header("Momentum")]
