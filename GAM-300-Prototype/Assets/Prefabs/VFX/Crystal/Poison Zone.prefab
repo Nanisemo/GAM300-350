@@ -4891,3 +4891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poisonVolume: {fileID: 0}
   poisonVolumeAnim: {fileID: 0}
+  minLensDistortion: 0.2
+  distortionStep: 0.1
+  maxLensDistortion: 0.5
+  lerpTimeOffset: 1

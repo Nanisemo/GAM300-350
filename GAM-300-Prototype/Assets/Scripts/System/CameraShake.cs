@@ -10,7 +10,7 @@ public class CameraShake : MonoBehaviour
     void Start()
     {
         source = GetComponent<CinemachineImpulseSource>();
-        Invoke("ShakeCamera", 3f);
+       // Invoke("ShakeCamera", 3f);
     }
 
     public void ShakeCamera()
