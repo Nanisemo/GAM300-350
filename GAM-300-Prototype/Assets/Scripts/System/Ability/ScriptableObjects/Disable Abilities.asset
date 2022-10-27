@@ -15,6 +15,5 @@ MonoBehaviour:
   abilityName: Disable
   abilitySprite: {fileID: 0}
   abilityBaseCoolDown: 0
-  abilityUI: {fileID: 3832586173371930254, guid: a0383838b7c260c4e863641183bd9519,
-    type: 3}
   abilityCooldown: {fileID: 0}
+  abilityCooldown1: {fileID: 0}

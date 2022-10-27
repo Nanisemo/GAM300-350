@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788d006e79a7f9b4d8b6c4ad76299dca, type: 3}
   m_Name: MovementBuff
   m_EditorClassIdentifier: 
-  abilityName: New Ability
+  abilityName: Movement
   abilitySprite: {fileID: 0}
-  abilityBaseCoolDown: 1
-  multiplier: 0
+  abilityBaseCoolDown: 0
+  multiplier: 2
