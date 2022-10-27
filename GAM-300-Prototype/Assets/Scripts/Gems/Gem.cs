@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gem : MonoBehaviour
+public abstract class Gem : ScriptableObject
 {
     public enum AbilityTypes
     {
@@ -10,27 +10,10 @@ public class Gem : MonoBehaviour
         active
     }
 
-    public Ability 
-        _passive,
-        _active;
+    public string gemName = "New Gem";
 
-    private bool
-        isInteracted;
+    public abstract void Initialize(GameObject obj);
+    public abstract void GainAbility();
 
-    public AbilityTypes type;
-
-    private GameObject abilityUI;
-
-    private void Start()
-    {
-        abilityUI = GameObject.FindGameObjectWithTag("AbilityUI");
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            abilityUI.GetComponent<AbilityCooldown>().ability = _active;
-        }
-    }
+    public abstract void ActivatePassiveAbility();
 }
