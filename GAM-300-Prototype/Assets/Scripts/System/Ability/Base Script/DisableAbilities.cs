@@ -5,10 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Abilities/Debuff/Disable Abilities")]
 public class DisableAbilities : Ability
 {
-    private AbilityList abilityList;
-
-    private PassiveGem passiveGem;
-
     public GameObject abilityCooldown;
     public AbilityCooldown abilityCooldown1;
 
@@ -16,11 +12,8 @@ public class DisableAbilities : Ability
 
     public override void Initialize(GameObject obj)
     {
-        passiveGem = obj.GetComponent<PassiveGem>();
         abilityCooldown = GameObject.FindGameObjectWithTag("AbilityUI");
         abilityCooldown1 = abilityCooldown.GetComponent<AbilityCooldown>();
-        Debug.Log(abilityCooldown);
-        Debug.Log(abilityCooldown1);
     }
 
     public override void TriggerAbility()

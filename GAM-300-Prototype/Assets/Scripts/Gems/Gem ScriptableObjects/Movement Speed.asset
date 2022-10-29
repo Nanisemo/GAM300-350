@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4086b859b7da56642bc0bde80d537378, type: 3}
-  m_Name: DisableAbilitiesGems
+  m_Name: Movement Speed
   m_EditorClassIdentifier: 
-  gemName: Disable Gem
-  isInZone: 0
-  gemAbility: {fileID: 11400000, guid: a3544638c3098b34d8f3ca70843737f9, type: 2}
+  gemName: Movement Gem
+  gemAbility: {fileID: 11400000, guid: 0a551e69dc3437e4d95f88db394e3478, type: 2}
   abilityTypes: 0

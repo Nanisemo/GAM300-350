@@ -11,9 +11,4 @@ public abstract class Gem : ScriptableObject
     }
 
     public string gemName = "New Gem";
-
-    public abstract void Initialize(GameObject obj);
-    public abstract void GainAbility();
-
-    public abstract void ActivatePassiveAbility();
 }

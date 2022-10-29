@@ -10,8 +10,6 @@ public class Heal : Ability
 
     private PlayerController playerController;
 
-    private AbilityList abilityList;
-
     public override void Initialize(GameObject obj)
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
