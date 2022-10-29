@@ -23,6 +23,7 @@ namespace System
             public int shieldHealth;
             public int damage;
             public int moveSpeed;
+            public int weight;
         }
 
         [SerializeField]
