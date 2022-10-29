@@ -9,20 +9,36 @@ public class PassiveAbilityCooldown : MonoBehaviour
 
     public GameObject spawnWhere;
 
+    public float timer;
+
     void Start()
     {
         Initialize(ability, spawnWhere);
     }
 
+    private void Update()
+    {
+        timer += Time.deltaTime;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player Enter zone");
             ability.TriggerAbility();
+        }
+            
     }
 
     private void OnTriggerExit(Collider other)
     {
-        ability.DeactivateAbility();
+        timer = 0;
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player Exit zone");
+            ability.DeactivateAbility();
+        }
     }
 
     public void Initialize(Ability selectedAbility, GameObject spawnWhere)

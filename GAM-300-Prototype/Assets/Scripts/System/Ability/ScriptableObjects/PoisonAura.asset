@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0e50ff77732774cbf76883f96fb321, type: 3}
-  m_Name: New Disable Abilities
+  m_Script: {fileID: 11500000, guid: 42479ee4411b47044811450f327ad3e4, type: 3}
+  m_Name: PoisonAura
   m_EditorClassIdentifier: 
-  abilityName: New Ability
+  abilityName: PoisonAura
   abilitySprite: {fileID: 0}
-  abilityBaseCoolDown: 0
-  abilityCooldown: {fileID: 0}
-  abilityCooldown1: {fileID: 0}
+  abilityBaseCoolDown: 1

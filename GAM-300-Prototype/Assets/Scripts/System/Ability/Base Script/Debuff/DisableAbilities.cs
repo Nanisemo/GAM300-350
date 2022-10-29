@@ -5,10 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Abilities/Debuff/Disable Abilities")]
 public class DisableAbilities : Ability
 {
-    public GameObject abilityCooldown;
-    public AbilityCooldown abilityCooldown1;
-
-    private bool isInZone;
+    private GameObject abilityCooldown;
+    private AbilityCooldown abilityCooldown1;
 
     public override void Initialize(GameObject obj)
     {
