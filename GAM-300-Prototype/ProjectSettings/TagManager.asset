@@ -18,6 +18,7 @@ TagManager:
   - GM
   - Ability List
   - AbilityUI
+  - Poison
   layers:
   - Default
   - TransparentFX

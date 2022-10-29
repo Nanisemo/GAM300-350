@@ -14003,8 +14003,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd778932c4f27346bfc1eff16d86925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  abilityCooldown: {fileID: 904600749}
 --- !u!1001 &521868752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21118,18 +21116,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &904600749 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6963619352836507092, guid: 3521b855a062d6040bf3476849b8cd1f,
-    type: 3}
-  m_PrefabInstance: {fileID: 9122099898605719525}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d980174f5c3d6d4aa55a332af74ecb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &904650250
 GameObject:
   m_ObjectHideFlags: 0
@@ -24244,10 +24230,10 @@ GameObject:
   - component: {fileID: 1092049006}
   - component: {fileID: 1092049005}
   - component: {fileID: 1092049004}
-  - component: {fileID: 1092049008}
+  - component: {fileID: 1092049010}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Poison
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24330,7 +24316,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1092049008
+--- !u!114 &1092049010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24339,10 +24325,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1092049003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd41ae920a75ff4a8e5a5a84907a871, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ee01cea6f93d4c4fb95523bb7c723be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: 4cc8451f1f4b1cf409d23328bad54ff8, type: 2}
+  damageOverTime: 0.5
+  damageInterval: 1
+  isInZone: 0
 --- !u!1001 &1102453649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32240,7 +32228,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455046696}
-  m_LocalRotation: {x: 0.0852001, y: 0.000000017143817, z: -0.0000000014659852, w: 0.9963639}
+  m_LocalRotation: {x: 0.0852001, y: -0.000000017143817, z: 0.0000000014659852, w: 0.9963639}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
