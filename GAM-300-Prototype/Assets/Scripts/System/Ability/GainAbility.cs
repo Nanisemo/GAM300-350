@@ -5,23 +5,20 @@ using UnityEngine.PlayerLoop;
 
 public class GainAbility : MonoBehaviour
 {
-    [SerializeField]private GameObject abilityUI;
-    [SerializeField]private AbilityCooldown abilityCDI;
-    [SerializeField]private bool isInZone;
+    private AbilityCooldown abilityCD;
+    public bool isInZone;
     [SerializeField] private Ability ability;
 
-    // TODO: Anunu - Check why when the player exit the bool is not set by to false
     void Start()
     {
-        abilityUI = GameObject.FindGameObjectWithTag("AbilityUI");
-        abilityCDI = abilityUI.GetComponent<AbilityCooldown>();
+        abilityCD = GameObject.FindGameObjectWithTag("AbilityUI").GetComponent<AbilityCooldown>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) && isInZone)
         {
-            abilityCDI.ability = ability;
+            abilityCD.ability = ability;
         }
     }
 
@@ -34,6 +31,6 @@ public class GainAbility : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-            isInZone = true;
+            isInZone = false;
     }
 }
