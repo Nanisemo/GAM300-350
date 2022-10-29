@@ -54,7 +54,9 @@ namespace Enemies
         {
             if (agent.enabled) return; //Don't run as we're not being shoved.
             
-            rb.MovePosition(Vector3.Lerp(transform.position, targetPosition, t));
+            Vector3 position = transform.position;
+            targetPosition.y = position.y;
+            rb.MovePosition(Vector3.Lerp(position, targetPosition, t));
         }
         
         public void Push(Vector3 force)
@@ -64,7 +66,6 @@ namespace Enemies
             rb.isKinematic = false;
 
             targetPosition = transform.position + Vector3.ProjectOnPlane(force, Vector3.up) * (1.0f / weight);
-            Debug.Log("YEET");
         }
     }
 }
