@@ -63,9 +63,13 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         health = enemyConfig.health;
         moveSpeed = agent.speed;
         enemyConfig.idleTimer = 0f;
-
-        enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
         mr = GetComponentInChildren<SkinnedMeshRenderer>();
+
+        var target = GameObject.FindGameObjectWithTag(enemyConfig.targetTag);
+        if (target)
+        {
+            enemyConfig.targetTransform = target.transform;
+        }
 
     }
 
