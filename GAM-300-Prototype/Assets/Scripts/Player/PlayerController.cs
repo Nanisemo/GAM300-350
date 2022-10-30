@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     Rigidbody myCartRB;
 
     public PlayerAttack pa;
+    public PlayerMove pm;
 
     #region Health & Attack
 
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour, IDamagable
     void Start()
     {
         currentHealth = maxHealth;
+        pm = GetComponent<PlayerMove>();
 
     }
 

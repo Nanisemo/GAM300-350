@@ -23,6 +23,11 @@ public class PlayerAttack : MonoBehaviour
     public float secondHitStop = 0.1f;
     public float thirdHitStop = 0.13f;
 
+    [Header("Effects")]
+
+    public GameObject aoeHitPrefab;
+    public Transform spawnPoint;
+
 
     private void Start()
     {
@@ -59,7 +64,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         pc.playerAnim.CrossFade("Punch 1", 0.05f);
                         attackCount += 1;
-                       
+
                     }
                     break;
                 case 2:
@@ -67,7 +72,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         pc.playerAnim.CrossFade("Punch 2", 0.1f);
                         attackCount += 1;
-                       
+
                     }
                     break;
                 case 3:
@@ -140,6 +145,16 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+    void NoVelocity()
+    {
+        pm.rb.velocity = new Vector3(0f, 0f, 0f);
+    }
+
+    void SpawnAoeParticles()
+    {
+        Vector3 offsetPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y - 1.4f, spawnPoint.position.z);
+        Instantiate(aoeHitPrefab, offsetPosition, aoeHitPrefab.transform.rotation);
+    }
 
     #endregion
 

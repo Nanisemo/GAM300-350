@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviour
     float verticalInput;
 
     Vector3 moveDirection;
-    Rigidbody rb;
+    public Rigidbody rb;
 
     [Header("Dash")]
     public float dashForce = 20f;

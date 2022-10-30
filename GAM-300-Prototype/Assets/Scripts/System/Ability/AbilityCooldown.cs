@@ -29,14 +29,17 @@ public class AbilityCooldown : MonoBehaviour
         nextReadyTime,
         coolDownTimeLeft;
 
+    PlayerController pc;
+
     void Start()
     {
         Initialize(ability, weaponHolder);
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     public KeyCode CheckInputs(keyboardInputs keyboard)
     {
-        switch(keyboard)
+        switch (keyboard)
         {
             case keyboardInputs.Q:
                 return KeyCode.Q;
@@ -68,7 +71,7 @@ public class AbilityCooldown : MonoBehaviour
         CheckImageSprite();
 
         bool coolDownComplete = (Time.time > nextReadyTime);
-        if (coolDownComplete)
+        if (coolDownComplete && pc.pm.state != MovementState.RUNNING) // cannot use when running for now to prevent sliding.
         {
             AbilityReady();
             if (Input.GetKeyDown(CheckInputs(abilityButton)))
