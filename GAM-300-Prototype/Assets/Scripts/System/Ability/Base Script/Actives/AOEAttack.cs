@@ -19,6 +19,7 @@ public class AOEAttack : Ability
     public override void TriggerAbility()
     {
         CheckForDestructibles();
+        playerController.playerAnim.SetTrigger("AOE");
     }
 
     public override void DeactivateAbility()

@@ -78,7 +78,7 @@ public class PlayerMove : MonoBehaviour
 
     [Header("References")]
     PlayerController pc;
-    MeshTrailRenderer meshTrailRenderer;
+    public MeshTrailRenderer meshTrailRenderer;
 
     void Start()
     {
@@ -93,7 +93,7 @@ public class PlayerMove : MonoBehaviour
     {
         GroundCheck();
 
-        if (GlobalBool.isLoading || GlobalBool.isGameOver || GlobalBool.isPaused || pc.isUsingAbility) return;
+        if (GlobalBool.isLoading || GlobalBool.isGameOver || GlobalBool.isPaused || pc.isUsingAbility || pc.pa.isBusy) return;
 
         CheckInput();
         StateHandler();
@@ -120,7 +120,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            pc.playerAnim.SetTrigger("isInteract");
+            pc.playerAnim.SetTrigger("AOE");
         }
 
         if (Input.GetKey(KeyCode.Space) && isGrounded && canJump)

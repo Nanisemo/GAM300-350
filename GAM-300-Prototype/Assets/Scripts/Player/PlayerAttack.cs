@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour
     int attackCount;
     public bool hasDodgeIFrame;
     public bool damageTakenIFrameActive;
+    public bool isBusy;
 
     public float damageIFrameDuration = 0.3f;
 
@@ -49,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Punch()
     {
-        if (Input.GetMouseButtonDown(0) && !pc.isAttacking)
+        if (Input.GetMouseButtonDown(0) && !pc.isAttacking && !isBusy)
         {
             switch (attackCount)
             {
@@ -58,6 +59,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         pc.playerAnim.CrossFade("Punch 1", 0.05f);
                         attackCount += 1;
+                       
                     }
                     break;
                 case 2:
@@ -65,6 +67,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         pc.playerAnim.CrossFade("Punch 2", 0.1f);
                         attackCount += 1;
+                       
                     }
                     break;
                 case 3:
@@ -115,6 +118,26 @@ public class PlayerAttack : MonoBehaviour
     void ThirdHitStop()
     {
         hitStop.hitStopDuration = thirdHitStop;
+    }
+
+    void SetIsBusy()
+    {
+        isBusy = true;
+    }
+
+    void ResetIsBusy()
+    {
+        isBusy = false;
+    }
+
+    void RenderSkinMesh()
+    {
+        if (!pm.meshTrailRenderer.isTrailActive)
+        {
+            pm.meshTrailRenderer.isTrailActive = true;
+            StartCoroutine(pm.meshTrailRenderer.RenderMeshTrail(.3f));
+        }
+
     }
 
 

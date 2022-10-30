@@ -24,10 +24,14 @@ public class PlayerCamera : MonoBehaviour
     public CinemachineFreeLook defaultCamera;
     public CinemachineFreeLook combatCamera;
 
+    PlayerAttack pa;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        pa = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerAttack>();
     }
 
 
@@ -41,7 +45,7 @@ public class PlayerCamera : MonoBehaviour
         if (currentState == CameraState.DEFAULT) PlayerRotation();
         //else if (currentState == CameraState.COMBAT) CombatDirection();
 
-       // if (GlobalBool.isInCombat) ChangeCameraState(CameraState.COMBAT); else ChangeCameraState(CameraState.DEFAULT);
+        // if (GlobalBool.isInCombat) ChangeCameraState(CameraState.COMBAT); else ChangeCameraState(CameraState.DEFAULT);
 
     }
 
@@ -52,7 +56,7 @@ public class PlayerCamera : MonoBehaviour
 
         Vector3 inputDirection = orientation.forward * vertical + orientation.right * horizontal;
 
-        if (inputDirection.magnitude != 0)
+        if (inputDirection.magnitude != 0 && !pa.isBusy)
         {
             playerModel.forward = Vector3.Slerp(playerModel.forward, inputDirection.normalized, Time.deltaTime * rotationSpeed);
         }
