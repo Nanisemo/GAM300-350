@@ -34,16 +34,24 @@ public class AOEAttack : Ability
         {
             if (collider.GetComponent<Enemy>())
             {
-                // Set enemy to take damage
-                collider.GetComponent<Enemy>().damageTaken = true;
-                collider.GetComponent<Enemy>().TakeDamage(playerController.damage);
+                //// Set enemy to take damage
+                //collider.GetComponent<Enemy>().damageTaken = true;
+                //FindObjectOfType<CameraShake>().ShakeCamera();
+                //FindObjectOfType<HitStop>().StartHitStop();
+                //collider.GetComponent<Enemy>().TakeDamage(playerController.damage);
+
+                collider.GetComponent<Enemy>().ExecuteAOE();
+
             }
 
             if (collider.GetComponent<RangedEnemy>())
             {
                 // Set enemy to take damage
-                collider.GetComponent<RangedEnemy>().damageTaken = true;
-                collider.GetComponent<RangedEnemy>().TakeDamage(playerController.damage);
+                //collider.GetComponent<RangedEnemy>().damageTaken = true;
+                //FindObjectOfType<CameraShake>().ShakeCamera();
+                //FindObjectOfType<HitStop>().StartHitStop();
+                //collider.GetComponent<RangedEnemy>().TakeDamage(playerController.damage);
+                collider.GetComponent<RangedEnemy>().ExecuteAOE();
             }
         }
     }

@@ -23,14 +23,15 @@ Material:
   m_Name: Buff_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 3f971b74e0f4c624e82612e2c33c49e0,
     type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _SURFACE_TYPE_TRANSPARENT
+  m_ValidKeywords:
+  - _SPECULAR_SETUP
+  m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -52,20 +53,20 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _CastShadows: 1
-    - _Cull: 2
-    - _DstBlend: 10
+    - _Cull: 0
+    - _DstBlend: 0
     - _Fresnel_Intensity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SrcBlend: 5
-    - _Surface: 1
-    - _WorkflowMode: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _WorkflowMode: 0
     - _ZTest: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 0.027083334, g: 0.007598039, b: 0.0036764706, a: 1}
+    - _Color: {r: 0.8696372, g: 0.86226416, b: 1, a: 1}
     - _Main_Color: {r: 10.432951, g: 1.6386833, b: 0, a: 1}
     - _Secondary_Color: {r: 8.47419, g: 0.3105724, b: 0.79861474, a: 1}
   m_BuildTextureStacks: []

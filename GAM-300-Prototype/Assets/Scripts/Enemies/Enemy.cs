@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public Collider col;
 
+    PlayerController pc;
+
     [Header("Effects")]
     public GameObject hitImpactPrefab;
 
@@ -62,6 +64,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         moveSpeed = agent.speed;
         enemyConfig.idleTimer = 0f;
         mr = GetComponentInChildren<SkinnedMeshRenderer>();
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         var target = GameObject.FindGameObjectWithTag(enemyConfig.targetTag);
         if (target)
@@ -270,6 +273,8 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     public void TakeDamage(float damageAmount) // when enemy takes damage
     {
+        SetAggro(true);
+
         if (health - damageAmount > 0)
         {
             enemyAnimator.Play("Enemy1_Hurt");
@@ -307,18 +312,9 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-        if (hitInfo.gameObject.CompareTag("Player Hitbox") && !damageTaken && !isKilled)
+        if (hitInfo.gameObject.CompareTag("Player Hitbox") && !isKilled)
         {
-            damageTaken = true;
-            StartCoroutine(DamageFrameDelay());
-            PlayerController player = hitInfo.GetComponentInParent<PlayerController>();
-            Vector3 hitPointPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-            FindObjectOfType<CameraShake>().ShakeCamera();
-            FindObjectOfType<HitStop>().StartHitStop();
-            Instantiate(hitImpactPrefab, hitPointPos, transform.rotation);
-            TakeDamage(player.damage);
-
-            print("enemy ouchie ouch");
+            EnemyTakeDamage();
         }
     }
 
@@ -336,6 +332,35 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         float intensity = (lerp * flashIntensity) + 1f;
         mr.material.color = Color.white * intensity;
 
+    }
+
+    public void EnemyTakeDamage()
+    {
+        if (!damageTaken)
+        {
+            damageTaken = true;
+            StartCoroutine(DamageFrameDelay());
+            
+            Vector3 hitPointPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            FindObjectOfType<CameraShake>().ShakeCamera();
+            FindObjectOfType<HitStop>().StartHitStop();
+            Instantiate(hitImpactPrefab, hitPointPos, transform.rotation);
+            TakeDamage(pc.damage);
+
+            print("enemy ouchie ouch");
+        }
+
+    }
+
+    public void ExecuteAOE()
+    {
+        StartCoroutine(DelayAOE());
+    }
+
+    IEnumerator DelayAOE()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        EnemyTakeDamage();
     }
 
 }

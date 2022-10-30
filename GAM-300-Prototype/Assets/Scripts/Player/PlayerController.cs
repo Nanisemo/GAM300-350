@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-        if (pa.damageTakenIFrameActive || GlobalBool.isGameOver) return;
+        if (pa.damageTakenIFrameActive || GlobalBool.isGameOver || pa.hasAbilityIFrame) return;
 
         if (!pa.hasDodgeIFrame)
         {

@@ -26,6 +26,8 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     public EnemySetUp enemyConfig;
     public RangeEnemyState state = RangeEnemyState.IDLE;
 
+    public Collider col;
+
     [SerializeField] float moveSpeed;
     [SerializeField] float chaseSpeed;
     [SerializeField] float damageTimeOut = 1f;
@@ -65,6 +67,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     [Header("Others")]
     public Transform firePoint;
     public GameObject bulletPrefab;
+    PlayerController pc;
 
     [Header("Effects")]
     public GameObject hitImpactPrefab;
@@ -92,6 +95,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
         bulletLeft = maxBullet;
         anim = GetComponent<Animator>();
         mr = GetComponentInChildren<Renderer>();
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         var target = GameObject.FindGameObjectWithTag(enemyConfig.targetTag);
         if (target)
@@ -124,6 +128,10 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
             else canShoot = false;
 
             FlashEffect();
+        }
+        else
+        {
+            col.enabled = false;
         }
 
     }
@@ -253,18 +261,9 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-        if (hitInfo.gameObject.CompareTag("Player Hitbox") && !damageTaken && !isKilled)
+        if (hitInfo.gameObject.CompareTag("Player Hitbox") && !isKilled)
         {
-            damageTaken = true;
-            StartCoroutine(DamageFrameDelay());
-            PlayerController player = hitInfo.GetComponentInParent<PlayerController>();
-            Vector3 hitPointPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-            FindObjectOfType<CameraShake>().ShakeCamera();
-            FindObjectOfType<HitStop>().StartHitStop();
-            Instantiate(hitImpactPrefab, hitPointPos, transform.rotation);
-            TakeDamage(player.damage);
-
-            print("ranged enemy ouchie ouch");
+            RangedEnemyTakeDamage();
         }
     }
 
@@ -367,6 +366,34 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
         float intensity = (lerp * flashIntensity) + 1f;
         mr.material.SetColor("_EmissionColor", Color.white * intensity);
 
+    }
+
+    public void RangedEnemyTakeDamage()
+    {
+        if (!damageTaken)
+        {
+            damageTaken = true;
+            StartCoroutine(DamageFrameDelay());
+            Vector3 hitPointPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            FindObjectOfType<CameraShake>().ShakeCamera();
+            FindObjectOfType<HitStop>().StartHitStop();
+            Instantiate(hitImpactPrefab, hitPointPos, transform.rotation);
+            TakeDamage(pc.damage);
+
+            print("ranged enemy ouchie ouch");
+        }
+
+    }
+
+    public void ExecuteAOE()
+    {
+        StartCoroutine(DelayThisAOE());
+    }
+
+    IEnumerator DelayThisAOE()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        RangedEnemyTakeDamage();
     }
 
 }

@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Variables")]
     int attackCount;
     public bool hasDodgeIFrame;
+    public bool hasAbilityIFrame;
     public bool damageTakenIFrameActive;
     public bool isBusy;
 
@@ -110,6 +111,8 @@ public class PlayerAttack : MonoBehaviour
         hasDodgeIFrame = false;
     }
 
+    #region HitStop
+
     void FirstHitStop()
     {
         hitStop.hitStopDuration = firstHitStop;
@@ -124,6 +127,8 @@ public class PlayerAttack : MonoBehaviour
     {
         hitStop.hitStopDuration = thirdHitStop;
     }
+
+    #endregion
 
     void SetIsBusy()
     {
@@ -140,20 +145,26 @@ public class PlayerAttack : MonoBehaviour
         if (!pm.meshTrailRenderer.isTrailActive)
         {
             pm.meshTrailRenderer.isTrailActive = true;
-            StartCoroutine(pm.meshTrailRenderer.RenderMeshTrail(.3f));
+            StartCoroutine(pm.meshTrailRenderer.RenderMeshTrail(.1f));
         }
 
-    }
-
-    void NoVelocity()
-    {
-        pm.rb.velocity = new Vector3(0f, 0f, 0f);
     }
 
     void SpawnAoeParticles()
     {
         Vector3 offsetPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y - 1.4f, spawnPoint.position.z);
         Instantiate(aoeHitPrefab, offsetPosition, aoeHitPrefab.transform.rotation);
+    }
+
+
+    public void ActivateAbilityIFrames()
+    {
+        hasAbilityIFrame = true;
+    }
+
+    public void DeActivateAbilityIFrames()
+    {
+        hasAbilityIFrame = false;
     }
 
     #endregion

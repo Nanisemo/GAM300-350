@@ -3482,8 +3482,9 @@ MonoBehaviour:
   firstHitStop: 0.05
   secondHitStop: 0.1
   thirdHitStop: 0.13
-  aoeHitPrefab: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  aoeHitPrefab: {fileID: 3331388510392297290, guid: 514f2efa3c0819c45ba1fca86c7140cb,
+    type: 3}
+  spawnPoint: {fileID: 786202378}
 --- !u!4 &1799272099344936425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0e04435b0fb41af4ea35fb5c5ae1da63,

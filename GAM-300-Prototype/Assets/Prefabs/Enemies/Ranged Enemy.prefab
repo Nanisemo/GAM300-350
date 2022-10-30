@@ -305,6 +305,7 @@ MonoBehaviour:
   agent: {fileID: 4857570716423673040}
   enemyConfig: {fileID: 11400000, guid: 26fe71fc9d8cf4f4caf0181b23c9b3a0, type: 2}
   state: 0
+  col: {fileID: 938623452}
   moveSpeed: 3
   chaseSpeed: 5
   damageTimeOut: 0.15

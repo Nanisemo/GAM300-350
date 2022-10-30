@@ -118,10 +118,10 @@ public class PlayerMove : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetMouseButton(1))
-        {
-            pc.playerAnim.SetTrigger("AOE");
-        }
+        //if (Input.GetMouseButton(1))
+        //{
+        //    pc.playerAnim.SetTrigger("AOE");
+        //}
 
         if (Input.GetKey(KeyCode.Space) && isGrounded && canJump)
         {
