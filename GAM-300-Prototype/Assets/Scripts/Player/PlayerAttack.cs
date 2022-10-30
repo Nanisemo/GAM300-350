@@ -22,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
     public float secondHitStop = 0.1f;
     public float thirdHitStop = 0.13f;
 
+
     private void Start()
     {
         ts = GameObject.FindGameObjectWithTag("GM").GetComponent<TimeSystem>();

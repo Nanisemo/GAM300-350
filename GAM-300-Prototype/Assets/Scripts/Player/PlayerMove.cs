@@ -93,7 +93,7 @@ public class PlayerMove : MonoBehaviour
     {
         GroundCheck();
 
-        if (GlobalBool.isLoading || GlobalBool.isGameOver || GlobalBool.isPaused) return;
+        if (GlobalBool.isLoading || GlobalBool.isGameOver || GlobalBool.isPaused || pc.isUsingAbility) return;
 
         CheckInput();
         StateHandler();

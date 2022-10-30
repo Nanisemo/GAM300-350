@@ -19,6 +19,7 @@ TagManager:
   - Ability List
   - AbilityUI
   - Poison
+  - Heal
   layers:
   - Default
   - TransparentFX

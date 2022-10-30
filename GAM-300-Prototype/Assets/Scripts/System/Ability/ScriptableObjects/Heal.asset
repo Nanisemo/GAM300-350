@@ -16,3 +16,5 @@ MonoBehaviour:
   abilitySprite: {fileID: 614429169, guid: 1f63d9613aa228f479b6f770a49818f3, type: 3}
   abilityBaseCoolDown: 5
   healAmount: 0.5
+  healVFXPrefab: {fileID: 7392462024939124752, guid: 39e1500b3d394e748a6bf87514e9a167,
+    type: 3}

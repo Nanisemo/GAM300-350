@@ -24,12 +24,19 @@ public class PlayerController : MonoBehaviour, IDamagable
     public Animator playerAnim;
     #endregion
 
+    #region Abilities
+
+    public bool isUsingAbility;
+
+    #endregion
+
     #region MISC
     TimeSystem timeSystem;
 
     public GameObject buffVFXTest;
     public Transform VFXPoint;
     #endregion
+
 
     void Awake()
     {
@@ -50,8 +57,6 @@ public class PlayerController : MonoBehaviour, IDamagable
         if (GlobalBool.isGameOver || GlobalBool.isPaused || GlobalBool.isLoading) return; // player unable to move if either bool is true.
 
         if (Input.GetKeyDown(KeyCode.V)) timeSystem.TimeFracture();
-
-        // if (Input.GetKeyDown(KeyCode.LeftShift)) ActivateBuff();
     }
 
     #region Health, Damage Taken & Death Functions
@@ -61,9 +66,9 @@ public class PlayerController : MonoBehaviour, IDamagable
 
         if (currentHealth <= 0 && !GlobalBool.isGameOver) PlayerDeath();
 
-        // to remove  for build
-        if (Input.GetKeyDown(KeyCode.F) && currentHealth != 0) currentHealth--;
-        if (Input.GetKeyDown(KeyCode.R) && currentHealth != 5) currentHealth++;
+        //// to remove  for build
+        //if (Input.GetKeyDown(KeyCode.F) && currentHealth != 0) currentHealth--;
+        //if (Input.GetKeyDown(KeyCode.R) && currentHealth != 5) currentHealth++;
 
     }
 
@@ -71,7 +76,11 @@ public class PlayerController : MonoBehaviour, IDamagable
     {
         pa.SetDamageIFrame();
         currentHealth -= damageAmount;
-        playerAnim.Play("Hit");
+        if (!GlobalBool.isGameOver)
+        {
+            playerAnim.Play("Hit");
+        }
+
     }
 
     void PlayerDeath()
@@ -89,7 +98,7 @@ public class PlayerController : MonoBehaviour, IDamagable
 
     private void OnTriggerEnter(Collider hitInfo)
     {
-        if (pa.damageTakenIFrameActive) return;
+        if (pa.damageTakenIFrameActive || GlobalBool.isGameOver) return;
 
         if (!pa.hasDodgeIFrame)
         {

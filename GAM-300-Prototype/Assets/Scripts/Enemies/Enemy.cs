@@ -51,8 +51,6 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     #endregion
 
-
-
     void Awake()
     {
         isKilled = false;

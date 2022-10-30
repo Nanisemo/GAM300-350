@@ -25,6 +25,7 @@ namespace Enemies
         Rigidbody rb;
 
         //TODO: Use Enemy isStunned
+        // RangedEnemy isStunned as well uh >> i didnt know how to yeet them together - val
         //Enemy enemy;
 
         float t;
