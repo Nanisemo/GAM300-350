@@ -90,9 +90,14 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
 
         bulletLeft = maxBullet;
-        enemyConfig.targetTransform = GameObject.FindGameObjectWithTag(enemyConfig.targetTag).GetComponent<Transform>();
         anim = GetComponent<Animator>();
         mr = GetComponentInChildren<Renderer>();
+
+        var target = GameObject.FindGameObjectWithTag(enemyConfig.targetTag);
+        if (target)
+        {
+            enemyConfig.targetTransform = target.transform;
+        }
     }
 
     void Update()
@@ -126,6 +131,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     #region Bool Functions
     bool IsInDetectionRange()
     {
+        if (!enemyConfig.targetTransform) return false;
         if (Vector3.Distance(enemyConfig.targetTransform.position, transform.position) <= enemyConfig.detectionRange)
         {
 

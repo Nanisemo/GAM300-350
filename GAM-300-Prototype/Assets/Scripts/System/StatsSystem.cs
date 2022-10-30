@@ -24,6 +24,7 @@ namespace System
             public int damage;
             public int moveSpeed;
             public int unitWeight;
+            public int weight;
         }
 
         [SerializeField]
