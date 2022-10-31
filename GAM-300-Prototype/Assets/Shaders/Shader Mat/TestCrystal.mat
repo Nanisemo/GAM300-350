@@ -55,7 +55,7 @@ Material:
     - _Smoothness: 0.534
     - _Top_Line: 0.634
     m_Colors:
-    - _Base_Color: {r: 1.137255, g: 0.47843137, b: 0.3764706, a: 1}
-    - _Bottom_Color: {r: 0.2781061, g: 0.6792453, b: 0.5708293, a: 1}
-    - _Top_Color: {r: 0.01764706, g: 0.01764706, b: 0.14117648, a: 1}
+    - _Base_Color: {r: 2.406401, g: 0.8749345, b: 0.6220318, a: 1}
+    - _Bottom_Color: {r: 0.12169219, g: 1.7431592, b: 1.3195328, a: 1}
+    - _Top_Color: {r: 0.017177062, g: 0.017177062, b: 4.552011, a: 1}
   m_BuildTextureStacks: []
