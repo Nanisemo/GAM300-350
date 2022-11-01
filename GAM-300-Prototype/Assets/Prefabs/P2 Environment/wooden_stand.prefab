@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1762691349067842073}
   - component: {fileID: 3447943000588078524}
   - component: {fileID: 593765613387135350}
+  - component: {fileID: 2765224974151725701}
   m_Layer: 0
   m_Name: wooden_stand
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2765224974151725701
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386412547391330467}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35654142, y: 4.390922, z: 0.45243597}
+  m_Center: {x: 0.112084195, y: 2.195461, z: -0.12134892}

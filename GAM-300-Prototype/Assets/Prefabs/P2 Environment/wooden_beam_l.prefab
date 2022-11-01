@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4980970659270375658}
   - component: {fileID: 8264155867326920527}
   - component: {fileID: 6148779841562592133}
+  - component: {fileID: 5550726827792215573}
   m_Layer: 0
   m_Name: wooden_beam_l
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5550726827792215573
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5644178839157629520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0772105, y: 0.4189449, z: 10.019304}
+  m_Center: {x: 0, y: 0, z: 0}

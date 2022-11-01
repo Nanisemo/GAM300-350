@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5513525442779146594}
   - component: {fileID: 8875506043604625095}
   - component: {fileID: 6685829977557045773}
+  - component: {fileID: 5656597869589242435}
   m_Layer: 0
   m_Name: hanging_lantern
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5656597869589242435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172430906620490712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4601089, y: 1.0147494, z: 0.4601088}
+  m_Center: {x: 0, y: -1.0093122, z: 0}

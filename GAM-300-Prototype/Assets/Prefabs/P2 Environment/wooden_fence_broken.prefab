@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5561496603947579637}
   - component: {fileID: 8827543610646411088}
   - component: {fileID: 6729868151137878938}
-  m_Layer: 0
+  - component: {fileID: 4871069692945724117}
+  m_Layer: 6
   m_Name: wooden_fence_broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4871069692945724117
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5072661892152320591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9846892, y: 1.6437669, z: 0.21825778}
+  m_Center: {x: 0, y: 0.8134835, z: 0.000000048428774}

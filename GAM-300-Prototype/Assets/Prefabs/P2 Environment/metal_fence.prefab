@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6583863995598639291}
   - component: {fileID: 7850142480814776094}
   - component: {fileID: 5410434725120306132}
-  m_Layer: 0
+  - component: {fileID: 1499006779133379280}
+  m_Layer: 6
   m_Name: metal_fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1499006779133379280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770595219780422145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3892775, y: 1.4770257, z: 0.37365118}
+  m_Center: {x: 0.0000007748604, y: 0.7385129, z: 0}

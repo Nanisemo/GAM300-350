@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2896794063725081478}
   - component: {fileID: 2277872872850734115}
   - component: {fileID: 4069096850585864425}
-  m_Layer: 0
+  - component: {fileID: 5145100872440188020}
+  m_Layer: 6
   m_Name: metal_fence_broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5145100872440188020
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555980216501233980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.56499, y: 1.501788, z: 0.67205024}
+  m_Center: {x: 0, y: 0.7103172, z: 0}

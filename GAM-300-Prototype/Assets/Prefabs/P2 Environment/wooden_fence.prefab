@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4282798513345980497}
   - component: {fileID: 918827901766461428}
   - component: {fileID: 3108788116611207998}
-  m_Layer: 0
+  - component: {fileID: 8838068393433959045}
+  m_Layer: 6
   m_Name: wooden_fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8838068393433959045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3469001113544340203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.079164, y: 1.5127177, z: 0.18397649}
+  m_Center: {x: 0.0000007748604, y: 0.74795866, z: 0.000000007450581}
