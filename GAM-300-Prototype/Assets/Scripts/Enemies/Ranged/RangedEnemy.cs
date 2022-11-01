@@ -28,6 +28,8 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
     public Collider col;
 
+    Enemies.EnemyYeet yeet;
+
     [SerializeField] float moveSpeed;
     [SerializeField] float chaseSpeed;
     [SerializeField] float damageTimeOut = 1f;
@@ -94,6 +96,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
         bulletLeft = maxBullet;
         anim = GetComponent<Animator>();
+        yeet = GetComponent<Enemies.EnemyYeet>();
         mr = GetComponentInChildren<Renderer>();
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
@@ -237,6 +240,9 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
         if (health - damageAmount > 0)
         {
+            Vector3 force = transform.position - enemyConfig.targetTransform.position;
+            print(force);
+            yeet.Push(force);
             health -= damageAmount;
             print(health);
         }
@@ -370,10 +376,11 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
     public void RangedEnemyTakeDamage()
     {
-        if (!damageTaken)
+        if (!damageTaken && !isKilled)
         {
             damageTaken = true;
             StartCoroutine(DamageFrameDelay());
+
             Vector3 hitPointPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             FindObjectOfType<CameraShake>().ShakeCamera();
             FindObjectOfType<HitStop>().StartHitStop();

@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     public Collider col;
 
     PlayerController pc;
+    Enemies.EnemyYeet yeet;
 
     [Header("Effects")]
     public GameObject hitImpactPrefab;
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         enemyConfig.idleTimer = 0f;
         mr = GetComponentInChildren<SkinnedMeshRenderer>();
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        yeet = GetComponent<Enemies.EnemyYeet>();
 
         var target = GameObject.FindGameObjectWithTag(enemyConfig.targetTag);
         if (target)
@@ -97,12 +99,13 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
             }
             if (IsInAtkRange()) state = EnemyState.ATTACK;
 
-            FlashEffect();
         }
         else
         {
             col.enabled = false;
         }
+
+        FlashEffect();
 
     }
 
@@ -277,6 +280,9 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
         if (health - damageAmount > 0)
         {
+            Vector3 force = transform.position - enemyConfig.targetTransform.position;
+            print(force);
+            yeet.Push(force);
             enemyAnimator.Play("Enemy1_Hurt");
             enemyAnimator.SetBool("isAttacking", false);
             health -= damageAmount;
@@ -340,7 +346,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
         {
             damageTaken = true;
             StartCoroutine(DamageFrameDelay());
-            
+
             Vector3 hitPointPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             FindObjectOfType<CameraShake>().ShakeCamera();
             FindObjectOfType<HitStop>().StartHitStop();
