@@ -27,7 +27,9 @@ public class PlayerAttack : MonoBehaviour
     [Header("Effects")]
 
     public GameObject aoeHitPrefab;
+    public GameObject healVFXPrefab;
     public Transform spawnPoint;
+    public Transform healPoint;
 
 
     private void Start()
@@ -109,6 +111,12 @@ public class PlayerAttack : MonoBehaviour
     public void DeActivateIFrames()
     {
         hasDodgeIFrame = false;
+    }
+
+
+    public void SpawnHealEffect()
+    {
+        Instantiate(healVFXPrefab, healPoint.position, healVFXPrefab.transform.rotation);
     }
 
     #region HitStop
