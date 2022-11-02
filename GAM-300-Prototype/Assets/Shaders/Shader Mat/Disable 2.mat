@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Disable 1
+  m_Name: Disable 2
   m_Shader: {fileID: -6465566751694194690, guid: 4c283fbcd248e094a94145648f556857,
     type: 3}
   m_ValidKeywords: []
@@ -55,7 +55,7 @@ Material:
     - _Smoothness: 0.534
     - _Top_Line: 0.634
     m_Colors:
-    - _Base_Color: {r: 0.65205944, g: 0.030725315, b: 0.030725315, a: 1}
+    - _Base_Color: {r: 0.3254902, g: 0.015686275, b: 0.015686275, a: 1}
     - _Bottom_Color: {r: 2.588434, g: 0.8649964, b: 0.37605542, a: 1}
-    - _Top_Color: {r: 95.87451, g: 0, b: 0, a: 1}
+    - _Top_Color: {r: 23.968628, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

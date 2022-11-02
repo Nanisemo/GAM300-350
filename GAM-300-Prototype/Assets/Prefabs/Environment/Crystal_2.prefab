@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 113066912259912098}
   - component: {fileID: 8346357937913229921}
   - component: {fileID: 6163122402717098776}
-  - component: {fileID: 2553756238941629105}
-  - component: {fileID: 3609872786444931540}
+  - component: {fileID: 4399213045619299279}
   m_Layer: 0
   m_Name: crystal_2
   m_TagString: Untagged
@@ -85,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2553756238941629105
-MeshCollider:
+--- !u!65 &4399213045619299279
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,23 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6326538095087172256, guid: f062fef36f3153a4e8a5148c4351ca46, type: 3}
---- !u!208 &3609872786444931540
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2536863101997385335}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.65900004, y: 0.90400004, z: 0.61600006}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.004, y: 0.90400004, z: 0.317}
-  m_TimeToStationary: 0.5
+  serializedVersion: 2
+  m_Size: {x: 0.7816372, y: 0.49248514, z: 0.69238997}
+  m_Center: {x: 0.0055420995, y: 0.24624257, z: 0.069736466}
