@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,5 +15,23 @@ public class UIManager : MonoBehaviour
             gui.SetActive(false);
         else
             gui.SetActive(true);
+
+
+        if (Input.GetKeyDown(KeyCode.Escape)) QuitGame();
+
+        if (Input.GetKeyDown(KeyCode.T)) ReloadScene();
+
+    }
+
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        print("quit");
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
