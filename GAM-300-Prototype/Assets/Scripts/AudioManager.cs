@@ -15,9 +15,13 @@ public class AudioManager : MonoBehaviour
     private List<EnemyState> enemyState;
     private List<EnemyState> currEnemyState;
 
+    List<RangeEnemyState> rangedEnemyState;
+    List<RangeEnemyState> currRangedEnemyState;
+
     private void Start()
     {
         GetEnemyStates();
+        GetRangedEnemyStates();
     }
     private void Update()
     {
@@ -35,13 +39,32 @@ public class AudioManager : MonoBehaviour
             currEnemyState.Add(GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<Enemy>().state);
         }
     }
+
+    void GetRangedEnemyStates()
+    {
+        rangedEnemyState = new List<RangeEnemyState>();
+        currRangedEnemyState = new List<RangeEnemyState>();
+
+        //gets all initial states of enemies
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Ranged Enemy").Length; i++)
+        {
+            rangedEnemyState.Add(GameObject.FindGameObjectsWithTag("Ranged Enemy")[i].GetComponent<RangedEnemy>().state);
+            currRangedEnemyState.Add(GameObject.FindGameObjectsWithTag("Ranged Enemy")[i].GetComponent<RangedEnemy>().state);
+        }
+    }
     private void CheckForCombat()
     {
         for (int i = 0; i < enemyState.Count; i++)
         {
             currEnemyState[i] = GameObject.FindGameObjectsWithTag("Enemy")[i].GetComponent<Enemy>().state;
         }
-        if (currEnemyState.Contains(EnemyState.ATTACK) || currEnemyState.Contains(EnemyState.CHASE))
+
+        for (int i = 0; i < rangedEnemyState.Count; i++)
+        {
+            currRangedEnemyState[i] = GameObject.FindGameObjectsWithTag("Ranged Enemy")[i].GetComponent<RangedEnemy>().state;
+        }
+
+        if ((currEnemyState.Contains(EnemyState.ATTACK) || currEnemyState.Contains(EnemyState.CHASE))|| currRangedEnemyState.Contains(RangeEnemyState.ATTACK))
         {
             if (inCombat != true)
             {

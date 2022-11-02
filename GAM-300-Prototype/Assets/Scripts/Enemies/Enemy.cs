@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     PlayerController pc;
     Enemies.EnemyYeet yeet;
-    public Vector3 yeetForce = new Vector3(1f, 1f, 1f);
+    public Vector3 yeetForce = new Vector3(.5f, .5f, .5f);
 
     [Header("Effects")]
     public GameObject hitImpactPrefab;

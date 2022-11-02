@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         if (GlobalBool.isGameOver) StartCoroutine(DisplayGameOverUI());
 
         // if there is at least 1 enemy in combat, set isInCombat to be true
-        GlobalBool.isInCombat = (GlobalBool.enemiesInCombat.Count > 0);
+        //GlobalBool.isInCombat = (GlobalBool.enemiesInCombat.Count > 0);
     }
 
     IEnumerator DisplayGameOverUI()

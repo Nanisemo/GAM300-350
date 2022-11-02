@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 988637954}
   m_Layer: 9
   m_Name: Ranged Enemy
-  m_TagString: Untagged
+  m_TagString: Ranged Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
   enemyConfig: {fileID: 11400000, guid: 26fe71fc9d8cf4f4caf0181b23c9b3a0, type: 2}
   state: 0
   col: {fileID: 938623452}
-  yeetForce: {x: 1, y: 1, z: 1}
+  yeetForce: {x: 0.3, y: 0.3, z: 0.3}
   moveSpeed: 3
   chaseSpeed: 5
   damageTimeOut: 0.15
@@ -377,5 +377,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47747c57937345a59a4e46083da10fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 2
+  weight: 3
   duration: 0.5

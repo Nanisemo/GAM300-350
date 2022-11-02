@@ -29,7 +29,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     public Collider col;
 
     Enemies.EnemyYeet yeet;
-    public Vector3 yeetForce = new Vector3(1f, 1f, 1f);
+    public Vector3 yeetForce = new Vector3(.5f, .5f, .5f);
 
     [SerializeField] float moveSpeed;
     [SerializeField] float chaseSpeed;
@@ -301,6 +301,9 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     {
         if (aggroed) GlobalBool.SetInRangeCombat(this, true);
         else GlobalBool.SetInRangeCombat(this, false);
+
+        //if (aggroed) GlobalBool.isInCombat = true;
+        //else GlobalBool.isInCombat = false; ;
     }
 
     IEnumerator Aim()

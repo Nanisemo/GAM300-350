@@ -1522,7 +1522,7 @@ MonoBehaviour:
   isStunned: 0
   damageTaken: 0
   col: {fileID: 3535434151342129499}
-  yeetForce: {x: 1, y: 1, z: 1}
+  yeetForce: {x: 0.5, y: 0.5, z: 0.5}
   hitImpactPrefab: {fileID: 3651984596919297697, guid: 495e11e103bb1c04f8eedd7ff4d43662,
     type: 3}
   mr: {fileID: 4292031856608469770}
@@ -1676,8 +1676,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47747c57937345a59a4e46083da10fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 2
-  duration: 0.5
+  weight: 3
+  duration: 1
 --- !u!1 &4473589822116914168
 GameObject:
   m_ObjectHideFlags: 0
