@@ -7,7 +7,7 @@ public class RegularBullet : MonoBehaviour
     public GameObject hitImpactPrefab;
     public EnemySetUp enemyConfig;
 
-    private void OnTriggerEnter(Collider hitInfo)
+    /*private void OnTriggerEnter(Collider hitInfo)
     {
         if (hitInfo != null)
         {
@@ -19,6 +19,14 @@ public class RegularBullet : MonoBehaviour
         //    PlayerController player = hitInfo.gameObject.GetComponent<PlayerController>();
         //    player.TakeDamage(enemyConfig.damage);
         //}
+    }*/
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision != null)
+        {
+            HitImpact();
+        }
     }
 
     void HitImpact()

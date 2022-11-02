@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4757334157520126850}
   - component: {fileID: -1986939264453641338}
   - component: {fileID: 1180774766561235462}
+  - component: {fileID: -771536229433659568}
   m_Layer: 0
   m_Name: Ranged Projectile
   m_TagString: Enemy Regular Bullet
@@ -239,3 +240,16 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!135 &-771536229433659568
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579951247116472842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

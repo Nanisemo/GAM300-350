@@ -31,7 +31,7 @@ public class AbilityCooldown : MonoBehaviour
 
     PlayerController pc;
 
-    void Start()
+    void FixedUpdate()
     {
         Initialize(ability, weaponHolder);
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
