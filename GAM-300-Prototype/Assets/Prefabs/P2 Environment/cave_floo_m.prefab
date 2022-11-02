@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 5500396960837800050}
   - component: {fileID: 2172876313721973175}
   - component: {fileID: 4787609738067477416}
-  m_Layer: 0
+  - component: {fileID: 7698861866104338557}
+  m_Layer: 6
   m_Name: cave_floo_m
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5500396960837800050
 Transform:
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7698861866104338557
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3930976160817414714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1537786843119161809, guid: 63739a97c9dff514f8acf6faa8b63840, type: 3}

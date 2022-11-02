@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -474,59 +474,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6963619352720097227, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6963619352820084356, guid: 3521b855a062d6040bf3476849b8cd1f,
         type: 3}
       propertyPath: weaponHolder
       value: 
       objectReference: {fileID: 1955867691}
-    - target: {fileID: 6963619352820084410, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1074551260, guid: 1f63d9613aa228f479b6f770a49818f3,
-        type: 3}
-    - target: {fileID: 6963619352836507080, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_TagString
-      value: AbilityUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963619352836507081, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 185.65045
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963619352836507081, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 186.2963
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963619352836507081, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 129
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963619352836507081, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 107
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963619352836507082, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -910416507, guid: 1f63d9613aa228f479b6f770a49818f3,
-        type: 3}
-    - target: {fileID: 6963619352836507092, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: ability
-      value: 
-      objectReference: {fileID: 11400000, guid: 48614283c61a4a544b7569f96766ba74,
-        type: 2}
     - target: {fileID: 6963619352836507092, guid: 3521b855a062d6040bf3476849b8cd1f,
         type: 3}
       propertyPath: weaponHolder
@@ -641,21 +593,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963619353295917199, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963619353380622271, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 326
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963619353380622271, guid: 3521b855a062d6040bf3476849b8cd1f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 188
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3521b855a062d6040bf3476849b8cd1f, type: 3}

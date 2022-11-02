@@ -210,8 +210,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154, y: 118}
-  m_SizeDelta: {x: 250, y: 250.5}
+  m_AnchoredPosition: {x: 129, y: 107}
+  m_SizeDelta: {x: 167.08542, y: 168.00002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6963619352836507083
 CanvasRenderer:
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 614429169, guid: 1f63d9613aa228f479b6f770a49818f3, type: 3}
+  m_Sprite: {fileID: -910416507, guid: 1f63d9613aa228f479b6f770a49818f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -267,7 +267,7 @@ MonoBehaviour:
   darkMask: {fileID: 6963619354495155753}
   coolDownTextDisplay: {fileID: 6963619354069002045}
   ability: {fileID: 11400000, guid: 48614283c61a4a544b7569f96766ba74, type: 2}
-  weaponHolder: {fileID: 8013592007402168961}
+  weaponHolder: {fileID: 0}
 --- !u!1 &6963619353295917199
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 385, y: 200}
+  m_AnchoredPosition: {x: 326, y: 175}
   m_SizeDelta: {x: 1000, y: 70}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6963619353380622267
