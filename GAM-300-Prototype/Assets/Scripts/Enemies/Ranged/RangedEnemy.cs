@@ -29,6 +29,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     public Collider col;
 
     Enemies.EnemyYeet yeet;
+    public Vector3 yeetForce = new Vector3(1f, 1f, 1f);
 
     [SerializeField] float moveSpeed;
     [SerializeField] float chaseSpeed;
@@ -240,9 +241,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
 
         if (health - damageAmount > 0)
         {
-            Vector3 force = transform.position - enemyConfig.targetTransform.position;
-            print(force);
-            yeet.Push(force);
+
             health -= damageAmount;
             print(health);
         }
@@ -269,6 +268,9 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     {
         if (hitInfo.gameObject.CompareTag("Player Hitbox") && !isKilled)
         {
+            Vector3 relativeForce = transform.position - enemyConfig.targetTransform.position;
+            print(relativeForce);
+            yeet.Push(relativeForce);
             RangedEnemyTakeDamage();
         }
     }
@@ -400,6 +402,7 @@ public class RangedEnemy : MonoBehaviour, IEnemy, IDamagable
     IEnumerator DelayThisAOE()
     {
         yield return new WaitForSecondsRealtime(1f);
+        yeet.Push(yeetForce);
         RangedEnemyTakeDamage();
     }
 

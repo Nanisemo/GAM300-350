@@ -1522,6 +1522,7 @@ MonoBehaviour:
   isStunned: 0
   damageTaken: 0
   col: {fileID: 3535434151342129499}
+  yeetForce: {x: 1, y: 1, z: 1}
   hitImpactPrefab: {fileID: 3651984596919297697, guid: 495e11e103bb1c04f8eedd7ff4d43662,
     type: 3}
   mr: {fileID: 4292031856608469770}

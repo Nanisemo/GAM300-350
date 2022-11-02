@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
     PlayerController pc;
     Enemies.EnemyYeet yeet;
+    public Vector3 yeetForce = new Vector3(1f, 1f, 1f);
 
     [Header("Effects")]
     public GameObject hitImpactPrefab;
@@ -280,9 +281,6 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
 
         if (health - damageAmount > 0)
         {
-            Vector3 force = transform.position - enemyConfig.targetTransform.position;
-            print(force);
-            yeet.Push(force);
             enemyAnimator.Play("Enemy1_Hurt");
             enemyAnimator.SetBool("isAttacking", false);
             health -= damageAmount;
@@ -320,6 +318,9 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     {
         if (hitInfo.gameObject.CompareTag("Player Hitbox") && !isKilled)
         {
+            Vector3 relativeForce = transform.position - enemyConfig.targetTransform.position;
+            print(relativeForce);
+            yeet.Push(relativeForce);
             EnemyTakeDamage();
         }
     }
@@ -366,6 +367,7 @@ public class Enemy : MonoBehaviour, IEnemy, IDamagable
     IEnumerator DelayAOE()
     {
         yield return new WaitForSecondsRealtime(1f);
+        yeet.Push(yeetForce);
         EnemyTakeDamage();
     }
 
